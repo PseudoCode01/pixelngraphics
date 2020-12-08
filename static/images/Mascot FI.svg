@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="5000" height="5000" viewBox="0 0 5000 5000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #92d945;
+      }
+
+      .cls-3 {
+        fill: #65b60d;
+      }
+    </style>
+  </defs>
+  <path id="Rounded_Rectangle_9" data-name="Rounded Rectangle 9" class="cls-1" d="M1000.23,985.05h3910.1a52,52,0,0,1,52,52v3910.1a52,52,0,0,1-52,52H1000.23a52,52,0,0,1-52-52V1037.05A52,52,0,0,1,1000.23,985.05Zm23.94,0H3853.35c41.93,0,76.14.482,76.14,0l-0.22,2881.04c0,43.21-33.99,78.24-75.92,78.24l-2905.1.28c-0.428,0,0-35.31,0-78.52V1063.29C948.25,1020.08,982.24,985.05,1024.17,985.05Z"/>
+  <path id="Rounded_Rectangle_8" data-name="Rounded Rectangle 8" class="cls-2" d="M55.429,3.5H3696.52a52,52,0,0,1,52,52V3696.6a52,52,0,0,1-52,52H55.429a52,52,0,0,1-52-52V55.5A52,52,0,0,1,55.429,3.5Z"/>
+  <path id="Polygon_1" data-name="Polygon 1" class="cls-3" d="M2485.6,2728.64L470.215,2733,1474.13,985.443Z"/>
+  <path id="Polygon_1_copy" data-name="Polygon 1 copy" class="cls-3" d="M3281.73,2729.09l-1803.36,3.84,898.07-1564.04Zm-1253.49-955,594.39,956.22h-32.8l-1111.46,2.62,513.08-893.62Z"/>
+</svg>

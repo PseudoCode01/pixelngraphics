@@ -1,0 +1,31 @@
+<svg id="BANNERS" xmlns="http://www.w3.org/2000/svg" width="5000" height="3146" viewBox="0 0 5000 3146">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #0190ff;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: #0077d3;
+      }
+
+      .cls-4 {
+        fill: #c4d3df;
+      }
+    </style>
+  </defs>
+  <rect id="Rounded_Rectangle_16" data-name="Rounded Rectangle 16" class="cls-1" x="20" y="-0.063" width="4963.19" height="1470.693" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_18" data-name="Rounded Rectangle 18" class="cls-2" x="394.438" y="484.625" width="1383.252" height="365.813" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_19" data-name="Rounded Rectangle 19" class="cls-3" x="428.938" y="904.625" width="1192.312" height="137.965" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_20" data-name="Rounded Rectangle 20" class="cls-3" x="3120.25" y="535.125" width="1527.34" height="200.75" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_21" data-name="Rounded Rectangle 21" class="cls-3" x="3120.25" y="791.313" width="1519.94" height="200.781" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_16_copy" data-name="Rounded Rectangle 16 copy" class="cls-2" x="20" y="1675.09" width="4963.19" height="1470.66" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_18_copy" data-name="Rounded Rectangle 18 copy" class="cls-1" x="3225.53" y="2159.75" width="1383.22" height="365.84" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_19_copy" data-name="Rounded Rectangle 19 copy" class="cls-4" x="3406.59" y="2579.78" width="1192.32" height="137.94" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_20_copy" data-name="Rounded Rectangle 20 copy" class="cls-4" x="355.625" y="2210.25" width="1527.315" height="200.78" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_21_copy" data-name="Rounded Rectangle 21 copy" class="cls-4" x="363" y="2466.47" width="1519.94" height="200.75" rx="52" ry="52"/>
+</svg>

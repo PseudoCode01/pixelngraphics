@@ -1,0 +1,51 @@
+.welcomechild{
+    width: 35%;
+    margin: auto;
+}
+.card-title{
+    text-align: end;
+    display: flex;
+    justify-content: end;
+}
+.card-text{
+    font-size: 20px;
+}
+.card img{
+     margin: auto; 
+width: 65%;
+height: 85%;
+margin-top: 37px;
+}
+.slant {
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+    display: flex;
+  }
+.slantopp {
+    clip-path: polygon(0% 0, 85% 0, 100% 100%, 0 100%);
+    display: flex;
+    padding: 50px 0 50px 0;
+  }
+.slantopp img{
+    margin-top: auto;
+   
+}
+.rightplace{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.imgcont{
+    display: flex;
+}
+.imgcont div img{
+height: 155px;
+width: 245px;
+
+}
+.imgcont span{
+    width: 50px;
+}
+.abtimg{
+    transform: rotate(-4deg);
+}

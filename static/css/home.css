@@ -1,0 +1,16 @@
+video{
+    object-fit: fill;
+  }
+  .dotted {
+    margin:5px 0;
+    height:1px;
+    background:
+      repeating-linear-gradient(to right,white 0,white 5px,transparent 5px,transparent 9px) top;
+     
+    background-size:100% 2px;
+    background-repeat:no-repeat;
+  }
+  .slant {
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+    display: flex;
+  }

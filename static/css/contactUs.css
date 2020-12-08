@@ -1,0 +1,54 @@
+.heading{
+    margin-top: 60px;
+    display: flex;
+    justify-content: center;
+}
+.heading .ns{
+    text-align: center;
+    color: white;
+}
+.sup{
+    color: #2ff905;
+}
+.space{
+    width: 12px;
+}
+.heading .qm{
+    color: white;
+}
+.support{
+    margin-top: 30px;
+    justify-content: center;
+}
+.twocol{
+    display: flex;
+    justify-content: center;
+
+}
+.support h3{
+    font-size: 20px;
+    text-align: center;
+    
+}
+.faqs{
+    width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+  height: 400px;
+  
+}
+.faqs h2{
+    margin-bottom: -22px;
+}
+.faqs .ques,.ans{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 100px;
+
+}
+.ans h5{
+    display: flex;
+    font-size: 17px;
+}

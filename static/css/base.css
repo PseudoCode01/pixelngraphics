@@ -1,0 +1,423 @@
+nav{
+    display: flex;
+    background-color:#262a35;
+    height: 75px;
+    justify-content: space-between;
+    flex-direction: row;
+    width: auto;
+}
+body{
+    background-color: #1c1f27;  
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+:root {
+  --text-color: hsla(210, 50%, 85%, 1);
+  --shadow-color: hsla(210, 40%, 52%, .4);
+  --btn-color: #23ce00 ;
+  --btn-blue-color: hsl(210, 80%, 42%);
+  --bg-color: #141218;
+}
+p{
+    margin: 0;
+}
+.ct{
+    text-align: center;
+}
+.greenbg{
+    background-color: #2ff905 ;
+}
+.navbg{
+  background-color: #262a35;
+}
+.bg{
+  background-color: #1c1f27;
+
+}
+.twocol{
+    display: flex;
+}
+.content{
+    width: 70%;
+     margin: auto;
+     font-size: 22px;
+     margin-top: 50px;
+ }
+.nav{
+    height: 75px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+}
+.nav .hamburger{
+    cursor: pointer;
+width: 33px;
+}
+.nav div{
+    width: 20px;
+    height: 100%;
+}
+.nav .brandlogo{
+    height: 211%;
+    width: 150px;
+    padding: 0;
+    margin: 0; 
+}
+nav .navright{
+    width: 290px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+nav .usernavright{
+  width: 350px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+nav .navright a,.usernavright a{
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+}
+nav .navright,.usernavright{
+    text-decoration: none;
+}
+nav .navright p,.usernavright p{
+    color:white;
+    margin: 0;
+    cursor: pointer;
+}
+.welcomeparent{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.welcome{
+    margin-top: 17px;
+    text-align: center;
+    margin-right: 6px;
+    font-weight: bold;
+    color: white;
+}
+.welcome2{
+    color: #92d945;
+    font-weight: bold;
+    margin-top: 17px;
+    text-align: center;
+}
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 250px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: -350px;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  }
+  
+  /* The navigation menu links */
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidenav a:hover {
+    color:#2ff905 ;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+  #main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+.navright img,.usernavright img{
+        filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
+}
+.green{
+    color:#2ff905 ;
+}
+.white{
+    color:white;
+}
+.underline{
+    text-decoration: underline;
+}
+.footer {
+   margin-top: 40px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:#262a35 ;
+    color: white;
+    text-align: center;
+    height: 300px;
+  }
+  .innerfooter{
+      display: flex;
+      flex-direction: column;
+      width: 850px;
+      justify-content: space-between;
+      align-items: center; 
+      margin:40px auto 0 auto ;
+      padding-top: 45px;
+  }
+  .innerfooter .upper{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+   
+  }
+.innerfooter .mid{
+    width: 100%;
+    margin-top: 50px;
+height: 2px;
+}
+.innerfooter .brandlogo{
+height: 120px;
+width: 120px;
+
+margin-top: -33px;
+  }
+  .innerfooter .company,.innerfooter .resources{
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: flex-start;
+  }
+  .innerfooter .upper .social{
+     display: flex;
+     flex-direction: column;
+  }
+.innerfooter .upper .imagerow {
+    display: flex;
+    height: 45px;
+    justify-content: space-between;
+}
+.footer img,.footer h5{
+    cursor: pointer;
+}
+.btn-green {
+    position:relative;
+    padding: 10px 20px;  
+    border: none;
+    background: none;
+    cursor: pointer;
+    
+    font-family: "Source Code Pro";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 30px;  
+    color: var(--text-color);
+    margin-top: 10px;
+    background-color: var(--btn-color);
+    box-shadow: var(--shadow-color) 2px 2px 22px;
+    border-radius: 45px; 
+    z-index: 0;  
+    overflow: hidden;   
+  }
+
+  .btn-green:focus {
+    outline-color: transparent;
+    box-shadow: var(--btn-color) 2px 2px 22px;
+  }
+  
+  .btn-green .right::after, button::after {
+    content: var(--content);
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    padding: 40px 40px;
+    pointer-events:none;
+  }
+  
+  .btn-green::after{
+    font-weight: bold;
+    top: -30px;
+    left: -20px;
+  } 
+  
+ .btn-green .right, .left {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+ .btn-green .right {
+    left: 66%;
+  }
+ .btn-green .left {
+    right: 66%;
+  }
+.btn-green .right::after {
+    top: -30px;
+    left: calc(-66% - 20px);
+    
+    background-color: var(--bg-color);
+    color:transparent;
+    transition: transform .4s ease-out;
+    transform: translate(0, -90%) rotate(0deg)
+  }
+  
+  .btn-green:hover .right::after {
+    transform: translate(0, -47%) rotate(0deg)
+  }
+  
+  .btn-green .right:hover::after {
+    transform: translate(0, -50%) rotate(-7deg)
+  }
+  
+  .btn-green .left:hover ~ .right::after {
+    transform: translate(0, -50%) rotate(7deg)
+  }
+  
+  /* bubbles */
+  .btn-green::before {
+    content: '';
+    pointer-events: none;
+    opacity: .6;
+    background:
+      radial-gradient(circle at 20% 35%,  transparent 0,  transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+      radial-gradient(circle at 75% 44%, transparent 0,  transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+      radial-gradient(circle at 46% 52%, transparent 0, transparent 4px, var(--text-color) 5px, var(--text-color) 6px, transparent 6px);
+
+    width: 100%;
+    height: 300%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    animation: bubbles 5s linear infinite both;
+  }
+  @keyframes bubbles {
+    from {
+      transform: translate();
+    }
+    to {
+      transform: translate(0, -66.666%);
+    }
+  }
+  
+  .btn-blue {
+    position:relative;
+    padding: 10px 20px;  
+    border: none;
+    background: none;
+    cursor: pointer;
+    
+    font-family: "Source Code Pro";
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 30px;  
+    color: var(--text-color);
+    margin-top: 10px;
+    background-color: var(--btn-blue-color);
+    box-shadow: var(--shadow-color) 2px 2px 22px;
+    border-radius: 45px; 
+    z-index: 0;  
+    overflow: hidden;   
+  }
+
+  .btn-blue:focus {
+    outline-color: transparent;
+    box-shadow: var(--btn-blue-color) 2px 2px 22px;
+  }
+  
+  .btn-blue .right::after, button::after {
+    content: var(--content);
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    padding: 40px 40px;
+    pointer-events:none;
+  }
+  
+  .btn-blue::after{
+    font-weight: bold;
+    top: -30px;
+    left: -20px;
+  } 
+  
+ .btn-blue .right, .left {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+ .btn-blue .right {
+    left: 66%;
+  }
+ .btn-blue .left {
+    right: 66%;
+  }
+.btn-blue .right::after {
+    top: -30px;
+    left: calc(-66% - 20px);
+    
+    background-color: var(--bg-color);
+    color:transparent;
+    transition: transform .4s ease-out;
+    transform: translate(0, -90%) rotate(0deg)
+  }
+  
+  .btn-blue:hover .right::after {
+    transform: translate(0, -47%) rotate(0deg)
+  }
+  
+  .btn-blue .right:hover::after {
+    transform: translate(0, -50%) rotate(-7deg)
+  }
+  
+  .btn-blue .left:hover ~ .right::after {
+    transform: translate(0, -50%) rotate(7deg)
+  }
+  
+  /* bubbles */
+  .btn-blue::before {
+    content: '';
+    pointer-events: none;
+    opacity: .6;
+    background:
+      radial-gradient(circle at 20% 35%,  transparent 0,  transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+      radial-gradient(circle at 75% 44%, transparent 0,  transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+      radial-gradient(circle at 46% 52%, transparent 0, transparent 4px, var(--text-color) 5px, var(--text-color) 6px, transparent 6px);
+
+    width: 100%;
+    height: 300%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    animation: bubbles 5s linear infinite both;
+  }

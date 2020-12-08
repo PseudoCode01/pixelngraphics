@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/sell.css' %}">
+    <div class="container">
+        <div class="welcomeparent mt-4"><h1 class="green">Application to Sell</h1>
+        </div>
+        {% if check %}
+    
+        {% if check.0.isVerified == True %}
+        <div class="ct white mt-4 wait">You are now verified seller you can visit your <a href="/sellerProfile">Profile</a></div>
+        {% else %}
+        <div class="ct white mt-4 wait">Waiting for Response </div>
+        {% endif %}
+          {% else %}   
+        <div class="twocol mt-4">
+            <h5 class="ct white">Want to join us at&nbsp;</h5>
+            <h5 class="ct green">PixelN'Graphics&nbsp;</h5>
+            <h5 class="white ct">?</h5>
+        </div>
+        <h5 class="white ct">Just fill out the form bellow with your&nbsp;<b class="green">Name,Email&nbsp;</b> <br>and&nbsp;<b class="green">Portfolio Link</b>&nbsp;and wait 
+        for us to respond back</h5>
+        <form action="/applyforseller" method="POST">{% csrf_token %}
+        <div class="sellerform mt-4">
+            <div class="email">
+                <label for="email" class="green ">Email</label>
+                <input type="email" id="email" name="email" class="navbg" placeholder="Enter your email">
+            </div>
+            <div class="name mt-3">
+                <label for="name" class="green">Name</label>
+                <input type="name" id="name" name="name" class="navbg" placeholder="Enter your name">
+            </div>
+            <div class="link mt-3">
+                <label for="link" class="green ">Portfolio Link</label>
+                <input type="text" id="link" name="link" class="navbg" placeholder="Link to Portfolio (Behance, Instagram etc.)">
+            </div>
+        </div>
+        <h4 class="white ct mt-4">Make sure to read the&nbsp;<b class="green">Terms</b>&nbsp;and&nbsp;<b class="green">Conditions</b>&nbsp;written below</h4>
+        <button class="btn-green mt-4" type="submit" style="--content: 'Submit'">
+            <div class="left"></div>
+              Submit
+            <div class="right"></div>
+        </button></form>
+          {% endif %}
+          <div class="welcomeparent mt-5">
+              <h1 class="white"><b class="green">Terms</b>&nbsp;and&nbsp;<b class="green">Conditions</b></h1>
+          </div>
+          <div class="content">
+              <h5 class="white">
+                - <b class="green">Logos</b> must be vectored and must be willing to provide&nbsp;<b class="green"> PSD,AI,AEP </b>&nbsp;files</h5>
+                <h5 class="white">- We reserve the right to&nbsp;<b class="green">decline</b>&nbsp;to sell any&nbsp;<b class="green">logo/banner/Stream Overlay&nbsp;</b>we feel doesn't meet our standards.</h5>
+        <h5 class="white">- We will provide a template for your presentation. You may&nbsp;<b class="green">not</b>&nbsp;add any words,
+          <b class="green">extra watermarks&nbsp;</b>, or <b class="green">additional logos&nbsp;</b>on the presentation.</h5>
+          <h5 class="white">- Once accepted, you may start submitting&nbsp;<b class="green"> Logos/Banners/Stream Overlays</b></h5>
+          <h5 class="white">- Once your design is sold you may&nbsp;<b class="green">not resell&nbsp;</b>it. </h5>
+          <h5 class="white">- Customer purchase includes <b class="green"> 1 free colour</b> and/or <b class="green">text change</b> </h5>
+          <h5 class="white">- Seller&nbsp;<b class="green">cannot</b> put their watermark on the logo</h5>
+          <h3 class="green mt-4 mb-4">FAQs</h3>
+          <h5 class="green">Is it free to sell designs on this website? </h5>
+          <h5 class="white mt-2"><Strong> Ans: </Strong>No upfront purchase is necessary to upload and sell logos on PixelsNGraphcis.</h5>
+          <h5 class="green mt-4">How much commission do I get on each sale?</h5>
+          <h5 class="white mt-2"><Strong> Ans: </Strong>You will get (TBD)% of the Sale Price after processing fee has been deducted.</h5>
+          <h5 class="green mt-4">How will I get paid for my sale? </h5>
+          <h5 class="white mt-2"><Strong> Ans: </Strong>Depending on the designers comfortability, we can do Paypal, Paytm or GooglePay, 
+            or UPI, bank transfer after 7 business days of completing an order.</h5>
+            <h3 class="green mt-5">After Sales Service </h3>
+            <h5 class="white mt-2">-Customers may ask for&nbsp;<b class="green">small changes</b>&nbsp;to a design such as<b class="green">&nbsp;color changes</b>&nbsp;or<b class="green">&nbsp;name additions 
+            </b>&nbsp;in which case you have<b class="green">&nbsp;24 hours</b>&nbsp;(minor) and<b class="green">&nbsp;72 hours</b> (major) to make
+                the necessary changes to the design, if needed.</h5>
+                <h5 class="white">-On special occasions (such as e-checks), payment for designs may take<b class="green">&nbsp;3-5 business days&nbsp;</b>to be sent to the designer.</h5>
+          <h5 class="white">-Design files should be<b class="green">&nbsp;neat&nbsp;</b>and contain<b class="green">&nbsp;multiple versions of the logo</b>.</h5>
+            </div>
+    </div>
+{% endblock body %}
+    
+

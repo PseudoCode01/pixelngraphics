@@ -1,0 +1,34 @@
+.twocol{
+    display: flex;
+    justify-content: center;
+}
+.sellerform{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: end;
+    width: 870px;
+}
+input{
+    border-radius: 0;
+    border: none;
+    width: 595px;
+    padding: 16px;
+    font-size: 23px;
+    color: gray;
+  
+}
+label{
+    font-size: 25px;
+}
+.btn-green{
+    display:block;
+    margin: auto;
+    width: 182px;
+}
+.mt-5{
+margin-top: 100px !important;
+}
+.wait{
+    font-size: 30px;
+}

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="5000" height="5000" viewBox="0 0 5000 5000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #44526b;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 0;
+      }
+
+      .cls-1, .cls-3, .cls-4 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-3, .cls-6 {
+        fill: #92d945;
+      }
+
+      .cls-5 {
+        fill: #1c1f27;
+      }
+    </style>
+  </defs>
+  <path id="Rounded_Rectangle_3_copy_3" data-name="Rounded Rectangle 3 copy 3" class="cls-1" d="M54.136,960.823H4882.58a52,52,0,0,1,52,52V3983.69a52,52,0,0,1-52,52H54.136a52,52,0,0,1-52-52V1012.82A52,52,0,0,1,54.136,960.823Z"/>
+  <rect id="Rounded_Rectangle_15" data-name="Rounded Rectangle 15" class="cls-2" x="930" y="3479" width="117" height="369" rx="52" ry="52"/>
+  <path id="Rounded_Rectangle_10" data-name="Rounded Rectangle 10" class="cls-3" d="M1511.44,1056.66H3488.56a52,52,0,0,1,52,52v119.01a52,52,0,0,1-52,52H1511.44a52,52,0,0,1-52-52V1108.66A52,52,0,0,1,1511.44,1056.66Z"/>
+  <path id="Rounded_Rectangle_11" data-name="Rounded Rectangle 11" class="cls-4" d="M2008.69,1321.13h982.62a44.18,44.18,0,0,1,0,88.36H2008.69A44.18,44.18,0,0,1,2008.69,1321.13Z"/>
+  <path id="Rounded_Rectangle_14" data-name="Rounded Rectangle 14" class="cls-3" d="M182,3471H826a52,52,0,0,1,52,52v57a52,52,0,0,1-52,52H182a52,52,0,0,1-52-52v-57A52,52,0,0,1,182,3471Zm0,221H826a52,52,0,0,1,52,52v57a52,52,0,0,1-52,52H182a52,52,0,0,1-52-52v-57A52,52,0,0,1,182,3692Z"/>
+  <rect id="Rounded_Rectangle_12" data-name="Rounded Rectangle 12" class="cls-5" x="3308" y="3037" width="1537" height="888" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_13" data-name="Rounded Rectangle 13" class="cls-6" x="3308" y="2870" width="1537" height="167" rx="52" ry="52"/>
+</svg>

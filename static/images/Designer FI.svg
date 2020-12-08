@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="5000" height="2747" viewBox="0 0 5000 2747">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #14161c;
+      }
+
+      .cls-1, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-3 {
+        fill: #92d945;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #373c48;
+      }
+
+      .cls-6 {
+        fill: #22262f;
+      }
+    </style>
+  </defs>
+  <path id="Rounded_Rectangle_23" data-name="Rounded Rectangle 23" class="cls-1" d="M4827.06,109.494S4841.58,4.211,4856.95,4.323c16.97,0.124,29.89,106.279,29.89,106.279,28.62,0,81.7,116.693,81.7,148.486V2536.5c0,31.79-23.19,57.57-51.81,57.57H4797.17c-28.61,0-51.81-25.78-51.81-57.57V259.088C4745.36,227.3,4798.45,109.494,4827.06,109.494Z"/>
+  <rect id="Rounded_Rectangle_23_copy" data-name="Rounded Rectangle 23 copy" class="cls-2" x="4745.38" y="2565.28" width="223.15" height="181.25" rx="52" ry="52"/>
+  <rect id="Rounded_Rectangle_22" data-name="Rounded Rectangle 22" class="cls-2" x="31.469" y="-0.094" width="4511.311" height="2746.624" rx="52" ry="52"/>
+  <rect class="cls-3" x="780.938" y="99.531" width="7.75" height="2559.529"/>
+  <rect id="Rounded_Rectangle_24" data-name="Rounded Rectangle 24" class="cls-4" x="147.406" y="1299.22" width="530.407" height="752.81" rx="52" ry="52"/>
+  <path id="Rounded_Rectangle_25_copy" data-name="Rounded Rectangle 25 copy" class="cls-5" d="M198.281,2122.16h142.75a52,52,0,0,1,52,52v19.97a52.006,52.006,0,0,1-52,52H198.281a52.006,52.006,0,0,1-52-52v-19.97A52,52,0,0,1,198.281,2122.16Zm287.563,0H619.219a52,52,0,0,1,52,52v19.97a52.006,52.006,0,0,1-52,52H485.844a52.006,52.006,0,0,1-52-52v-19.97A52,52,0,0,1,485.844,2122.16Zm-287.563,163h142.75a52,52,0,0,1,52,52v19.97a52.006,52.006,0,0,1-52,52H198.281a52.006,52.006,0,0,1-52-52v-19.97A52,52,0,0,1,198.281,2285.16Zm287.563-10H619.219a52,52,0,0,1,52,52v19.97a52.006,52.006,0,0,1-52,52H485.844a52.006,52.006,0,0,1-52-52v-19.97A52,52,0,0,1,485.844,2275.16Z"/>
+  <rect class="cls-6" x="939.844" y="184.219" width="3402.036" height="2390.161"/>
+  <ellipse class="cls-4" cx="413.406" cy="528.641" rx="264.406" ry="264.422"/>
+</svg>
