@@ -4,10 +4,16 @@ import json
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from home.models import SellerApplication
+from home.models import SellerApplication,Product,ProductSample,SellerProfile
 # Create your views here.
 def home(request):
-    return render(request,'home/Home.html')
+    products=Product.objects.filter(isVerified=True).values()
+    l=[]
+    for item in products:
+        ps=ProductSample.objects.filter(product_id=item['sno']).values()
+        l.append([item,ps[0]])
+    print(l)
+    return render(request,'home/Home.html',{'product':l})
   
 def contact(request):
     return render(request,'home/contactUs.html')
@@ -80,5 +86,46 @@ def applyforseller(request):
     app.save()
     return redirect('/')
 def sellerProfile(request):
-    return render(request,'home/profile.html')
-
+    Sp=SellerProfile.objects.filter(seller_id=request.user.id).values()
+    products=Product.objects.filter(isVerified=True).values()
+    l=[]
+    for item in products:
+        ps=ProductSample.objects.filter(product_id=item['sno']).values()
+        l.append([item,ps[0]])
+    return render(request,'home/profile.html',{'profile':Sp,'pr':l})
+def addProduct(request):
+    times = request.POST.get('times')
+    if times=='first':
+        title= request.POST['title']
+        disc= request.POST['disc']
+        tags= request.POST['searchTags']
+        filefor= request.POST['fileformats']
+        samples = request.FILES.get('samples')
+        Price= request.POST['price']
+        cat= request.POST['category']
+        pr=Product(sellername=request.user.username,seller=request.user,category=cat,title=title,fileformat=filefor,discription=disc,searchTags=tags,Price=Price)
+        pr.save()
+        ps=ProductSample(samplesfile=samples,product=pr)
+        ps.save()
+    elif times=='last':
+        samples = request.FILES.get('samples')
+        title= request.POST['title']
+        disc= request.POST['disc']
+        pr=Product.objects.filter(title=title).filter(discription=disc).order_by('-timeStamp')[0]
+        ps=ProductSample(samplesfile=samples,product=pr)
+        ps.save()
+    return JsonResponse('OK',safe=False)
+def productDetail(request,id):
+    p=Product.objects.filter(sno=id).values()
+    ps=ProductSample.objects.filter(product_id=id).values()
+    print(p,ps)
+    return render(request,'home/productDetail.html',{'pr':p,'ps':ps})
+def profileview(request,id):
+    Sp=SellerProfile.objects.filter(seller_id=id).values()
+    products=Product.objects.filter(isVerified=True).values()
+    l=[]
+    for item in products:
+        ps=ProductSample.objects.filter(product_id=item['sno']).values()
+        l.append([item,ps[0]])
+    
+    return render(request,'home/ProfilePublic.html',{'profile':Sp,'pr':l})

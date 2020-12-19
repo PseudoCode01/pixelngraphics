@@ -1,6 +1,6 @@
 #profilecard {
 	background-color: #393B45;
-	height: 445px;
+	height: 900px;
 	width: 30%;
 	border-radius: 25px;
 	padding-bottom: 1px;
@@ -10,12 +10,17 @@
 	color: white;
 	text-align: center;
 	width: 100%;
-	background-color: #E6EBEE;
+	background-color: #0044E3;
 	border-radius: 25px 25px 0 0;
 	color: #393B45;
-	padding: 30px 0;
-	font-weight: 800;
+	padding: 5px 0;
+
 	margin: 0;
+}
+.name p{
+  font-size: 12px;
+  font-weight: bold;
+  font-family: cursive;
 }
 .profileContainer{
 display: flex;
@@ -24,6 +29,7 @@ flex-direction: row;
 }
 .works{
     width: 65%;
+   
 }
 .worksh{
     color: white;
@@ -391,4 +397,27 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 }
 .modal-dialog{
   max-width: 860px;
+}
+.footer{
+  margin-top:120px ;
+}
+.rating{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 300px;
+}
+.stars{
+  display: flex;
+}
+.s1{
+ font-size: 30px;
+ color: grey;
+ margin-left: 5px;
+}
+.pv{
+  margin: auto;
+  display: block;
+  margin-top: 25px;
+
 }

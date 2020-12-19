@@ -17,4 +17,7 @@ urlpatterns = [
     path("signout",views.signout,name="signout"),
     path("applyforseller",views.applyforseller,name="applyforseller"),
     path("sellerProfile",views.sellerProfile,name="sellerProfile"),
+    path("addProduct",views.addProduct,name="addProduct"),
+    path("productDetail/<int:id>",views.productDetail,name="productDetail"),
+    path("profileview/<int:id>",views.profileview,name="profileview"),
 ]

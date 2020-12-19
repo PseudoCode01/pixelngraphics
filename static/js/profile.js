@@ -1,51 +1,3 @@
-
-
-window.onload = play();
-document.getElementById('tryAgain').addEventListener('click', () => { play()})
-
-function play() {
-  var blue = '#2980b9';
-  var l = Snap('#logo');
-  var p = l.select('path');
-  l.clear();
-  l.append(p);
-
-  p.attr({
-    fill: blue,
-    stroke: '#0066CC',
-  });
-
-  setTimeout( function() {
-    // modify this one line below, and see the result !
-    var logoTitle = 'alticreation';
-    var logoRandom = '';
-    var logoTitleContainer = l.text(0, '98%', '');
-    var possible = "-+*/|}{[]~\\\":;?/.><=+-_)(*&^%$#@!)}";
-    logoTitleContainer.attr({
-      fontSize: 280,
-      fontFamily: 'Dosis',
-      fontWeight: '600'
-    });
-
-    function generateRandomTitle(i, logoRandom) {
-      setTimeout( function() {
-        logoTitleContainer.attr({ text: logoRandom });
-      }, i*70 );
-    }
-
-    for( var i=0; i < logoTitle.length+1; i++ ) {
-      logoRandom = logoTitle.substr(0, i);
-      for( var j=i; j < logoTitle.length; j++ ) { 
-        logoRandom += possible.charAt(Math.floor(Math.random() * possible.length)); 
-      }
-      generateRandomTitle(i, logoRandom);
-      logoRandom = '';
-    }
-
-  }, 500 );
-
-}
-
 function banner(){
   document.getElementById('staticBackdropLabel').innerText='Add Your Banner'
 }
@@ -53,113 +5,180 @@ function stream(){
   document.getElementById('staticBackdropLabel').innerText='Add Your Stream'
 }
 var xhr = new XMLHttpRequest();
-function sendForm(val,category){
-var file1=document.getElementById('title'+val)
-var file2=document.getElementById('disc'+val)
-var file3=document.getElementById('searchTags'+val)
-var file4=document.getElementById('fileformats'+val)
-var file5=document.getElementById('samples'+val).files[0]
-var file6=document.getElementById('price'+val)
+function sendForm(no){
+var file1=document.querySelector('.title').value
+var file2=document.getElementById('disc').value
+var file3=document.getElementById('searchTags').value
+// var file4=document.getElementById('fileformats')
+var file5=document.querySelector('.samples')
+var file6=document.querySelector('.price').value
+console.log(document.querySelector('.ks-cboxtags').children)
+var filefor='';
+var tags='';
+for(item of document.querySelector('.ks-cboxtags').children){
+  if(item.children[0].checked==true){
+filefor+=item.children[0].value+',';
+  }
+}
+console.log(document.querySelectorAll('.tags'))
+for(item of document.querySelectorAll('.tags')){
 
-if(file1.length<1 || file2.length<1 || (file3.length<1 && file3.length<1&&file4.length<1&&file5.size<1&&file6.length<1)){
-//   document.getElementById('message'+val).innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
+tags+=String(item.innerHTML).split('&nbsp;')[0]+',';
+}
+// console.log(filefor)
+console.log(file5.files,file1,file2,file3,filefor,file6);
+if(file1.length<1 || file2.length<1 || (file3.length<1 &&tags&& file3.length<1&&file6.length<1)){
+//   document.getElementById('message').innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
 //   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 //  Are you sure you have filled
 //  </div> ` 
+
 }
 else{
   var formData = new FormData();
   formData.append("title", file1);
   formData.append("disc", file2);
-  formData.append("searchTags", file3);
-  formData.append("fileformats", file4);
-  formData.append("samples", file6);
+  formData.append("searchTags", tags);
+  formData.append("fileformats", filefor);
+  formData.append("samples", file5.files[no]);
   formData.append("price", file6);
-  formData.append("category", cat);
- 
-  
-  xhr.open('POST', '/addproduct',true);
-  xhr.setRequestHeader('X-CSRFToken', csrftoken);       
+  formData.append("category", 'logo');
+  if(no>0){
+  formData.append("times", 'last');
+  }
+  else{
 
+    formData.append("times", 'first');
+  }
+  xhr.open('POST', '/addProduct',true);
+  xhr.setRequestHeader('X-CSRFToken', csrftoken); 
   var width = 0;
-  
   xhr.onload = function() {
-    
   if (xhr.status != 200) { 
-    // alert(`Error ${xhr.status}: ${xhr.statusText}`); 
-//     document.getElementById('thumbnail'+val).disabled=false
-//     document.getElementById('video'+val).disabled=false
-//     document.getElementById('resources'+val).disabled=false
-//     document.getElementById('videoTitle'+val).disabled=false
-//     document.getElementById('progress'+val).style.visibility='hidden';
+// alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+//     document.getElementById('thumbnail').disabled=false
+//     document.getElementById('video').disabled=false
+//     document.getElementById('resources').disabled=false
+//     document.getElementById('videoTitle').disabled=false
+//     document.getElementById('progress').style.visibility='hidden';
 //     element.style.display='block';
-//     document.getElementById('message'+val).innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
+//     document.getElementById('message').innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
 //    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 //  Error! 
 //  </div> `
   } else { 
     data=JSON.parse(xhr.responseText)
-//    document.getElementById('message'+val).innerHTML=`<div class="alert alert-success alert-dismissible" role="alert">
-//    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-//  Video has been uploaded
-//  </div> `
-//     document.getElementById('thumbnail'+val).disabled=false
-//     document.getElementById('video'+val).disabled=false
-//     document.getElementById('resources'+val).disabled=false
-//     document.getElementById('videoTitle'+val).disabled=false
-//     document.getElementById('thumbnail'+val).value=''
-//     document.getElementById('video'+val).value=''
-//     document.getElementById('resources'+val).value=''
-//     document.getElementById('videoTitle'+val).value=''
-//     document.getElementById('progress'+val).style.visibility='hidden';
-//     element.style.display='block';
+    console.log(data)
+    if(no<file5.files.length-1)
+{ sendForm(++no);}
+else{
+  document.querySelector('.modal-footer').innerHTML=` <button type="button" class="btn btn-primary" onclick="sendForm(0)">Submit</button>
+`
+  document.querySelector('.message').innerHTML=` <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Well done ! </strong>Aww yeah, you successfully added the logo .
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+`
+}
+}
 };
 }
 xhr.upload.onloadstart=function(e){
-  // document.getElementById('thumbnail'+val).disabled=true
-  // document.getElementById('video'+val).disabled=true
-  // document.getElementById('resources'+val).disabled=true
-  // document.getElementById('videoTitle'+val).disabled=true
-  // document.getElementById('progress'+val).style.visibility='visible';
-  // element.style.display='none';
+document.querySelector('.modal-footer').innerHTML=`<div class="progress" style="width: 100%;" >
+<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+</div>
+`
 }
 xhr.upload.onprogress = function(e) {
   if (e.lengthComputable) {
     var done = e.position || e.loaded
     var total = e.totalSize || e.total;
     width=Math.round((done/total)*100);
-    elem.style.width = width + "%";
+    // elem.style.width = width + "%";
+    document.querySelector('.progress-bar').style.width=width+"%"
   } else {
-  
-  }
 
+  }
 };
 xhr.send(formData);
 xhr.onerror = function() {
   alert("Request failed");
 };
-
 }
 
-}
 function abort(val){
   xhr.abort();
-  document.getElementById('thumbnail'+val).disabled=false
-  document.getElementById('video'+val).disabled=false
-  document.getElementById('resources'+val).disabled=false
-  document.getElementById('videoTitle'+val).disabled=false
-  document.getElementById('progress'+val).style.visibility='hidden';
-  document.getElementById('add'+val).style.display='block';
-  document.getElementById('message'+val).innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
+  document.getElementById('thumbnail').disabled=false
+  document.getElementById('video').disabled=false
+  document.getElementById('resources').disabled=false
+  document.getElementById('videoTitle').disabled=false
+  document.getElementById('progress').style.visibility='hidden';
+  document.getElementById('add').style.display='block';
+  document.getElementById('message').innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
  Uploading canceled by user
  </div> `
 }
 function addsearchtag(val){
-document.querySelector('.search_tags').innerHTML+=`<span class="input-group-text">${val.value } &nbsp;  <p onclick="removetag(this)"  style="cursor: pointer;">&#x2716;</p></span>`
+document.querySelector('.search_tags').innerHTML+=`<span class="input-group-text tags">${val.value } &nbsp;  <p onclick="removetag(this)"  style="cursor: pointer;">&#x2716;</p></span>`
 val.value='';
 }
 function removetag(value){
   value.parentElement.remove();
- 
 }
+function addsamples(sample){
+  xhr.open('POST', '/addSamples',true);
+  xhr.setRequestHeader('X-CSRFToken', csrftoken);     
+  var formData = new FormData();
+  formData.append("sample", sample);
+  formData.append("product", sample);
+  xhr.onload=function(){
+    if(xhr.status!=200){
+
+    }
+    else{
+       console.log(xhr.responseText)
+    }
+  }
+  xhr.upload.onloadstart=function(e){
+
+  }
+  xhr.upload.onprogress = function(e) {
+    if (e.lengthComputable) {
+      var done = e.position || e.loaded
+      var total = e.totalSize || e.total;
+      // width=Math.round((done/total)*100);
+      // elem.style.width = width + "%";
+    } else {
+    
+    }
+  
+  };
+  xhr.send(formData);
+  xhr.onerror = function() {
+    alert("Request failed");
+  };
+}
+var alertList = document.querySelectorAll('.alert')
+alertList.forEach(function (alert) {
+  new bootstrap.Alert(alert)
+})
+
+v=document.querySelector('.srating').value;
+var i=0;
+for(item of document.querySelectorAll('.s1')){
+    if(Math.floor(v)>i)
+{    
+    item.style.color='#2ff905'
+    i++;
+}
+else{
+    break;
+}
+}
+// if(document.querySelector('.nop').value>8){
+   
+//     document.querySelector('.pagenav').style.visibility='visible'
+// }

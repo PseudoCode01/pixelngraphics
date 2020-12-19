@@ -14,3 +14,80 @@ video{
     clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
     display: flex;
   }
+  .options{
+    display: flex;
+justify-content: center;
+  }
+  .options >div{
+    width: 30px;
+  }
+  .productContainer{
+    display: flex;
+  }
+  .filters{
+    width: 675px;
+    padding-right: 10px; 
+  }
+  .filters li{
+    padding-bottom: 15px;
+    cursor: pointer;
+  }
+  .image-container {
+    position: relative;
+    width: 200px;
+    height: 300px;
+}
+.image-container .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: #FFF;
+}
+.image-container:hover .after {
+    display: block;
+    background-color: rgba(0, 0, 0, .6);
+}
+.products .card{
+  height: 280px;
+  margin-bottom: 20px;
+}
+.products .card img{
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.products .card .card-img-overlay{
+  top: 230px;
+  background-image: linear-gradient(#1100000f, #0d0d0d);
+}
+.products .card:hover .card-img-overlay{
+  top: 0;
+  background-image: linear-gradient(#1100000f, #0d0d0d);
+}
+.products .card:hover .card-img-overlay p{
+  margin-top: 230px;
+  /* background-image: linear-gradient(#1100000f, #0d0d0d); */
+}
+.products .col{
+  cursor: pointer;
+}
+.pagenav{
+  display: flex;
+  justify-content: center;
+}
+.pagenav a{
+  border-color:#23ce00 ;
+  color: #23ce00 ;
+}
+.pagenav a:hover{
+  background-color:#23ce00 ;
+  color:white ;
+}
+.vSeprator{
+  height: 1195px;
+  margin-right:10px ;
+  width: 4px;
+}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    
+<link rel="stylesheet" href="{% static 'css/ProfilePublic.css' %}">
+<div class="customContainer">
+    <div class="left navbg">
+        <div class=" mt-7 image-crop mb-1">
+            <img id="avatar" src="https://drive.google.com/uc?id=1EVA3KUBLxCXF2EGmTf4LUB8F4yAvBrjl"></img>
+        </div>
+        <h3 class="name m-auto ct white">{{profile.0.sellername}}</h3>
+        <h6 class="join m-auto ct green">{{profile.0.timeStamp}}</h6>
+        <input type="hidden" class="srating" value="{{profile.0.sellerRating}}">
+        <span class="rating ">
+            <h6 class="white mt-5">Total Rating</h6>
+            <div class="stars">
+                <span class="s1">&#9733;</span>
+                <span class="s1">&#9733;</span>
+                <span class="s1">&#9733;</span>
+                <span class="s1">&#9733;</span>
+                <span class="s1">&#9733;</span>
+            </div>  
+            <h6 class="white mt-2">Seller Rank</h6>
+            <h3 class="green">1st</h3>
+            <h2 class="green mt-5">About the seller</h2>
+            <p class="white">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                 Mollitia officia et reprehenderit accusamus in doloremque,
+                  dolores commodi, illo magnam fugiat illum at amet, nemo exercitationem nostrum corrupti atque alias dolorum.</p>
+            </span>
+            
+        </div>
+        <input type="hidden" class="nop" value="{{pr|length}}">
+        <div class="products pt-3">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+              
+              {%for item in pr %}
+              <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+                <div class="card bg-dark text-white">
+                  <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
+                  <div class="card-img-overlay">
+                    <p class="card-text">{{item.0.title}} | ${{item.0.Price}}</p>
+                  </div>
+                </div>
+              </div>
+              {% endfor %} 
+           
+            </div>
+            <div class="pagenav" style="visibility: hidden;">
+              
+              <nav aria-label="Page navigation example ">
+                <ul class="pagination ">
+                  <li class="page-item navbg">
+                    <a class="page-link navbg" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item navbg"><a class="page-link navbg" href="#">1</a></li>
+                
+                  <li class="page-item navbg">
+                    <a class="page-link navbg" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+              </div>
+          </div>
+    </div>
+</div>
+<script src="{% static 'js/PublicProfile.js' %}">
+</script>
+{% endblock body %}
+    

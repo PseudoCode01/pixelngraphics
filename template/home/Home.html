@@ -2,7 +2,7 @@
 {% load static %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
-   <div class="welcomeparent">
+   <div class="welcomeparent mt-7">
      <h1 class='welcome'>Welcome to</h1>
      <h1 class='welcome2'>PixelN'Graphics</h1>
   </div>
@@ -28,5 +28,157 @@
    <img width="100%" height="450px" class="mt-4" src="/static/images/test.jpg" alt="" srcset=""> 
    <img width="100%" height="450px" class="mt-4" src="/static/images/test.jpg" alt="" srcset=""> 
   </div>
+  <div class="container mt-5">
+    <hr class="greenbg">
+    <div class="options">
+      <h5 class="green">PREMADE LOGOS</h5>
+      <div></div>
+      <h5 class="white">BANNERS</h5>
+      <div></div>
+      <h5 class="white">STREAM OVERLAYS</h5>
+    </div>
+    <hr class="greenbg mb-0">
+<div class="productContainer">
+  <div class="filters pt-3">
+    <h4><Strong class="white">Sort By:</Strong></h4>
+    <ul>
+      <li class="white">Price-High to Low</li>
+      <li class="white">Price-Low to High</li>
+      <li class="white">Best Selling</li>
+      <li class="white">Top Rating</li>
+      <li class="green">Newly Added</li>
+      <li class="white">Sale</li>
+    </ul>
+  </div>
+  <div class="vSeprator greenbg"></div>
+  <div class="products pt-3">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      
+      {%for item in product %}
+      <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+        <div class="card bg-dark text-white">
+          <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
+        
+          <div class="card-img-overlay">
+            
+            <p class="card-text">{{item.0.title}} | ${{item.0.Price}}</p>
+           
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+     
+      <div class="col  onclick="window.location.href='/productDetail'">
+        <div class="card bg-dark text-white">
+          <img src="/static/images/test.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            
+            <p class="card-text"> | $25</p>
+           
+          </div>
+        </div>
+      </div>
+   
+      <div class="col  onclick="window.location.href='/productDetail'">
+        <div class="card bg-dark text-white">
+          <img src="/static/images/test.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            
+            <p class="card-text">Phoenix Mascot Logo | $25</p>
+           
+          </div>
+        </div>
+      </div>
+      <div class="col  onclick="window.location.href='/productDetail'">
+        <div class="card bg-dark text-white">
+          <img src="/static/images/test.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            
+            <p class="card-text">Phoenix Mascot Logo | $25</p>
+           
+          </div>
+        </div>
+      </div>
+      <div class="col  onclick="window.location.href='/productDetail'">
+        <div class="card bg-dark text-white">
+          <img src="/static/images/test.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            
+            <p class="card-text">Phoenix Mascot Logo | $25</p>
+           
+          </div>
+        </div>
+      </div>
+      <div class="col  onclick="window.location.href='/productDetail'">
+        <div class="card bg-dark text-white">
+          <img src="/static/images/test.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            
+            <p class="card-text">Phoenix Mascot Logo | $25</p>
+           
+          </div>
+        </div>
+      </div>
+      <div class="col  onclick="window.location.href='/productDetail'">
+        <div class="card bg-dark text-white">
+          <img src="/static/images/test.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            
+            <p class="card-text">Phoenix Mascot Logo | $25</p>
+           
+          </div>
+        </div>
+      </div>
+      <div class="col  onclick="window.location.href='/productDetail'">
+        <div class="card bg-dark text-white">
+          <img src="/static/images/test.jpg" class="card-img" alt="...">
+          <div class="card-img-overlay">
+            
+            <p class="card-text">Phoenix Mascot Logo | $25</p>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pagenav">
+      
+      <nav aria-label="Page navigation example ">
+        <ul class="pagination ">
+          <li class="page-item navbg">
+            <a class="page-link navbg" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item navbg"><a class="page-link navbg" href="#">1</a></li>
+        
+          <li class="page-item navbg">
+            <a class="page-link navbg" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      </div>
+  </div>
+</div>
+<!-- <div class="pagenav">
+<div style="width: 58.8%;"></div>
+<nav aria-label="Page navigation example navbg">
+  <ul class="pagination navbg">
+    <li class="page-item navbg">
+      <a class="page-link navbg" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item navbg"><a class="page-link navbg" href="#">1</a></li>
   
+    <li class="page-item navbg">
+      <a class="page-link navbg" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+</div> -->
+  </div>
   {% endblock body %}

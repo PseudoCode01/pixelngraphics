@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/productDetail.css' %}">
+    <div class="container mt-7 navbg pt-3 pb-3">
+        <div class="productdisplay">
+            <div class="disc">
+                <h4 class="green mb-0 ml-1">{{pr.0.sellername}}</h4>
+                <h1 class="white mt-0">{{pr.0.title}}</h1>
+
+<h4 class="white cn">Need Change in Text and Colour?</h4>
+<div class="input-field">
+    <i class="fas fa-user"></i>
+    <input type="text" id="changes" placeholder="if yes, please specify..." />
+  </div>
+  <button class="greenbg mt-3">ADD TO CART</button>
+            </div>
+            <div class="img">
+                <div class="mainimg">
+                    <img class="mainimage" src="/media/{{ps.0.samplesfile}}" alt="" srcset="">
+                </div>
+                <div class="otherimg">
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                      {% for item in ps %}
+                      {% if forloop.counter > 0%}
+                        <div class="col mt-3 ">
+                          <div class="card extras">
+                            <img src="/media/{{item.samplesfile}}" style="cursor: pointer;" onclick="changemainimg('/media/{{item.samplesfile}}')" class="card-img-top " alt="...">
+
+                          </div>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    
+                      </div>
+                </div>
+            </div>
+        </div>
+        <hr class="greenbg" style="height: 2px;">
+        <div class="recworks">
+         <h2 class="white">WORKS YOU MAY LIKE:</h2>
+         <div class="slider_wrapper">
+         <div class="productslider">
+            <div class="card bg-dark text-white mr-2">
+                <img src="/static/images/test.jpg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  
+                  <p class="card-text">Phoenix Mascot Logo | $25</p>
+                 
+                </div>
+              </div>
+            <div class="card bg-dark text-white mr-2">
+                <img src="/static/images/test.jpg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  
+                  <p class="card-text">Phoenix Mascot Logo | $25</p>
+                 
+                </div>
+              </div>
+            <div class="card bg-dark text-white mr-2">
+                <img src="/static/images/test.jpg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  
+                  <p class="card-text">Phoenix Mascot Logo | $25</p>
+                 
+                </div>
+              </div>
+            <div class="card bg-dark text-white mr-2">
+                <img src="/static/images/test.jpg" class="card-img" alt="...">
+                <div class="card-img-overlay">
+                  
+                  <p class="card-text">Phoenix Mascot Logo | $25</p>
+                 
+                </div>
+              </div>
+          
+         </div>
+        </div></div>
+        
+    </div>
+<script src="{% static 'js/productDetail.js' %}">
+    </script>
+{% endblock body %}
