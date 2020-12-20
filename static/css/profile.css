@@ -421,3 +421,10 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   margin-top: 25px;
 
 }
+.wcd{
+  display: flex;
+flex-direction: column;
+
+justify-content: end;
+align-items: end;
+}

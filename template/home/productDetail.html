@@ -11,22 +11,54 @@
 <h4 class="white cn">Need Change in Text and Colour?</h4>
 <div class="input-field">
     <i class="fas fa-user"></i>
-    <input type="text" id="changes" placeholder="if yes, please specify..." />
+    <input type="text" id="changes"  placeholder="if yes, please specify..." />
   </div>
-  <button class="greenbg mt-3">ADD TO CART</button>
+{% if user.is_not_authenticated %}
+<button  class="btn btn-success spinbutton mt-4" onclick="window.location.href='/signin'" style="cursor: pointer;" type="button" >
+  LOG IN CONTINUE
+  </button>
+  {% elif l|slugify == '1' %}
+  <button  class="btn btn-success spinbutton mt-4" onclick="window.location.href='/cart'" style="cursor: pointer;" type="button" >
+    GO TO CART
+    </button>
+    {% else %}
+    <button  class="btn btn-success spinbutton mt-4" onclick="Addtocart('{{pr.0.sno}}',this)" style="cursor: pointer;" type="button" >
+      ADD TO CART
+      </button>
+  {% endif %}
             </div>
             <div class="img">
                 <div class="mainimg">
+                  
+                  {% if pr.0.category|slugify == 'stream' %}
+                  <div class="vid">
+                  <video id="vp" width="100%" height="100%" autoplay='true' loop >
+                    <source id="source" src="/media/{{ps.0.samplesfile}}" type="video/mp4">
+                    Your browser does not support the video tag.
+                    </video>
+                    </div>
+                    {% else %}
                     <img class="mainimage" src="/media/{{ps.0.samplesfile}}" alt="" srcset="">
+                  {% endif %}
+                    
                 </div>
                 <div class="otherimg">
                     <div class="row row-cols-1 row-cols-md-4 g-4">
+                     
                       {% for item in ps %}
                       {% if forloop.counter > 0%}
                         <div class="col mt-3 ">
                           <div class="card extras">
-                            <img src="/media/{{item.samplesfile}}" style="cursor: pointer;" onclick="changemainimg('/media/{{item.samplesfile}}')" class="card-img-top " alt="...">
-
+                            {% if pr.0.category|slugify == 'stream' %}
+                   
+                      <video id="vp" width="100%" height="auto" autoplay='true' loop >
+                        <source id="source" src="/media/{{ps.0.samplesfile}}" type="video/mp4">
+                        Your browser does not support the video tag.
+                        </video>
+                   
+                              {% else %}
+                            <img src="/media/{{ps.0.samplesfile}}" style="cursor: pointer;" onclick="changemainimg('/media/{{ps.0.samplesfile}}')" class="card-img-top " alt="...">
+                            {% endif %}
                           </div>
                         </div>
                         {% endif %}

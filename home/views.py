@@ -4,16 +4,24 @@ import json
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from home.models import SellerApplication,Product,ProductSample,SellerProfile
+from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage
 # Create your views here.
 def home(request):
-    products=Product.objects.filter(isVerified=True).values()
+    h=HomePage.objects.all().order_by('-timeStamp').values()
+    products=Product.objects.filter(isVerified=True).order_by('-timeStamp').values()
     l=[]
+    b=[]
+    so=[]
     for item in products:
         ps=ProductSample.objects.filter(product_id=item['sno']).values()
-        l.append([item,ps[0]])
-    print(l)
-    return render(request,'home/Home.html',{'product':l})
+        if item['category'] == 'logo':
+            l.append([item,ps[0]])
+        elif item['category'] == 'banner':
+            b.append([item,ps[0]])
+        else :
+            so.append([item,ps[0]])
+    print(h[0])
+    return render(request,'home/Home.html',{'product':l,'banner':b,'stream':so,'ht':h})
   
 def contact(request):
     return render(request,'home/contactUs.html')
@@ -42,6 +50,7 @@ def ajaxsignup(request):
     email=data['email']
     pass1=data['pass']
     pass2=data['conpass']
+    print(username)
     if(pass1!=pass2):
         return JsonResponse({'error':'Password do not Match'},safe=False)
     elif len(username)> 20 or len(username)<5:
@@ -59,6 +68,7 @@ def ajaxlogin(request):
     data=json.loads(request.body)
     username=data['username']
     password=data['password']   
+    
     try:
         user=authenticate(username=User.objects.get(email=username),password=password)
     except:
@@ -67,7 +77,7 @@ def ajaxlogin(request):
         login(request,user)
         return JsonResponse({'success':"Successfully Loged In"},safe=False)
     else:
-        return JsonResponse({'success':"Invalid Credentials, Please Try Again"},safe=False)
+        return JsonResponse({'error':"Invalid Credentials, Please Try Again"},safe=False)
        
 def signout(request):
     logout(request)
@@ -115,11 +125,21 @@ def addProduct(request):
         ps=ProductSample(samplesfile=samples,product=pr)
         ps.save()
     return JsonResponse('OK',safe=False)
+def editProfile(request):
+    title= request.POST.get('title')
+    sno= request.POST.get('sno')
+    samples = request.FILES.get('img')
+    sp=SellerProfile.objects.get(sno=sno)
+    sp.tag=title
+    if samples != None:
+        sp.profileImage=samples
+    sp.save()
+    return JsonResponse('OK',safe=False)
 def productDetail(request,id):
     p=Product.objects.filter(sno=id).values()
     ps=ProductSample.objects.filter(product_id=id).values()
-    print(p,ps)
-    return render(request,'home/productDetail.html',{'pr':p,'ps':ps})
+    c=Cart.objects.filter(user=request.user).filter(product_id=id).values()
+    return render(request,'home/productDetail.html',{'pr':p,'ps':ps,'l':len(c)})
 def profileview(request,id):
     Sp=SellerProfile.objects.filter(seller_id=id).values()
     products=Product.objects.filter(isVerified=True).values()
@@ -129,3 +149,25 @@ def profileview(request,id):
         l.append([item,ps[0]])
     
     return render(request,'home/ProfilePublic.html',{'profile':Sp,'pr':l})
+
+def cart(request):
+    c=Cart.objects.filter(user=request.user).values()
+    l=[]
+    for item in c:
+        l.append([Product.objects.filter(sno=item['product_id']).values(),ProductSample.objects.filter(product_id=item['product_id']).values()])
+    return render(request,'home/cart.html',{'cart':l})
+
+def AddtoCart(request):
+    data=json.loads(request.body)
+    sno = data['sno']
+    ch = data['changes']
+    cart=Product.objects.get(sno=int(sno))
+    c=Cart(user=request.user,username=request.user.username,product=cart,changes=ch)
+    c.save()
+    return JsonResponse('OK',safe=False)
+def removeCart(request):
+    data=json.loads(request.body)
+    sno = data['sno']
+    cart=Cart.objects.get(product_id=int(sno))
+    cart.delete()
+    return JsonResponse('OK',safe=False)

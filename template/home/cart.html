@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/cart.css' %}">
+
+  <div class="container navbg mt-7 pb-4">
+<h2 class="green pt-3 mb-3">My Cart</h2>
+<hr class="greenbg mb-2">
+<div class="containerinner">
+
+    <div class="f1"></div>
+    <div class="f2 ml-3">
+        <h3 class="price green ct">Price</h3>
+        <h3 class="quantity green ct">Quantity</h3>
+        <h3 class="price green ct">Total Price</h3>
+    </div>
+</div>
+<hr class="greenbg mb-5">
+
+{% for item in cart %}
+    <div class="containerinner">
+<div class="f1">
+    
+    {% if item.0.0.category|slugify == 'stream' %}
+    <video id="vp" width="50%" height="auto" autoplay='true' width="100%" loop >
+        <source id="source" src="/media/{{item.1.0.samplesfile}}" type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+        {% else %}
+
+        <img src="/media/{{item.1.0.samplesfile}}"  class="card-img-top imgsp" alt="...">
+    {% endif %}
+        
+    <h5 class="card-title white ct m-auto">{{item.0.0.title}}</h5>
+</div>
+<div class="f2 ml-3">
+    <h3 class="card-text green price ct ">$<strong>{{item.0.0.Price}}</strong></h3>
+    {% if item.0.0.isSold == True %}    
+    <h4 class="card-text red mt-3">SOLD OUT
+    </h4>
+    {% else %}
+    <div class="quantity ">
+        <div class="minus greenbg spinbutton" onclick="counter(-1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">-</div>
+        <span class="qn{{item.0.0.sno}} green">1</span>
+        <div class="plus greenbg " onclick="counter(1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">+</div>
+    </div>
+    {% endif %}
+    <h3 class="card-text green price  mb-0">$<strong class="tp tp{{item.0.0.sno}}">{{item.0.0.Price}}</strong></h3>
+</div>
+</div> 
+<hr class="greenbg mb-2">
+{% endfor %} 
+<div class="containerinner">
+
+    <div class="f1"></div>
+    <div class="f2alt ml-3">
+      
+        <h3 class="pay green ct">Total Payable Amount</h3>
+        <h3 class="tamount green ct"><h2 class="ta"></h2> </h3>
+    </div>
+</div>
+<!-- <div class="row row-cols-1 row-cols-md-1 ml-2 mb-4 leftitems">
+  
+  {% for item in cart %}
+  <div class="card" style="width: 18rem;">
+    <img src="/media/{{item.1.0.samplesfile}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title white">{{item.0.0.title}}</h5>
+      <h3 class="card-text green price mb-0">$<strong>{{item.0.0.Price}}</strong></h3>
+      <p class="card-text mb-0"><small class="text-muted">By {{item.0.0.sellername}}</small></p>
+            {% if item.0.0.isSold == True %}    
+            <h4 class="card-text red mt-3">SOLD OUT
+            </h4>
+            {% endif %}
+            <button  class="btn btn-outline-danger spinbutton mt-4" style="cursor: pointer;" onclick="addspin()"  type="button" >
+              Remove
+              </button>
+    </div>
+  </div>
+  {% endfor %}  
+  </div> -->
+  <!-- <div class="rightitems">
+      <div class="ic">
+          <h2 class="white mb-3">Details</h2>
+          <hr class="white">
+          <h4 class="white">PAYABLE AMOUNT <strong class="green pd">&nbsp; &nbsp; &nbsp; &nbsp;$ 12</strong></h4>
+      </div>
+  </div> -->
+ 
+  </div>  
+<script src="{% static 'js/cart.js' %}">
+</script>
+{% endblock body %}
+    

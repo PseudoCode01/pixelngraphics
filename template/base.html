@@ -18,17 +18,18 @@
        <img class="brandlogo" src="/static/images/LOGO green.png" onclick="window.location.href='/'" alt="" srcset="">
      </div>
      {% if user.is_authenticated %}
+     
      <div class="usernavright">
-       <img src="/static/images/cart.svg" class='carticon' alt="" srcset="">
-       <a href="/signin" >Home</a>
-       <a href="/signup" class="green">Switch to Selling</a>
+       <img src="/static/images/cart.svg" style="cursor: pointer;" class='carticon' onclick="window.location.href='/cart'" alt="" srcset="">
+       <a href="/" >Home</a>
+       <a href="/sellerProfile" class="green">Switch to Selling</a>
        <a href="/contact">Contact Us</a>
       </div>
       {% else %} 
      <div class="navright">
-       <img src="/static/images/cart.svg" class='carticon' alt="" srcset="">
-       <a href="/signin" >Sign In</a>
-       <a href="/signup" class="green" >Sign Up</a>
+       <!-- <img src="/static/images/cart.svg" style="cursor: pointer;" class='carticon' onclick="window.location.href='/cart'" alt="" srcset=""> -->
+       <!-- <a href="/signin" >Sign In</a> -->
+       <a href="/signup" class="green" >Sign In</a>
        <a href="/contact">Contact Us</a>
       </div>   
       {% endif %}
@@ -36,11 +37,13 @@
     <div id="mySidenav" class="sidenav">
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       <a href="#">My Profile</a>
-      <a href="#">Cart</a>
-      <a href="#">Switch to Selling</a>
-      <a href="#">Contact Us</a>
+      <a href="/cart">Cart</a>
+      <a href="/sellerProfile">Switch to Selling</a>
+      <a href="/contact">Contact Us</a>
       <input type="hidden" name="" value="log" id='signorlog'>
+      {% if user.is_authenticated %}
     <a href="/signout">Log Out</a>
+    {% endif %}
   </div>
 
 {% block body %}

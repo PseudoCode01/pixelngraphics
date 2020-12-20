@@ -233,6 +233,9 @@ margin-top: -33px;
 .footer img,.footer h5{
     cursor: pointer;
 }
+.footer img{
+  width: 40px;
+}
 .btn-green {
     position:relative;
     padding: 10px 20px;  
@@ -426,4 +429,7 @@ margin-top: -33px;
   }
 .mt-7{
   margin-top: 100px;
+}
+.red{
+  color:red;
 }

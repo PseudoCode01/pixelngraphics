@@ -13,6 +13,51 @@ video{
   .slant {
     clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    right: 0;
+    height: 450px;
+  }
+  .slant2 {
+    clip-path:polygon(0% 0, 82% 0%, 100% 100%, 0% 100%);;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: absolute;
+    left: 0;
+    height: 450px;
+
+  }
+  .slant p{
+    margin-left: 60px;
+    margin-right: 10px;
+    text-align: end;
+    
+  }
+  .slant h4{
+    font-size: 45px;
+    font-weight: bolder;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    
+  }
+  .slant2 p{
+    margin-left: 10px;
+    margin-right: 50px;
+    text-align: start;
+    
+  }
+  .slant2 h4{
+    font-size: 45px;
+    font-weight: bolder;
+    margin-left: 10px;
+    margin-right: 10px;
+    
+    
   }
   .options{
     display: flex;
@@ -24,8 +69,11 @@ justify-content: center;
   .productContainer{
     display: flex;
   }
+  .fh4{
+    width: 210px;
+  }
   .filters{
-    width: 675px;
+   
     padding-right: 10px; 
   }
   .filters li{
@@ -87,7 +135,16 @@ justify-content: center;
   color:white ;
 }
 .vSeprator{
-  height: 1195px;
+  max-height: 1195px;
   margin-right:10px ;
   width: 4px;
+}
+.products{
+  width: 80%;
+}
+.stream .card{
+width: 100%;
+}
+.stream #vp{
+  height: 100%;
 }

@@ -8,39 +8,67 @@
   </div>
   <div class="container">
    <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
-      <source id="source" src="/static/images/ICON_VERSION6.mp4" type="video/mp4">
+      <source id="source" src="/media/{{ht.0.topvideo}}" type="video/mp4">
       Your browser does not support the video tag.
       </video>
       <hr class="greenbg">
      <div class="card even bg" >
       <div class="row no-gutters">
-          <div class="col-md-8 mt-auto mb-auto">
-               <img width="100%" height="450px" src="/static/images/test.jpg" alt="" srcset=""> 
+          <div class=" mt-auto mb-auto" style="width: 100%;">
+               <img width="100%" height="450px" src="/media/{{ht.0.toppremadelogo}}" alt="" srcset=""> 
             </div>
-        <div class="col-md-4 slant greenbg">
-          <img src="/static/images/Game FI.svg" class="card-img" alt="...">
+        <div class="col-md-6 slant navbg">
+          <h4 class="white">Premade Logos</h4>
+          <br>
+          <p class="white">Choose from hundreds of premade design, with new design added weekly. Give your channel a brand new look !</p>
+          <!-- <img src="/static/images/Game FI.svg" class="card-img" alt="..."> -->
         </div>
       </div>
     </div>
   </div>
   <hr class="dotted mt-4">
   <div class="container">
-   <img width="100%" height="450px" class="mt-4" src="/static/images/test.jpg" alt="" srcset=""> 
-   <img width="100%" height="450px" class="mt-4" src="/static/images/test.jpg" alt="" srcset=""> 
+    <div class="card even bg mt-4" >
+      <div class="row no-gutters">
+          <div class=" mt-auto mb-auto" style="width: 100%;">
+               <img width="100%" height="450px" src="/media/{{ht.0.banner}}" alt="" srcset=""> 
+            </div>
+        <div class="col-md-6 slant2 navbg">
+          <h4 class="white">Banners</h4>
+          <br>
+          <p class="white">Touch up your channel with one of the best banners out there. Choose from premade designs or order a custom now</p>
+          <!-- <img src="/static/images/Game FI.svg" class="card-img" alt="..."> -->
+        </div>
+      </div>
+    </div>
+    <div class="card even bg mt-4" >
+      <div class="row no-gutters">
+          <div class=" mt-auto mb-auto" style="width: 100%;">
+               <img width="100%" height="450px" src="/media/{{ht.0.streamoverlays}}" alt="" srcset=""> 
+            </div>
+        <div class="col-md-6 slant navbg">
+          <h4 class="white">Stream Overlays</h4>
+          <br>
+          <p class="white">Want your stream to be an another level ? </p>
+          <p class="white">Get these easy to use stream overlays and start streaming with a boom !</p>
+         
+        </div>
+      </div>
+    </div>
   </div>
   <div class="container mt-5">
     <hr class="greenbg">
     <div class="options">
-      <h5 class="green">PREMADE LOGOS</h5>
+      <h5 class="green cc" onclick="changecal(0,this)" style="cursor: pointer;">PREMADE LOGOS</h5>
       <div></div>
-      <h5 class="white">BANNERS</h5>
+      <h5 class="white cc" onclick="changecal(1,this) " style="cursor: pointer;">BANNERS</h5>
       <div></div>
-      <h5 class="white">STREAM OVERLAYS</h5>
+      <h5 class="white cc" onclick="changecal(2,this)" style="cursor: pointer;">STREAM OVERLAYS</h5>
     </div>
     <hr class="greenbg mb-0">
 <div class="productContainer">
   <div class="filters pt-3">
-    <h4><Strong class="white">Sort By:</Strong></h4>
+    <h4 class="fh4"><Strong class="white">Sort By:</Strong></h4>
     <ul>
       <li class="white">Price-High to Low</li>
       <li class="white">Price-Low to High</li>
@@ -52,96 +80,81 @@
   </div>
   <div class="vSeprator greenbg"></div>
   <div class="products pt-3">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
+    <div class="row row-cols-1 row-cols-md-2 g-4 logo">
       
-      {%for item in product %}
+      {% for item in product %}
       <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
           <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
         
           <div class="card-img-overlay">
             
-            <p class="card-text">{{item.0.title}} | ${{item.0.Price}}</p>
+            {% if item.0.title|length > 20 %}
+            
+            <p class="card-text">{{item.0.title|slice:"0:20"}}... | $ {{item.0.Price}}</p>
+            {% else %}
+            <p class="card-text">{{item.0.title}} | $ {{item.0.Price}}</p>
+            {% endif %}
+              
            
           </div>
         </div>
       </div>
       {% endfor %}
-     
-      <div class="col  onclick="window.location.href='/productDetail'">
-        <div class="card bg-dark text-white">
-          <img src="/static/images/test.jpg" class="card-img" alt="...">
-          <div class="card-img-overlay">
-            
-            <p class="card-text"> | $25</p>
-           
-          </div>
-        </div>
-      </div>
+    
    
-      <div class="col  onclick="window.location.href='/productDetail'">
-        <div class="card bg-dark text-white">
-          <img src="/static/images/test.jpg" class="card-img" alt="...">
-          <div class="card-img-overlay">
-            
-            <p class="card-text">Phoenix Mascot Logo | $25</p>
-           
-          </div>
-        </div>
-      </div>
-      <div class="col  onclick="window.location.href='/productDetail'">
-        <div class="card bg-dark text-white">
-          <img src="/static/images/test.jpg" class="card-img" alt="...">
-          <div class="card-img-overlay">
-            
-            <p class="card-text">Phoenix Mascot Logo | $25</p>
-           
-          </div>
-        </div>
-      </div>
-      <div class="col  onclick="window.location.href='/productDetail'">
-        <div class="card bg-dark text-white">
-          <img src="/static/images/test.jpg" class="card-img" alt="...">
-          <div class="card-img-overlay">
-            
-            <p class="card-text">Phoenix Mascot Logo | $25</p>
-           
-          </div>
-        </div>
-      </div>
-      <div class="col  onclick="window.location.href='/productDetail'">
-        <div class="card bg-dark text-white">
-          <img src="/static/images/test.jpg" class="card-img" alt="...">
-          <div class="card-img-overlay">
-            
-            <p class="card-text">Phoenix Mascot Logo | $25</p>
-           
-          </div>
-        </div>
-      </div>
-      <div class="col  onclick="window.location.href='/productDetail'">
-        <div class="card bg-dark text-white">
-          <img src="/static/images/test.jpg" class="card-img" alt="...">
-          <div class="card-img-overlay">
-            
-            <p class="card-text">Phoenix Mascot Logo | $25</p>
-           
-          </div>
-        </div>
-      </div>
-      <div class="col  onclick="window.location.href='/productDetail'">
-        <div class="card bg-dark text-white">
-          <img src="/static/images/test.jpg" class="card-img" alt="...">
-          <div class="card-img-overlay">
-            
-            <p class="card-text">Phoenix Mascot Logo | $25</p>
-           
-          </div>
-        </div>
-      </div>
     </div>
-    <div class="pagenav">
+    <div class="row row-cols-1 row-cols-md-2 g-4 banner" style="display: none;">
       
+      {% for item in banner %}
+      <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+        <div class="card bg-dark text-white">
+          <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
+        
+          <div class="card-img-overlay">
+            
+            {% if item.0.title|length > 20 %}
+            
+            <p class="card-text">{{item.0.title|slice:"0:20"}}... | $ {{item.0.Price}}</p>
+            {% else %}
+            <p class="card-text">{{item.0.title}} | $ {{item.0.Price}}</p>
+            {% endif %}
+              
+           
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row row-cols-1 row-cols-md-2 g-4 stream" style="display: none;">
+      
+      {% for item in stream %}
+      <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+        <div class="card bg-dark text-white">
+
+      
+          <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
+      <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+          <div class="card-img-overlay">
+            
+            {% if item.0.title|length > 20 %}
+            
+            <p class="card-text">{{item.0.title|slice:"0:20"}}... | $ {{item.0.Price}}</p>
+            {% else %}
+            <p class="card-text">{{item.0.title}} | $ {{item.0.Price}}</p>
+            {% endif %}
+              
+           
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    
+   
+    </div>
+    <div class="pagenav" style="visibility: hidden;">
       <nav aria-label="Page navigation example ">
         <ul class="pagination ">
           <li class="page-item navbg">
@@ -180,5 +193,7 @@
   </ul>
 </nav>
 </div> -->
+<script src="{% static 'js/home.js' %}">
+</script>
   </div>
   {% endblock body %}

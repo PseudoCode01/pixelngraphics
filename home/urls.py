@@ -20,4 +20,8 @@ urlpatterns = [
     path("addProduct",views.addProduct,name="addProduct"),
     path("productDetail/<int:id>",views.productDetail,name="productDetail"),
     path("profileview/<int:id>",views.profileview,name="profileview"),
+    path("cart",views.cart,name="cart"),
+    path("addtoCart",views.AddtoCart,name="addtoCart"),
+    path("removeCart",views.removeCart,name="removeCart"),
+    path("editProfile",views.editProfile,name="editProfile"),
 ]

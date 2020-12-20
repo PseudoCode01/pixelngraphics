@@ -2,6 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
+class HomePage(models.Model):
+    sno=models.AutoField(primary_key=True)
+    topvideo=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")
+    toppremadelogo=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")
+    banner=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")
+    streamoverlays=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 class SellerApplication(models.Model):
     sno=models.AutoField(primary_key=True)
     username=models.CharField(default=0,max_length=1000)
@@ -55,4 +62,14 @@ class ProductRating(models.Model):
     user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     rating=models.IntegerField(default=0)
 
+class Cart(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    username=models.CharField(default=0,max_length=1000)
+    changes=models.CharField(default='No',max_length=1000)
+    product=models.ForeignKey(Product,default=None,on_delete=models.CASCADE)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+
+    def __str__(self):
+        return 'No.'+str(self.sno)+'  '+self.username
 

@@ -1,8 +1,18 @@
 function banner(){
   document.getElementById('staticBackdropLabel').innerText='Add Your Banner'
+  document.querySelector('.cat').value='banner'
 }
 function stream(){
-  document.getElementById('staticBackdropLabel').innerText='Add Your Stream'
+  document.getElementById('staticBackdropLabel').innerText='Add Your Stream Overlay'
+  document.querySelector('.cat').value='stream'
+  document.querySelector('.ks-cboxtags').innerHTML=`  <li><input type="checkbox" id="checkboxOne" value="AEP"><label for="checkboxOne">AEP</label></li>
+  <li><input type="checkbox" id="checkboxTwo" value="MOV" checked><label for="checkboxTwo">MOV</label></li>
+  <li><input type="checkbox" id="checkboxThree" value="QuickTime" checked><label for="checkboxThree">QuickTime</label></li>
+  <li><input type="checkbox" id="checkboxFour" value="FLV / F4V"><label for="checkboxFour">FLV / F4V</label></li>
+  <li><input type="checkbox" id="checkboxFive" value="MP4"><label for="checkboxFive">MP4</label></li>
+  <li><input type="checkbox" id="checkboxSix" value="AVI" checked><label for="checkboxSix">AVI
+                  </label></li>
+ `
 }
 var xhr = new XMLHttpRequest();
 function sendForm(no){
@@ -17,7 +27,7 @@ var filefor='';
 var tags='';
 for(item of document.querySelector('.ks-cboxtags').children){
   if(item.children[0].checked==true){
-filefor+=item.children[0].value+',';
+  filefor+=item.children[0].value+',';
   }
 }
 console.log(document.querySelectorAll('.tags'))
@@ -42,7 +52,7 @@ else{
   formData.append("fileformats", filefor);
   formData.append("samples", file5.files[no]);
   formData.append("price", file6);
-  formData.append("category", 'logo');
+  formData.append("category",  document.querySelector('.cat').value);
   if(no>0){
   formData.append("times", 'last');
   }
@@ -118,7 +128,7 @@ function abort(val){
   document.getElementById('add').style.display='block';
   document.getElementById('message').innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
- Uploading canceled by user
+ Operation canceled by user
  </div> `
 }
 function addsearchtag(val){
@@ -182,3 +192,51 @@ else{
    
 //     document.querySelector('.pagenav').style.visibility='visible'
 // }
+function editprofile(sample){
+  s=document.querySelector('.tag').value;
+  xhr.open('POST', '/editProfile',true);
+  xhr.setRequestHeader('X-CSRFToken', csrftoken);     
+  var formData = new FormData();
+  formData.append("title", s);
+  formData.append("sno", sample);
+  formData.append("img", document.querySelector('.primg').files[0]);
+  xhr.onload=function(){
+    if(xhr.status!=200){
+
+    }
+    else{
+      document.querySelector('.f2').innerHTML=`  <button type="button" class="btn btn-primary" onclick="editprofile(${sample})">Save changes</button>
+      `
+        document.querySelector('.message').innerHTML=` <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Well done ! </strong>Aww yeah, you successfully added the logo .
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      `
+      window.location.reload()
+    }
+  }
+  xhr.upload.onloadstart=function(e){
+    document.querySelector('.f2').innerHTML=`<div class="progress" style="width: 100%;" >
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"  aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+    </div>
+    `
+  }
+  xhr.upload.onprogress = function(e) {
+    if (e.lengthComputable) {
+      var done = e.position || e.loaded
+      var total = e.totalSize || e.total;
+      width=Math.round((done/total)*100);
+      // elem.style.width = width + "%";
+      document.querySelector('.progress-bar').style.width=width+"%"
+    } else {
+    
+    }
+  
+  };
+  xhr.send(formData);
+  xhr.onerror = function() {
+    alert("Request failed");
+  };
+}

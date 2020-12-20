@@ -1,3 +1,20 @@
+function getToken(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getToken('csrftoken')
+  
 const sign_in_btn = document.querySelector("#sign-in-btn");
 const sign_up_btn = document.querySelector("#sign-up-btn");
 const container = document.querySelector(".container");
@@ -17,13 +34,13 @@ function load() {
 function closeload() {
   $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
 }
-function Signup(){
-  
-  let un=document.getElementById('username').value
-  let email=document.getElementById('email').value
-  let pass=document.getElementById('password').value
-  let conpass=document.getElementById('confirmpassword').value
-  
+function SignupAlt(){
+  let un=document.getElementById('username1').value
+  let email=document.getElementById('email1').value
+  let pass=document.getElementById('password1').value
+  let conpass=document.getElementById('confirmpassword1').value
+  console.log(un,email)
+  console.log('ghjkl');
   // fetching item on cart via ajax
   var xhr = new XMLHttpRequest();
     xhr.open('POST', '/ajaxsignup');
@@ -45,7 +62,7 @@ function Signup(){
       window.location.href='/'
     }
     else{
-      document.querySelector('.message').innerHTML=` <div class="alert alert-success alert-dismissible fade show" role="alert">
+      document.querySelector('.messagel2').innerHTML=` <div class="alert alert-success alert-dismissible fade show" role="alert">
       <strong>Failed ! ${JSON.parse(xhr.responseText)['error']}.
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
@@ -59,7 +76,7 @@ function Signup(){
   
   xhr.onprogress = function(event) {
     if (event.lengthComputable) {
-     console.log('p')
+ 
     } else {
    
     }
@@ -72,7 +89,7 @@ function Signup(){
   
   
   }
-function Signin(){
+function Signin2(){
   let un=document.getElementById('lusername').value
   let pass=document.getElementById('lpassword').value
 
@@ -95,7 +112,7 @@ function Signin(){
         window.location.href='/'
       }
       else{
-        document.querySelector('.message2').innerHTML=`<div class="alert alert-success alert-dismissible fade show" role="alert">
+        document.querySelector('.messagel').innerHTML=`<div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Failed ! ${JSON.parse(xhr.responseText)['error']}.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
