@@ -19,6 +19,10 @@
 </div>
 <hr class="greenbg mb-5">
 
+{% if item %}
+    
+
+    
 {% for item in cart %}
     <div class="containerinner">
 <div class="f1">
@@ -52,15 +56,21 @@
 </div> 
 <hr class="greenbg mb-2">
 {% endfor %} 
+{% else %}
 <div class="containerinner">
 
+    <h2 class="white ct m-auto mb-5">No items in cart</h2>
+</div>
+{% endif %}
+{% if item %}
+<div class="containerinner">
     <div class="f1"></div>
     <div class="f2alt ml-3">
-      
         <h3 class="pay green ct">Total Payable Amount</h3>
         <h3 class="tamount green ct"><h2 class="ta"></h2> </h3>
     </div>
 </div>
+{% endif %}
 <!-- <div class="row row-cols-1 row-cols-md-1 ml-2 mb-4 leftitems">
   
   {% for item in cart %}

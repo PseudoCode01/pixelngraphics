@@ -24,4 +24,5 @@ urlpatterns = [
     path("addtoCart",views.AddtoCart,name="addtoCart"),
     path("removeCart",views.removeCart,name="removeCart"),
     path("editProfile",views.editProfile,name="editProfile"),
+    path("customlogo",views.customlogo,name="customlogo"),
 ]

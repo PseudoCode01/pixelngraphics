@@ -1,0 +1,55 @@
+.customh{
+font-size: bolder;
+font-family: 'nexabold';
+font-size: 40px;
+}
+.mt-7{
+    margin-top: 65px;
+}
+.form-control{
+background-color: transparent;
+color: white;
+border: 1px solid grey;
+}
+.form-control:focus{
+background-color: transparent;
+color: white;
+
+}
+.cl{
+    padding: 20px;
+    background-color: #484e59;
+}
+form{
+    width: 70%;
+    margin: auto;
+    margin-top: 40px;
+    padding: 50px;
+    border: 2px solid var(--btn-color);
+    border-radius: 40px;
+}
+.drop{
+    width: 100%;
+    text-align: start;
+    background-color: transparent;
+}
+.btn-group{
+    width: 100%;
+}
+.dropdown-toggle::after{
+    border-top:none;
+}
+.botcon{
+    width: 100%;
+    margin-top: 60px;
+}
+.botcon button{
+    display: block;
+    width: 150px;
+}
+.footer{
+    margin-top: -55px;
+}
+label{
+    font-family: 'nexabold';
+}

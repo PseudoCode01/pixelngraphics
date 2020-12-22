@@ -1,3 +1,12 @@
+@font-face{
+  font-family: "nexa";
+  src:url('nexa/NexaLight.otf')
+}
+@font-face{
+  font-family: "nexabold";
+  src:url('nexa/NexaBold.otf')
+}
+
 .mainNav{
     display: flex;
     background-color:#262a35;
@@ -14,11 +23,13 @@ body{
     left: 0;
     margin: 0;
     padding: 0;
+    font-family: 'Nexa';
+    font-weight: 800;
 }
 :root {
   --text-color: hsla(210, 50%, 85%, 1);
   --shadow-color: hsla(210, 40%, 52%, .4);
-  --btn-color: #23ce00 ;
+  --btn-color: #92d945; ;
   --btn-blue-color: hsl(210, 80%, 42%);
   --bg-color: #141218;
 }
@@ -29,7 +40,7 @@ p{
     text-align: center;
 }
 .greenbg{
-    background-color: #2ff905 ;
+    background-color: #92d945; ;
 }
 .navbg{
   background-color: #262a35;
@@ -76,6 +87,8 @@ nav .navright{
     align-items: center;
     justify-content: space-between;
     margin-right: 50px;
+    font-family: 'Nexa';
+
 }
 nav .usernavright{
   width: 350px;
@@ -170,7 +183,16 @@ nav .navright p,.usernavright p{
         filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
 }
 .green{
-    color:#2ff905 ;
+    color:#92d945; ;
+}
+.btn-outline-success{
+  color:#92d945; 
+  border: 2px solid #92d945;
+}
+.btn-outline-success:hover{
+  background-color:#92d945; 
+  border: 2px solid #92d945;
+  
 }
 .white{
     color:white;
@@ -186,13 +208,13 @@ nav .navright p,.usernavright p{
     background-color:#262a35 ;
     color: white;
     text-align: center;
-    height: 300px;
+  
     z-index: 1;
   }
   .innerfooter{
       display: flex;
       flex-direction: column;
-      width: 850px;
+     
       justify-content: space-between;
       align-items: center; 
       margin:40px auto 0 auto ;
@@ -234,7 +256,7 @@ margin-top: -33px;
     cursor: pointer;
 }
 .footer img{
-  width: 40px;
+  width: 20px;
 }
 .btn-green {
     position:relative;
@@ -432,4 +454,84 @@ margin-top: -33px;
 }
 .red{
   color:red;
+}
+@media only screen and (max-width:700px){
+  nav .usernavright a{
+display: none;
+  }
+  nav .usernavright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    margin-right: 10px;
+  }
+  nav .navright a{
+display: none;
+  }
+  nav .navright{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    margin-right: 10px;
+  }
+}
+@media only screen and (max-width:925px){
+
+.innerfooter .company h3, .innerfooter .resources h3{
+font-size: 18px;
+}
+.innerfooter .company h5, .innerfooter .resources h5{
+font-size: 15px;
+}
+.innerfooter .upper .social h3{
+ font-size: 18px;
+}
+.innerfooter .upper .imagerow{
+  height: 30px;
+}
+}
+@media only screen and (max-width:650px){
+  .innerfooter .upper{
+    flex-direction: column;
+  }
+  .innerfooter .brandlogo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .innerfooter .company h3, .innerfooter .resources h3{
+    font-size: 22px;
+    }
+    .innerfooter .company h5, .innerfooter .resources h5{
+    font-size: 18px;
+    }
+    .innerfooter .upper .social h3{
+     font-size: 22px;
+    }
+    .innerfooter .upper .imagerow{
+      height: 30px;
+    }
+    .resources{
+      margin-top: 40px;
+    }
+    .innerfooter .upper .social{
+      margin-top: 40px;
+      align-items: flex-start;
+    }
+    .innerfooter .upper .social img{
+    margin-right: 10px;
+    }
+}
+.upper h3{
+font-family: 'nexabold';
+font-size: 17px;
+}
+.upper h5{
+font-family: 'nexa';
+font-size: 15px;
+}
+.footer img{
+  font-size: 20px;
 }

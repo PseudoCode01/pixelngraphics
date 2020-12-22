@@ -20,7 +20,6 @@ def home(request):
             b.append([item,ps[0]])
         else :
             so.append([item,ps[0]])
-    print(h[0])
     return render(request,'home/Home.html',{'product':l,'banner':b,'stream':so,'ht':h})
   
 def contact(request):
@@ -57,6 +56,8 @@ def ajaxsignup(request):
         return JsonResponse({'error':"Your username can contain 5 to 20 Characters"},safe=False)
     elif not username.isalnum():
         return JsonResponse({'error':"Your username can contain letters and numbers only "},safe=False)
+    elif len(User.objects.filter(username=username))>0:
+        return JsonResponse({'error':"Username is already taken"},safe=False)
     else:
         myuser=User.objects.create_user(username,email,pass1)
         user=authenticate(username=username,password=pass1)
@@ -67,8 +68,7 @@ def ajaxsignup(request):
 def ajaxlogin(request):
     data=json.loads(request.body)
     username=data['username']
-    password=data['password']   
-    
+    password=data['password']
     try:
         user=authenticate(username=User.objects.get(email=username),password=password)
     except:
@@ -138,7 +138,10 @@ def editProfile(request):
 def productDetail(request,id):
     p=Product.objects.filter(sno=id).values()
     ps=ProductSample.objects.filter(product_id=id).values()
-    c=Cart.objects.filter(user=request.user).filter(product_id=id).values()
+    try:
+        c=Cart.objects.filter(user=request.user).filter(product_id=id).values()
+    except:
+        c=[]
     return render(request,'home/productDetail.html',{'pr':p,'ps':ps,'l':len(c)})
 def profileview(request,id):
     Sp=SellerProfile.objects.filter(seller_id=id).values()
@@ -147,7 +150,6 @@ def profileview(request,id):
     for item in products:
         ps=ProductSample.objects.filter(product_id=item['sno']).values()
         l.append([item,ps[0]])
-    
     return render(request,'home/ProfilePublic.html',{'profile':Sp,'pr':l})
 
 def cart(request):
@@ -171,3 +173,5 @@ def removeCart(request):
     cart=Cart.objects.get(product_id=int(sno))
     cart.delete()
     return JsonResponse('OK',safe=False)
+def customlogo(request):
+    return render(request,'home/customlogo.html')
