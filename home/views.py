@@ -12,7 +12,6 @@ def home(request):
     l=[]
     b=[]
     so=[]
-    print(User.objects.all())
     for item in products:
         ps=ProductSample.objects.filter(product_id=item['sno']).values()
         if item['category'] == 'logo':
@@ -185,3 +184,87 @@ def addcustom(request):
     c=CustomProduct(name=name,email=email,brief=brief,budget=budget)
     c.save()
     return JsonResponse('OK',safe=False)
+def filters(request):
+    data=json.loads(request.body)
+    fil = data['filter']
+    print(fil)
+    if fil == 0:
+        products=Product.objects.filter(isVerified=True).order_by('-Price').values()
+        l=[]
+        b=[]
+        so=[]
+        for item in products:
+            ps=ProductSample.objects.filter(product_id=item['sno']).values()
+            if item['category'] == 'logo':
+                l.append([item,ps[0]])
+            elif item['category'] == 'banner':
+                b.append([item,ps[0]])
+            else :
+                so.append([item,ps[0]])
+    elif fil == 1:
+        products=Product.objects.filter(isVerified=True).order_by('Price').values()
+        l=[]
+        b=[]
+        so=[]
+        for item in products:
+            ps=ProductSample.objects.filter(product_id=item['sno']).values()
+            if item['category'] == 'logo':
+                l.append([item,ps[0]])
+            elif item['category'] == 'banner':
+                b.append([item,ps[0]])
+            else :
+                so.append([item,ps[0]])
+    elif fil == 2:
+        products=Product.objects.filter(isVerified=True).order_by('-number_sell').values()
+        l=[]
+        b=[]
+        so=[]
+        for item in products:
+            ps=ProductSample.objects.filter(product_id=item['sno']).values()
+            if item['category'] == 'logo':
+                l.append([item,ps[0]])
+            elif item['category'] == 'banner':
+                b.append([item,ps[0]])
+            else :
+                so.append([item,ps[0]])
+    elif fil == 3:
+        products=Product.objects.filter(isVerified=True).order_by('-rating').values()
+        l=[]
+        b=[]
+        so=[]
+        for item in products:
+            ps=ProductSample.objects.filter(product_id=item['sno']).values()
+            if item['category'] == 'logo':
+                l.append([item,ps[0]])
+            elif item['category'] == 'banner':
+                b.append([item,ps[0]])
+            else :
+                so.append([item,ps[0]])
+    elif fil == 4:
+        products=Product.objects.filter(isVerified=True).order_by('-timeStamp').values()
+        l=[]
+        b=[]
+        so=[]
+        for item in products:
+            ps=ProductSample.objects.filter(product_id=item['sno']).values()
+            if item['category'] == 'logo':
+                l.append([item,ps[0]])
+            elif item['category'] == 'banner':
+                b.append([item,ps[0]])
+            else :
+                so.append([item,ps[0]])
+    elif fil == 5:
+        products=Product.objects.filter(isVerified=True).order_by('-timeStamp').values()
+        l=[]
+        b=[]
+        so=[]
+        for item in products:
+            ps=ProductSample.objects.filter(product_id=item['sno']).values()
+            if item['category'] == 'logo':
+                l.append([item,ps[0]])
+            elif item['category'] == 'banner':
+                b.append([item,ps[0]])
+            else :
+                so.append([item,ps[0]])
+    return JsonResponse({'product':l,'banner':b,'stream':so})
+    

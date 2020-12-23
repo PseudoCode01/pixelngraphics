@@ -47,7 +47,7 @@ class Product(models.Model):
     searchTags=models.CharField(default=0,max_length=1000)
     Price=models.CharField(default=0,max_length=1000)
     isVerified=models.BooleanField(default=False)
-    isSold=models.BooleanField(default=False)
+    number_sell=models.IntegerField(default=0)
     rating=models.IntegerField(default=0)
     rated_by=models.IntegerField(default=0)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
