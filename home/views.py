@@ -4,7 +4,7 @@ import json
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage
+from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct
 # Create your views here.
 def home(request):
     h=HomePage.objects.all().order_by('-timeStamp').values()
@@ -12,6 +12,7 @@ def home(request):
     l=[]
     b=[]
     so=[]
+    print(User.objects.all())
     for item in products:
         ps=ProductSample.objects.filter(product_id=item['sno']).values()
         if item['category'] == 'logo':
@@ -175,3 +176,12 @@ def removeCart(request):
     return JsonResponse('OK',safe=False)
 def customlogo(request):
     return render(request,'home/customlogo.html')
+def addcustom(request):
+    data=json.loads(request.body)
+    name = data['name']
+    email = data['email']
+    brief = data['brief']
+    budget = data['budget']
+    c=CustomProduct(name=name,email=email,brief=brief,budget=budget)
+    c.save()
+    return JsonResponse('OK',safe=False)

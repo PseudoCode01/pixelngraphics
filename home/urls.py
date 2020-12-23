@@ -25,4 +25,5 @@ urlpatterns = [
     path("removeCart",views.removeCart,name="removeCart"),
     path("editProfile",views.editProfile,name="editProfile"),
     path("customlogo",views.customlogo,name="customlogo"),
+    path("addcustom",views.addcustom,name="addcustom"),
 ]

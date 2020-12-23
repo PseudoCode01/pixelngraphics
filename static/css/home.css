@@ -407,6 +407,12 @@ width: 100%;
     text-align: center;
 
   }
+  .custom h2{
+    font-size: 17px;
+  }
+  .custom h6{
+    font-size: 14px;
+  }
 }
 @media only screen and (max-width:400px){
   .imgpar ,.slant2,.slant{

@@ -73,3 +73,13 @@ class Cart(models.Model):
     def __str__(self):
         return 'No.'+str(self.sno)+'  '+self.username
 
+class CustomProduct(models.Model):
+    sno=models.AutoField(primary_key=True)
+    name=models.CharField(default=0,max_length=1000)
+    email=models.CharField(default=0,max_length=1000)
+    brief=models.CharField(default=0,max_length=1000)
+    budget=models.CharField(default=0,max_length=1000)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+
+    def __str__(self):
+        return 'No.'+str(self.sno)+'  '+self.name+' '+self.email

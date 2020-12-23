@@ -49,3 +49,264 @@ width: 245px;
 .abtimg{
     transform: rotate(-4deg);
 }
+.brnd{
+    text-align: end;
+}
+.even .card-text{
+    text-align: start;
+    font-size: 45px;
+    }
+.even2 p{
+    text-align: end; 
+    font-size: 45px;
+}
+@media only screen and (max-width:1000px)
+{
+    .no-gutters{
+    flex-direction: column;
+}
+
+.slant{
+    clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%);
+}
+.welcomechild{
+    width: 50%;
+}
+/* .even{
+
+} */
+.odd .no-gutters >div{
+    width: 100%;
+    max-width: 80%;
+    margin:auto;
+}
+.card img{
+    width: 90%;
+    height: 90;
+}
+.card-body{
+    width: 100%;
+    max-width: 100%;
+}
+.card-title{
+    justify-content: center;
+}
+.card-text , .brnd{
+    text-align: center;
+
+}
+.even .no-gutters{
+    flex-direction: column-reverse;
+}
+.oddcard{
+    width: 100%;
+    max-width: 100%;
+    height: 250px;
+}
+.oddcard img{
+    width: 300px;
+}
+.even .col-md-8{
+width: 100%;
+max-width: 100%;
+}
+.even .card-text{
+font-size: 35px;
+text-align: center;
+}
+.even2 .col-md-4{
+    max-width: 100%;
+    width: 100%;
+    clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%);
+}
+.even2 .col-md-4 img{
+    width: 300px;
+}
+.even2 .col-md-8{
+    width: 100%;
+    max-width: 100%;
+}
+.even2 p{
+    max-width: 100%;
+    width: 100%;
+    text-align: center; 
+    font-size: 35px;
+}
+.imgcont h5{
+    font-size: 16px;
+}
+}
+@media only screen and (max-width:802px)
+{.no-gutters{
+    flex-direction: column;
+}
+.welcomeparent h1{
+    font-size: 30px;
+}
+.welcomechild{
+    width: 50%;
+}
+.odd .no-gutters >div{
+    width: 100%;
+    max-width: 80%;
+    margin:auto;
+}
+.card img{
+    width: 90%;
+    height: 90;
+}
+.card-body{
+    width: 100%;
+    max-width: 100%;
+}
+.card-title{
+    justify-content: center;
+}
+.card-text , .brnd{
+    text-align: center;
+
+}
+.rightplace .twocol h1{
+    font-size: 30px;
+}
+.imgcont span{
+    width: 5px;
+}
+.imgcont{
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.imgcont div{
+    width: 30%;
+}
+.imgcont div img{
+    height: 80%;
+    width: 100%;
+}
+.imgcont h5{
+    font-size: 13px;
+}
+.oddcard img{
+    width: 300px;
+}
+.even .card-text{
+    font-size: 24px;
+}
+.even2 .card-text{
+    font-size: 24px;
+}
+}
+@media only screen and (max-width:650px)
+{.no-gutters{
+    flex-direction: column;
+}
+.btext{
+    font-size: 30px;
+}
+.welcomechild{
+    width: 70%;
+}
+.odd .no-gutters >div{
+    width: 100%;
+    max-width: 90%;
+    margin:auto;
+}
+.card img{
+    width: 90%;
+    height: 90;
+}
+.card-body{
+    width: 100%;
+    max-width: 100%;
+}
+.card-title{
+    justify-content: center;
+}
+.card-text , .brnd{
+    text-align: center;
+
+}
+.rightplace .twocol h1{
+    font-size: 25px;
+}
+.imgcont span{
+    width: 5px;
+}
+.imgcont{
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.imgcont div{
+    width: 30%;
+
+}
+.imgcont div img{
+    height: 70%;
+    width: 100%;
+}
+.imgcont h5{
+    font-size: 11px;
+}
+.rightplace p{
+    font-size: 13px;
+}
+.oddcard img{
+    width: 300px;
+}
+}
+@media only screen and (max-width:500px)
+{
+    .welcomeparent h1{
+        font-size: 23px;
+    }
+    .welcomechild{
+        width: 80%;
+        font-size: 15px;
+    }
+    .twocol h2{
+font-size: 22px;
+font-weight: bold;
+    }
+    .card-text{
+        font-size: 16px;
+    }
+    .rightplace .twocol h1{
+        font-size: 20px;
+    }
+    .rightplace p{
+        font-size: 14px;
+    }
+    .imgcont span{
+        width: 5px;
+    }
+    .imgcont{
+        justify-content: space-between;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .imgcont div{
+        width: 30%;
+    
+    }
+    .imgcont div img{
+        height: 70%;
+        width: 100%;
+    }
+    .imgcont h5{
+        font-size: 11px;
+    }
+    .rightplace p{
+        font-size: 11px;
+    }
+    .oddcard img{
+        width: 300px;
+    }
+    .btext{
+        font-size: 25px;
+    }
+    .bttext h4{
+        font-size: 20px;
+    }
+}
