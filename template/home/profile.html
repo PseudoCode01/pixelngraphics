@@ -3,9 +3,14 @@
 {% block body %}
     {% load static %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
-<div class="container mt-7">
-    <div class="profileContainer">
-    <div id="profilecard">
+<div id="myOverlay" class="overlay">
+
+  <!-- Button to close the overlay navigation -->
+  <a href="javascript:void(0)" class="closebtn" onclick="closeFullNav()">&times;</a>
+
+  <!-- Overlay content -->
+  <div class="overlay-content">
+    <div id="profilecard " class="pc2">
       <div class="name">
         <h3 class="ct white mb-0">{{profile.0.sellername}} </h3>
           <p class="green ct ">{{profile.0.tag}}</p>
@@ -18,9 +23,7 @@
             <img id="avatar" src="https://drive.google.com/uc?id=1EVA3KUBLxCXF2EGmTf4LUB8F4yAvBrjl"></img>
           {% endif %} 
         </div>
-        <!-- <div id="bio">
-            <p>Hello, my name is John! Bacon ipsum dolor amet short ribs prosciutto strip steak, pig ham tongue buffalo beef ribs hamburger pork venison. </p>
-        </div> -->
+        
         <div id="stats">
             <div class="col">
                 <p class="stat">{{profile.0.products}}</p>
@@ -55,14 +58,68 @@
             <p class="white">{{profile.0.discription}}</p>
             </span>
         <br> 
-     <!-- <div id="buttons">
-            <button>Follow</button>
-            <button id="msg">Message</button>
-        </div> -->    
+   
+    </div>
+  </div>
+
+</div>
+<div class="container-xl mt-7">
+
+    <div class="profileContainer">
+    <div id="profilecard" class="pc1">
+      <div class="name">
+        <h3 class="ct white mb-0">{{profile.0.sellername}} </h3>
+          <p class="green ct ">{{profile.0.tag}}</p>
+      </div>
+
+        <div class="image-crop mb-5">
+          {% if profile.0.profileImage %}
+          <img id="avatar" src="/media/{{profile.0.profileImage}}"></img>
+            {% else %}
+            <img id="avatar" src="https://drive.google.com/uc?id=1EVA3KUBLxCXF2EGmTf4LUB8F4yAvBrjl"></img>
+          {% endif %} 
+        </div>
+        
+        <div id="stats">
+            <div class="col">
+                <p class="stat">{{profile.0.products}}</p>
+                <p class="label">Products</p>
+            </div>
+       <div class="col">
+                <p class="stat">{{profile.0.sells}}</p>
+                <p class="label">Sells</p>
+            </div>
+      <div class="col">
+                <p class="stat">&#36; {{profile.0.earned}}</p>
+                <p class="label">Earned</p>
+            </div>
+        </div>
+        <div class="card-group">
+        <button type="button" class="btn btn-outline-success btn-lg pv" data-toggle="modal" data-target="#exampleModalCenteredScrollable">Edit Profile</button>
+        <button type="button" class="btn btn-outline-success btn-lg pv" onclick="window.location.href='/profileview/{{request.user.id}}'">Public View</button>
+      </div>
+        <input type="hidden" class="srating" value="{{profile.0.sellerRating}}">
+        <span class="rating ">
+            <h6 class="white mt-5">Total Rating</h6>
+            <div class="stars">
+                <span class="s1">&#9733;</span>
+                <span class="s1">&#9733;</span>
+                <span class="s1">&#9733;</span>
+                <span class="s1">&#9733;</span>
+                <span class="s1">&#9733;</span>
+            </div>  
+            <h6 class="white mt-2">Seller Rank</h6>
+            <h3 class="green">1st</h3>
+            <h2 class="green mt-5">About the seller</h2>
+            <p class="white">{{profile.0.discription}}</p>
+            </span>
+        <br> 
+   
     </div>
     <div class="works">
    <div class="worksh navbg">
    <h2>WORKS</h2>
+   <img class="whamburger " style="cursor: pointer; " onclick="openFullNav()" src="/static/images/user.svg"  alt="" srcset="">
 </div>
 <div class="workcontainer mt-5">
     <div class="row row-cols-1 row-cols-md-2">
@@ -70,14 +127,14 @@
           <div class="card navbg">
             <img src="/media/{{pr.0.1.samplesfile}}"  class="card-img-top" alt="...">
             <div class="card-body wcd white">
-              <p class="card-text">{{pr.0.0.title|slice:"0:120"}}</p>
+              <h4 class="card-text">{{pr.0.0.title|slice:"0:120"}}</h4>
               <p class="card-text"><i> {{pr.0.0.category}}</i></p>
               <h2 class="mt-4 green">&#36;  {{pr.0.0.Price}}</h2>
             </div>
           </div>
         </div>
         <div class="col mb-4">
-            <div class="card  navbg" style="width: 18rem;">
+            <div class="card addnew navbg" >
                 <div class="card-body addnewdesign m-auto">                  
                     <div class="container">
                         <div class="email" onclick="this.classList.add('expand')">
@@ -122,7 +179,15 @@
             {% if forloop.counter > 1 %}
             <div class="col mb-4" style="cursor: pointer;"   onclick="window.location.href='/productDetail/{{item.0.sno}}'">
               <div class="card navbg">
-                <img src="/media/{{item.1.samplesfile}}"  class="card-img-top" alt="...">
+                
+                {% if item.0.category|slugify == 'stream'  %}
+                <video id="vp" width="100%" height="auto" autoplay='true' loop >
+                  <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video>    
+                  {% else %}
+                  <img src="/media/{{item.1.samplesfile}}"  class="card-img-top" alt="...">
+                {% endif %}
                 <div class="card-body wcd white">
                   <h4 class="card-text">{{item.0.title|slice:"0:120"}}</h4>
                   <p class="card-text"><i> {{item.0.category}}</i></p>
@@ -135,7 +200,8 @@
           </div>
 </div>
     </div>
-</div></div>
+</div>
+</div>
   <!-- Modal -->
   <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">

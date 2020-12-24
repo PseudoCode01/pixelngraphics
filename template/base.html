@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>PixelN'Graphics | Home</title>
   </head>
+ 
   <body>
    <nav class="mainNav fixed-top">
      <div class='nav'>
@@ -18,12 +19,18 @@
        <img class="brandlogo" src="/static/images/LOGO green.png" onclick="window.location.href='/'" alt="" srcset="">
      </div>
      {% if user.is_authenticated %}
-     
      <div class="usernavright">
-       <img src="/static/images/cart.svg" style="cursor: pointer;" class='carticon' onclick="window.location.href='/cart'" alt="" srcset="">
-       <a href="/" >Home</a>
-       <a href="/sellerProfile" class="green">Switch to Selling</a>
-       <a href="/contact">Contact Us</a>
+      <div class="sercontainer mr-4">
+        <form action="/search" method="POST" class="searchbox">{% csrf_token %}
+            <input type="search" placeholder="Search......" name="stext" id="stext" class="searchbox-input" onkeyup="buttonUp();" required>
+            <input type="submit"  class="searchbox-submit">
+            <span class="searchbox-icon"><img  src="/static/images/search.svg" alt="" srcset=""></span>
+        </form>
+    </div>
+       <img src="/static/images/cart.svg" style="cursor: pointer;" class='carticon mr-3' onclick="window.location.href='/cart'" alt="" srcset="">
+       <a class="mr-3" href="/" >Home</a>
+       <a href="/sellerProfile" class="green mr-3">Switch to Selling</a>
+       <a  href="/contact">Contact Us</a>
       </div>
       {% else %} 
      <div class="navright">

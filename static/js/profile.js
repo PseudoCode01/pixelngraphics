@@ -240,3 +240,12 @@ function editprofile(sample){
     alert("Request failed");
   };
 }
+/* Open */
+function openFullNav() {
+  document.getElementById("myOverlay").style.width = "100%";
+}
+
+/* Close */
+function closeFullNav() {
+  document.getElementById("myOverlay").style.width = "0%";
+} 

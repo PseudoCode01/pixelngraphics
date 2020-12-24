@@ -27,4 +27,5 @@ urlpatterns = [
     path("customlogo",views.customlogo,name="customlogo"),
     path("addcustom",views.addcustom,name="addcustom"),
     path("filters",views.filters,name="filters"),
+    path("search",views.search,name="search"),
 ]

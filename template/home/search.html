@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="container-xl mt-7" style="margin-bottom: 100px;">
+    
+    {% if result %}
+ 
+        
+<div class="row row-cols-1 row-cols-md-2" ">
+    {% for item in result %}
+    <div class="col mb-4">
+      <div class="card">
+        {% if item.0.category|slugify == 'stream'  %}
+        <video id="vp" width="100%" height="auto" autoplay='true' loop >
+          <source id="source" src="/media/{{item.1.0.samplesfile}}" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>    
+          {% else %}
+        <img src="/media/{{item.1.0.samplesfile}}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body navbg">
+          <h5 class="card-title white">{{item.0.title|slice:"0:120"}}</h5>
+          <h2 class="mt-4 green">&#36; {{item.0.Price}}</h2>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+    {% else %}  
+    <div class="col " style="margin-bottom:60vh ;">
+        <div class="card">
+
+         
+         
+          <div class="card-body navbg">
+           
+            <h1 class="mt-4 green ct" >NO ITEM FOUND</h1>
+          </div>
+        </div>
+      </div >
+  {% endif %}
+  </div>
+<!-- <div class="works">
+    <div class="worksh navbg">
+    <h2></h2>
+ </div>
+ <div class="workcontainer mt-5">
+     <div class="row row-cols-1 row-cols-md-2">
+         <div class="col mb-4" style="cursor: pointer;" onclick="window.location.href='/productDetail/{{pr.0.0.sno}}'">
+             {% for item in result %}
+             
+             <div class="col mb-4" style="cursor: pointer;"   onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+               <div class="card navbg">
+                 
+                 {% if item.0.category|slugify == 'stream'  %}
+                 <video id="vp" width="100%" height="auto" autoplay='true' loop >
+                   <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
+                   Your browser does not support the video tag.
+                   </video>    
+                   {% else %}
+                   <img src="/media/{{item.1.samplesfile}}"  class="card-img-top" alt="...">
+                 {% endif %}
+                 <div class="card-body wcd white">
+                   <h4 class="card-text">{{item.title|slice:"0:120"}}</h4>
+                   
+                   <h2 class="mt-4 green">&#36;  {{item.Price}}</h2>
+                 </div>
+               </div>
+             </div>
+             
+             {% endfor %}
+           </div>
+ </div>
+ </div>
+     </div> -->
+     <style>
+         .works{
+    width: 80%;
+    overflow-y: auto;
+overflow-x: hidden;
+   
+}
+.worksh{
+    color: white;
+    padding: 10px;
+   
+}
+.worksh h2{
+    margin: 0;
+}
+
+     </style>
+{% endblock body %}
+    

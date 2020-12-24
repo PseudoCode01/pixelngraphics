@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct
+
+
 # Create your views here.
 def home(request):
     h=HomePage.objects.all().order_by('-timeStamp').values()
@@ -155,6 +157,7 @@ def profileview(request,id):
 def cart(request):
     c=Cart.objects.filter(user=request.user).values()
     l=[]
+    print(c)
     for item in c:
         l.append([Product.objects.filter(sno=item['product_id']).values(),ProductSample.objects.filter(product_id=item['product_id']).values()])
     return render(request,'home/cart.html',{'cart':l})
@@ -267,4 +270,23 @@ def filters(request):
             else :
                 so.append([item,ps[0]])
     return JsonResponse({'product':l,'banner':b,'stream':so})
+def searchfun(list, platform):
+    for i in range(len(list)):
+        # print(list[i],platform)
+        if list[i].lower().strip() == platform.lower().strip():
+            return True
+    return False   
+def search(request):
+    data=request.POST.get('stext')
     
+    r=Product.objects.all()
+    l=[]
+    for item in r:
+        print(item)
+        if(searchfun(item.searchTags.split(','),data)):
+            l.append([item,ProductSample.objects.filter(product_id=item.sno)])
+    print(l)
+    return render(request,'home/search.html',{'result':l})
+
+
+

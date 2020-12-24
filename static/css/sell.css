@@ -6,8 +6,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: end;
-    width: 870px;
+    align-items: flex-end;
+    width: 70%;
 }
 input{
     border-radius: 0;
@@ -31,4 +31,103 @@ margin-top: 100px !important;
 }
 .wait{
     font-size: 30px;
+}
+ button.btn{
+    display: block;
+    margin:auto;
+}
+@media only screen and (max-width:1050px){
+    .sellerform label{
+        font-size: 18px;
+    }
+    .sellerform input{
+        width: 500px;
+    }
+    .sellerform{
+        width: 75%;
+    }
+}
+@media only screen and (max-width:900px){
+    .sellerform label{
+        font-size: 16px;
+    }
+    .sellerform input{
+        width: 470px;
+    }
+    .sellerform{
+        width: 80%;
+    }
+}
+@media only screen and (max-width:750px){
+    .sellerform label{
+        font-size: 16px;
+    }
+    .sellerform input{
+        width: 430px;
+        padding: 10px;
+    }
+    .sellerform{
+        width: 80%;
+    }
+    .content{
+        width: 90%;
+    }
+}
+@media only screen and (max-width:700px){
+    .sellerform label{
+        font-size: 16px;
+    }
+    .sellerform input{
+        width: 430px;
+        padding: 10px;
+    }
+    .sellerform{
+        width: 100%;
+        align-items: center;
+    }
+    .content{
+        width: 90%;
+    }
+    .email,.name,.link{
+        display: flex;
+        flex-direction: column;
+    }
+    .tnc{
+        font-size: 16px;
+    }
+}
+@media only screen and (max-width:500px){
+    .sellerform label{
+        font-size: 16px;
+    }
+    .sellerform input{
+        width: 100%;
+        padding: 10px;
+    }
+    .sellerform{
+        width: 100%;
+        align-items: center;
+    }
+    .content{
+        width: 90%;
+    }
+    .email,.name,.link{
+        display: flex;
+        flex-direction: column;
+    }
+    .tnc{
+        font-size: 16px;
+    }
+    .head2{
+        font-size: 13px;
+    }
+}
+@media only screen and (max-width:400px){
+    .welcomeparent h1{
+        font-size: 25px;
+        font-family: 'nexabold';
+    }
+    .twocol h5{
+font-size: 15px;
+    }
 }
