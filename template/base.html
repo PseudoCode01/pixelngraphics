@@ -23,8 +23,9 @@
       <div class="sercontainer mr-4">
         <form action="/search" method="POST" class="searchbox">{% csrf_token %}
             <input type="search" placeholder="Search......" name="stext" id="stext" class="searchbox-input" onkeyup="buttonUp();" required>
-            <input type="submit"  class="searchbox-submit">
-            <span class="searchbox-icon"><img  src="/static/images/search.svg" alt="" srcset=""></span>
+            <!-- <input type="submit"  class="searchbox-submit"> -->
+            <span class="searchbox-submit"><img   src="/static/images/search.svg" alt="" srcset=""></span>
+            <span class="searchbox-icon"><img   src="/static/images/search.svg" alt="" srcset=""></span>
         </form>
     </div>
        <img src="/static/images/cart.svg" style="cursor: pointer;" class='carticon mr-3' onclick="window.location.href='/cart'" alt="" srcset="">
@@ -36,7 +37,7 @@
      <div class="navright">
        <!-- <img src="/static/images/cart.svg" style="cursor: pointer;" class='carticon' onclick="window.location.href='/cart'" alt="" srcset=""> -->
        <!-- <a href="/signin" >Sign In</a> -->
-       <a href="/signup" class="green" >Sign In</a>
+       <a href="/signup" class="green mr-3" >Sign In</a>
        <a href="/contact">Contact Us</a>
       </div>   
       {% endif %}
@@ -45,7 +46,7 @@
       <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
       {% if user.is_authenticated %}
 
-      <a href="#">My Profile</a>
+      <a href="/myProfile">My Profile</a>
       <a href="/cart">Cart</a>
       <a href="/sellerProfile">Switch to Selling</a>
     {% endif %}
@@ -58,10 +59,12 @@
     <a href="/signup">Sign In</a>
     {% endif %}
   </div>
+<div class="parentcontainer" ">
+  {% block body %}
+  
+  {% endblock body %}
 
-{% block body %}
-
-{% endblock body %}
+</div>
 <div class="footer">
   <div class="innerfooter container-xl">
     <div class="upper">

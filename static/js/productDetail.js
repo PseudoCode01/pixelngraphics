@@ -1,14 +1,19 @@
-function changemainimg(val){
-    console.log(val)
-   if( document.querySelector('.mainimage').src!=val){
+function changemainimg(val,v){
+
+   if( document.querySelector('.mainimage').src!=val && v==1){
     document.querySelector('.mainimage').src=val;   
+    console.log(document.querySelector('.mainimage').src);
+   }
+  else if( document.querySelector('.mainimage').src!=val && v==0){ 
+    document.querySelector('.vid').innerHTML=`<video id="vp" width="100%" height="100%" autoplay='true' loop >
+    <source id="source" class="mainimage" src="${val}" type="video/mp4">
+    Your browser does not support the video tag.
+    </video>`
    }
 }
 var xhr = new XMLHttpRequest();
 
 function Addtocart(sample,elem){
-    
-    
     if(String(elem.innerText)!='ADD TO CART'){
         window.location.href='/cart'
         return

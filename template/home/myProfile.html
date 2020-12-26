@@ -3,13 +3,13 @@
 
 {% block body %}
 <div class="container-xl mt-7" style="margin-bottom: 100px;">
-    
+    <h3 class="green">{{request.user.username}}</h3>
+    <hr class="greenbg">
+    <h3 class="white mb-4">My Orders</h3>
     {% if result %}
- 
-        
-<div class="row row-cols-1 row-cols-md-2" ">
+<div class="row row-cols-1 row-cols-md-3" ">
     {% for item in result %}
-    <div class="col mb-4 m-auto">
+    <div class="col   mb-4">
       <div class="card">
         {% if item.0.category|slugify == 'stream'  %}
         <video id="vp" width="100%" height="auto" autoplay='true' loop >
@@ -20,8 +20,8 @@
         <img src="/media/{{item.1.0.samplesfile}}" class="card-img-top" alt="...">
         {% endif %}
         <div class="card-body navbg">
-          <h5 class="card-title white">{{item.0.title|slice:"0:120"}}</h5>
-          <h2 class="mt-4 green">&#36; {{item.0.Price}}</h2>
+          <h5 class="card-title white">{{item.0.0.title|slice:"0:120"}}</h5>
+          <h2 class="mt-4 green">&#36; {{item.0.0.Price}}</h2>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
          
           <div class="card-body navbg">
            
-            <h1 class="mt-4 green ct" >NO ITEM FOUND</h1>
+            <h1 class="mt-4 green ct" >NO ORDER PLACED</h1>
           </div>
         </div>
       </div >

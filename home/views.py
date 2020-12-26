@@ -4,7 +4,8 @@ import json
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct
+from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct,MyOrder
+
 
 
 # Create your views here.
@@ -140,11 +141,25 @@ def editProfile(request):
 def productDetail(request,id):
     p=Product.objects.filter(sno=id).values()
     ps=ProductSample.objects.filter(product_id=id).values()
+    s=set()
+    il=0
+    l=[]
+    for it in p[0]['searchTags'].split(','):
+        if(il==len(p[0]['searchTags'].split(','))-1):
+            break
+        r=Product.objects.all()
+        for item in r:
+            print(item)
+            if(searchfun(item.searchTags.split(','),it)):
+                l.append([item,ProductSample.objects.filter(product_id=item.sno)])
+        
+        il+=1
+    print(l)
     try:
         c=Cart.objects.filter(user=request.user).filter(product_id=id).values()
     except:
         c=[]
-    return render(request,'home/productDetail.html',{'pr':p,'ps':ps,'l':len(c)})
+    return render(request,'home/productDetail.html',{'pr':p,'ps':ps,'l':len(c),'rec':l})
 def profileview(request,id):
     Sp=SellerProfile.objects.filter(seller_id=id).values()
     products=Product.objects.filter(isVerified=True).values()
@@ -278,7 +293,6 @@ def searchfun(list, platform):
     return False   
 def search(request):
     data=request.POST.get('stext')
-    
     r=Product.objects.all()
     l=[]
     for item in r:
@@ -289,4 +303,57 @@ def search(request):
     return render(request,'home/search.html',{'result':l})
 
 
+def getprice(request):
+    data=json.loads(request.body)
+    snos = data['sno'].split('+')
+    qn = data['qns'].split('+')
+    print(snos,qn)
+    i=0
+    price=0;
+    for item in snos:
+        if(i==len(snos)-1):
+            break
+        print(item)
+        P=Product.objects.filter(sno=int(item)).values()
+        if len(P)>0:
+            print(P[0])
+            price+=int(P[0]['Price'])*int(qn[i])
+        i+=1
+    print(price)
+    return JsonResponse({'price':price},safe=False)
+def additems(request):
+    data=json.loads(request.body)
+    snos = data['sno'].split('+')
+    qn = data['qns'].split('+')
+    i=0
+    
+    for item in snos:
+        if(i==len(snos)-1):
+            break
+        P=Product.objects.filter(sno=int(item)).values()
+        c=Cart.objects.filter(product_id=int(item)).filter(user=request.user)[0]
+        changes=c.changes
+        
+        c.delete()
+        if len(P)>0:
+            q=MyOrder(product=Product.objects.get(sno=int(item)),quantity=qn[i],changes=changes,user=request.user)
+            q.save()
+            po=Product.objects.get(sno=int(item))
+            if(po.category=='logo'):
+                po.isSold=True
+            sn=po.seller_id
+            po.save()
+            s=SellerProfile.objects.get(seller_id=sn)
+            s.sells+=1
+            s.earned+=int(P[0]['Price'])*int(qn[i])   
+            s.save()
+        i+=1
+    return JsonResponse({'price':'ok'},safe=False)
+def myProfile(request):
+    mp=MyOrder.objects.filter(user=request.user).values()
+    l=[]
+    for item in mp:
+        print(item['product_id'])
+        l.append([Product.objects.filter(sno=item['product_id']),ProductSample.objects.filter(product_id=item['product_id'])])
+    return render(request,'home/myProfile.html',{'result':l})
 

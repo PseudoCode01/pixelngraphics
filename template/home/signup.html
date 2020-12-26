@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/signup.css' %}">
      <body>
@@ -23,7 +25,12 @@
                   Sign In
                 <div class="right"></div>
               </button>
-           
+           <h4 class="white mt-5">Or</h4>
+           <div class="sociallogin mt-4">
+             <a href="{% provider_login_url 'google'%}" class="mt-4"> <img src="/static/images/google.svg" width="40px" height="40px" 
+               alt=""></a>
+            
+           </div>
             </div> 
            <div action="#" class="sign-up-form form">
             <h2 class="title">Sign up</h2>
@@ -103,7 +110,7 @@
         </div>
       </div>
     </div>
-  
+ 
 <script src="{% static 'js/signup.js' %}">
 </script>
 {% endblock body %}

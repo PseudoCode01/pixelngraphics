@@ -47,7 +47,7 @@ class Product(models.Model):
     searchTags=models.CharField(default=0,max_length=1000)
     Price=models.CharField(default=0,max_length=1000)
     isVerified=models.BooleanField(default=False)
-    number_sell=models.IntegerField(default=0)
+    isSold=models.BooleanField(default=False)
     rating=models.IntegerField(default=0)
     rated_by=models.IntegerField(default=0)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
@@ -83,3 +83,12 @@ class CustomProduct(models.Model):
 
     def __str__(self):
         return 'No.'+str(self.sno)+'  '+self.name+' '+self.email
+class MyOrder(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    product=models.ForeignKey(Product,default=None,on_delete=models.CASCADE)
+    quantity=models.IntegerField(default=0)
+    changes=models.CharField(default='No',max_length=1000)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+
+

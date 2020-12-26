@@ -45,21 +45,22 @@ button{
 .productslider{
   
    width: 100%;
-   height: 300px;
+
    white-space: nowrap;
    overflow-x: auto;
    overflow-y: hidden;
 }
 .productslider img{
-    width: 200px;
-    height: 150px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
     float: right;
 }
 .productslider .card{
-    height: 280px;
-    width: 400px;
+    height: 180px;
+    width: 320px;
     display: inline-block;
-    margin-bottom: 20px;
+    cursor: pointer;
   }
   .productslider .card img{
     object-fit: cover;
@@ -67,18 +68,77 @@ button{
     width: 100%;
   }
   .productslider .card .card-img-overlay{
-    top: 230px;
+    top: 134px;
     background-image: linear-gradient(#1100000f, #0d0d0d);
   }
 .cn{
     margin-top: 150px;
 }
 .extras{
-    height: 100px;
+    height: auto;
 }
 video{
     max-width: 100%;
 }
 .vid{
     height: 100%;
+}
+.rowcus{
+    display: flex;
+overflow: auto;
+}
+.colcus , .extras{
+    width: 150px;
+    height: auto;
+}
+.dev{
+    display: none;
+}
+@media only screen and (max-width:1000px){
+    .disc h1{
+        font-size: 24px;
+    }
+    .disc h4{
+        font-size: 19px;
+    }
+}
+@media only screen and (max-width:800px){
+    .dev{
+        display: block;
+    }
+    .productdisplay{
+        flex-direction: column-reverse;
+    }
+    .mainimg{
+        height: auto;
+    }
+    .img{
+        width: 100%;
+    }
+    .disc{
+        width: 100%;
+    }
+    .otherimg{
+        margin-bottom: 40px;
+    }
+    .disc h1, .disc h4{
+        text-align: center;
+    }
+    .disc div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .cn{
+        margin-top: 30px;
+    }
+     .btn{
+        display: block;
+        margin: auto;
+    }
+}
+@media (max-width:400px){
+.recworks h2{
+font-size: 20px;
+}
 }

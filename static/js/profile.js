@@ -2,6 +2,16 @@ function banner(){
   document.getElementById('staticBackdropLabel').innerText='Add Your Banner'
   document.querySelector('.cat').value='banner'
 }
+if(localStorage.getItem('sendm')=='true'){
+document.querySelector('.message').innerHTML=` <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Well done ! </strong>Aww yeah, you successfully added the ${localStorage.getItem('type')} .
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+`
+localStorage.setItem('sendm' ,false)
+}
 function stream(){
   document.getElementById('staticBackdropLabel').innerText='Add Your Stream Overlay'
   document.querySelector('.cat').value='stream'
@@ -35,8 +45,7 @@ for(item of document.querySelectorAll('.tags')){
 
 tags+=String(item.innerHTML).split('&nbsp;')[0]+',';
 }
-// console.log(filefor)
-console.log(file5.files,file1,file2,file3,filefor,file6);
+
 if(file1.length<1 || file2.length<1 || (file3.length<1 &&tags&& file3.length<1&&file6.length<1)){
 //   document.getElementById('message').innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
 //   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
@@ -65,32 +74,19 @@ else{
   var width = 0;
   xhr.onload = function() {
   if (xhr.status != 200) { 
-// alert(`Error ${xhr.status}: ${xhr.statusText}`); 
-//     document.getElementById('thumbnail').disabled=false
-//     document.getElementById('video').disabled=false
-//     document.getElementById('resources').disabled=false
-//     document.getElementById('videoTitle').disabled=false
-//     document.getElementById('progress').style.visibility='hidden';
-//     element.style.display='block';
-//     document.getElementById('message').innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
-//    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-//  Error! 
-//  </div> `
+
   } else { 
     data=JSON.parse(xhr.responseText)
-    console.log(data)
+    
     if(no<file5.files.length-1)
 { sendForm(++no);}
 else{
-  document.querySelector('.modal-footer').innerHTML=` <button type="button" class="btn btn-primary" onclick="sendForm(0)">Submit</button>
-`
-  document.querySelector('.message').innerHTML=` <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Well done ! </strong>Aww yeah, you successfully added the logo .
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-`
+  window.location.reload()
+sendm=true;
+localStorage.setItem("sendm", 'true');
+localStorage.setItem("type",document.querySelector('.cat').value );
+ 
+
 }
 }
 };

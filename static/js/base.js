@@ -36,11 +36,20 @@ function openNav() {
     var isOpen = false;
     submitIcon.click(function(){
         if(isOpen == false){
+            if(screen.width<1000){
+
+                document.querySelector('.sercontainer').style.width='90%'
+            }
+      
             searchBox.addClass('searchbox-open');
             inputBox.focus();
             isOpen = true;
         } else {
             searchBox.removeClass('searchbox-open');
+            if(screen.width<1000){
+
+                document.querySelector('.sercontainer').style.width='100px'
+            }
             inputBox.focusout();
             isOpen = false;
         }

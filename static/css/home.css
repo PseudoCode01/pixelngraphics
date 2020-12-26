@@ -414,6 +414,12 @@ width: 100%;
   }
 }
 @media only screen and (max-width:400px){
+  .filters{
+    width: 140px;
+  }
+  .custom h6{
+    width: 140px;
+  }
   .imgpar ,.slant2,.slant{
     height: 180px;
   }

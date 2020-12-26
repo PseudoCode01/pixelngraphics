@@ -46,7 +46,8 @@ elem.style.color='#92d945';
        console.log(JSON.parse(xhr.responseText)['product'])
       for(var item of JSON.parse(xhr.responseText)['product']){
           if(item[0]['title'].length>20){
-text=String(item[0]['title'])[0,20]+'...'
+            text=String(item[0]['title']).substring(0,20)+'...'
+
           }
           else{
               text=item[0]['title']
@@ -65,7 +66,7 @@ v+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sn
       }
       for(var item of JSON.parse(xhr.responseText)['banner']){
           if(item[0]['title'].length>20){
-text=String(item[0]['title'])[0,20]+'...'
+            text=String(item[0]['title']).substring(0,20)+'...'
           }
           else{
               text=item[0]['title']
@@ -83,8 +84,8 @@ b+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sn
 </div>`
       }
       for(var item of JSON.parse(xhr.responseText)['stream']){
-          if(item[0]['title'].length>20){
-text=String(item[0]['title'])[0,20]+'...'
+          if(item[0]['title'].length>30){
+text=String(item[0]['title']).substring(0,20)+'...'
           }
           else{
               text=item[0]['title']
@@ -134,3 +135,37 @@ so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['s
     };
     
     }
+    window.smoothScroll = function(target,pn) {
+      console.log(pn)
+      if(pn==0){
+        document.querySelector('.c1').click()
+        console.log(document.querySelector('.banner'))
+      }
+    else if(pn==1){
+        document.querySelector('.c2').click()
+        console.log(document.querySelector('.banner'))
+      }
+     else if(pn==2){
+        document.querySelector('.c3').click()
+      }
+      var scrollContainer = target;
+      do { //find scroll container
+          scrollContainer = scrollContainer.parentNode;
+          if (!scrollContainer) return;
+          scrollContainer.scrollTop += 1;
+      } while (scrollContainer.scrollTop == 0);
+  
+      var targetY = 0;
+      do { //find the top of target relatively to the container
+          if (target == scrollContainer) break;
+          targetY += target.offsetTop;
+      } while (target = target.offsetParent);
+  
+      scroll = function(c, a, b, i) {
+          i++; if (i > 30) return;
+          c.scrollTop = a + (b - a) / 30 * i;
+          setTimeout(function(){ scroll(c, a, b, i); }, 20);
+      }
+      // start scrolling
+      scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
+  }

@@ -12,7 +12,7 @@
       Your browser does not support the video tag.
       </video>
       <hr class="greenbg">
-     <div class="card even bg" >
+     <div class="card even bg" style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),0)">
       <div class="row no-gutters">
           <div class="imgpar mt-auto mb-auto" style="width: 100%;">
                <img width="100%" height="100%" src="/media/{{ht.0.toppremadelogo}}" alt="" srcset=""> 
@@ -28,7 +28,7 @@
   </div>
   
   <div class="container-xl">
-    <div class="card even bg mt-4" >
+    <div class="card even bg mt-4" style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),1)">
       <div class="row no-gutters">
           <div class="imgpar mt-auto mb-auto" style="width: 100%;">
                <img width="100%" height="100%"  src="/media/{{ht.0.banner}}" alt="" srcset=""> 
@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-    <div class="card even bg mt-4" >
+    <div class="card even bg mt-4" style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),2)">
       <div class="row no-gutters">
           <div class="imgpar mt-auto mb-auto" style="width: 100%;">
                <img width="100%" height="100%"  src="/media/{{ht.0.streamoverlays}}" alt="" srcset=""> 
@@ -56,14 +56,14 @@
       </div>
     </div>
   </div>
-  <div class="container-xl mt-5">
+  <div class="container-xl mt-5 " id="procont">
     <hr class="greenbg">
     <div class="options">
-      <h5 class="green cc" onclick="changecal(0,this)" style="cursor: pointer;">PREMADE LOGOS</h5>
+      <h5 class="green cc c1" onclick="changecal(0,this)" style="cursor: pointer;">PREMADE LOGOS</h5>
       <div></div>
-      <h5 class="white cc" onclick="changecal(1,this) " style="cursor: pointer;">BANNERS</h5>
+      <h5 class="white cc c2" onclick="changecal(1,this) " style="cursor: pointer;">BANNERS</h5>
       <div></div>
-      <h5 class="white cc" onclick="changecal(2,this)" style="cursor: pointer;">STREAM OVERLAYS</h5>
+      <h5 class="white cc c3" onclick="changecal(2,this)" style="cursor: pointer;">STREAM OVERLAYS</h5>
     </div>
     <hr class="greenbg mb-0">
 <div class="productContainer">
@@ -78,8 +78,8 @@
       <li class="white fti4" onclick="sort(5,this)">Sale</li>
     </ul>
     <div class="custom mt-4">
-      <h2 class="green">Custom Logo:</h2>
-      <h6 class="white">Do you need a custom logo? Order Now !</h6>
+      <h2 class="green">Custom Graphic:</h2>
+      <h6 class="white">Do you need a custom graphic? Order Now !</h6>
       <button type="button" class="btn btn-outline-success" onclick="window.location.href='/customlogo'">ORDER NOW</button>
     </div>
   </div>

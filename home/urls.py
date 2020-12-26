@@ -28,4 +28,7 @@ urlpatterns = [
     path("addcustom",views.addcustom,name="addcustom"),
     path("filters",views.filters,name="filters"),
     path("search",views.search,name="search"),
+    path("getprice",views.getprice,name="getprice"),
+    path("additems",views.additems,name="additems"),
+    path("myProfile",views.myProfile,name="myProfile"),
 ]

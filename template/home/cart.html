@@ -5,10 +5,10 @@
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/cart.css' %}">
 
-  <div class="container navbg mt-7 pb-4">
+  <div class="container-xl c1  navbg mt-7 pb-4">
 <h2 class="green pt-3 mb-3">My Cart</h2>
 <hr class="greenbg mb-2">
-<div class="containerinner">
+<div class="containerinner" >
 
     <div class="f1"></div>
     <div class="f2 ml-3">
@@ -18,15 +18,10 @@
     </div>
 </div>
 <hr class="greenbg mb-5">
-
 {% if cart %}
-    
-
-    
 {% for item in cart %}
     <div class="containerinner">
 <div class="f1">
-    
     {% if item.0.0.category|slugify == 'stream' %}
     <video id="vp" width="50%" height="auto" autoplay='true' width="100%" loop >
         <source id="source" src="/media/{{item.1.0.samplesfile}}" type="video/mp4">
@@ -38,20 +33,26 @@
     {% endif %}
         
     <h5 class="card-title white ct m-auto">{{item.0.0.title}}</h5>
+    <input type="hidden" class="sno" value="{{item.0.0.sno}}">
 </div>
 <div class="f2 ml-3">
     <h3 class="card-text green price ct ">$<strong>{{item.0.0.Price}}</strong></h3>
     {% if item.0.0.isSold == True %}    
-    <h4 class="card-text red mt-3">SOLD OUT
+    <h4 class="card-text red pro " style="display:flex; justify-content:center; align-items:center; width:30%; cursor: pointer;"  onclick="Removecart('{{item.0.0.sno}}',0)">SOLD OUT
     </h4>
     {% else %}
-    <div class="quantity ">
+    <div class="quantity">
         <div class="minus greenbg spinbutton" onclick="counter(-1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">-</div>
         <span class="qn{{item.0.0.sno}} green">1</span>
         <div class="plus greenbg " onclick="counter(1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">+</div>
     </div>
     {% endif %}
-    <h3 class="card-text green price  mb-0">$<strong class="tp tp{{item.0.0.sno}}">{{item.0.0.Price}}</strong></h3>
+    {% if item.0.0.isSold == True %} 
+    <h3 class="card-text green price  mb-0" >$<strong class="tp tp{{item.0.0.sno}}">0</strong></h3>
+    {% else %}
+    <h3 class="card-text green price  mb-0" >$<strong class="tp tp{{item.0.0.sno}}">{{item.0.0.Price}}</strong></h3>
+
+    {% endif %}
 </div>
 </div> 
 <hr class="greenbg mb-2">
@@ -67,40 +68,121 @@
     <div class="f1"></div>
     <div class="f2alt ml-3">
         <h3 class="pay green ct">Total Payable Amount</h3>
-        <h3 class="tamount green ct"><h2 class="ta"></h2> </h3>
+        <h3 class="tamount green ct"></h3>
     </div>
 </div>
+
+<hr class="greenbg mb-2">
+
+<button type="button"  onclick="getprice(this,0)"  class="btn btn-success pay"  >Checkout</button>
+
 {% endif %}
-<!-- <div class="row row-cols-1 row-cols-md-1 ml-2 mb-4 leftitems">
+  </div>
+  <div class="container-xl c2 navbg mt-7 pb-4">
+
+{% if cart %}
+<h4 class="green pt-3 mb-3">My Cart</h4>
+<hr class="greenbg mb-2">
   
   {% for item in cart %}
-  <div class="card" style="width: 18rem;">
-    <img src="/media/{{item.1.0.samplesfile}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title white">{{item.0.0.title}}</h5>
-      <h3 class="card-text green price mb-0">$<strong>{{item.0.0.Price}}</strong></h3>
-      <p class="card-text mb-0"><small class="text-muted">By {{item.0.0.sellername}}</small></p>
-            {% if item.0.0.isSold == True %}    
-            <h4 class="card-text red mt-3">SOLD OUT
-            </h4>
+      <div class="containermob">
+          <div class="colmob">
+            {% if item.0.0.category|slugify == 'stream' %}
+            <video id="vp"  height="auto" autoplay='true' width="auto" loop >
+                <source id="source" src="/media/{{item.1.0.samplesfile}}" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                <label for="price" class="white mt-1">Price</label>
+                <h4 class="card-text green ">$ <strong>{{item.0.0.Price}}</strong></h4>
+                {% else %}
+                <img src="/media/{{item.1.0.samplesfile}}" height="auto" width="auto" class="card-img-top imgsp" alt="...">
+                <label for="price" class="white mt-1">Price</label>
+                <h4 class="card-text green ">$ <strong>{{item.0.0.Price}}</strong></h4>
+
             {% endif %}
-            <button  class="btn btn-outline-danger spinbutton mt-4" style="cursor: pointer;" onclick="addspin()"  type="button" >
-              Remove
-              </button>
+                 
+          </div>
+          <div class="colmob2 m-auto">
+            <h5 class="card-title white ct m-auto">{{item.0.0.title}}</h5>
+    <input type="hidden" class="sno2" value="{{item.0.0.sno}}">
+
+            <div class="quantity mt-3">
+                <div class="minus m2 greenbg spinbutton" onclick="counter(-1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">-</div>
+                <span class="qn2{{item.0.0.sno}} green">1</span>
+                <div class="plus p2 greenbg " onclick="counter(1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">+</div>
+            </div>
+          </div>
+          <div class="colmob3 mt-auto">
+              <div class="icolmob3 mt-auto ml-auto mr-auto">
+            <label for="price" class="white ">Total</label>
+            <h3 class="card-text green price  mb-0">$<strong class="tp2 tp2{{item.0.0.sno}}">{{item.0.0.Price}}</strong></h3>
+            </div>
+          </div>
+      </div>
+<hr class="greenbg mb-2">
+
+  {% endfor %}
+  {% else %}
+  <div class="containerinner" style="height:  200px;">
+
+    <h2 class="white ct m-auto mb-5">No items in cart</h2>
+</div>      
+{% endif %}
+{% if cart %}
+<div class="containerinner">
+
+    <div class="f2alt">
+        <h5 class=" green ct mr-1">Total Payable Amount</h5>
+        <h3 class="tamount2 green ct mr-2"> </h3>
+    </div>
+</div>
+<button type="button m-auto" style="display: block;"  onclick="getprice(this,1)"  class="btn btn-success pay"  >Checkout</button>
+
+{% endif %}
+</div>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">CHOOSE PAYMENT METHOD</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div id="paypal-button-container"></div>
+            <script src="https://www.paypal.com/sdk/js?client-id=ASuosU7Em49pqGPUdBLGYb7liLl3eL-FhA_jUI2xCfYZvEeqqnjyjYC58iZa0C_64qfPUw8RsLbs8g4Q&currency=USD"
+            ></script>
+            <script>
+               
+                paypal.Buttons({
+                    createOrder: function(data, actions) {
+                        return actions.order.create({
+                            
+                            purchase_units: [{
+                                amount: {
+                                    value: gettprice()
+                                }
+                            }]
+                        });
+                    },
+        
+                    onApprove: function(data, actions) {
+                        return actions.order.capture().then(function(details) {
+                           additems()
+                        });
+                    }
+                }).render('#paypal-button-container');
+            </script>
+        </div>
+        <div class="modal-footer">
+         
+        </div>
+      </div>
     </div>
   </div>
-  {% endfor %}  
-  </div> -->
-  <!-- <div class="rightitems">
-      <div class="ic">
-          <h2 class="white mb-3">Details</h2>
-          <hr class="white">
-          <h4 class="white">PAYABLE AMOUNT <strong class="green pd">&nbsp; &nbsp; &nbsp; &nbsp;$ 12</strong></h4>
-      </div>
-  </div> -->
- 
-  </div>  
-<script src="{% static 'js/cart.js' %}">
-</script>
+
+
+<script src="{% static 'js/cart.js' %}"></script>
 {% endblock body %}
     
