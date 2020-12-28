@@ -31,4 +31,5 @@ urlpatterns = [
     path("getprice",views.getprice,name="getprice"),
     path("additems",views.additems,name="additems"),
     path("myProfile",views.myProfile,name="myProfile"),
+    path("sendotp",views.sendotp,name="sendotp"),
 ]

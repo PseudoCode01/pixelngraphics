@@ -144,13 +144,27 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static'),
-    
+    os.path.join(BASE_DIR,'static'),    
 ]
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
-
-
 SITE_ID = 1
  
 LOGIN_REDIRECT_URL="/"
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtpout.secureserver.net'
+EMAIL_HOST_USER = 'no-reply@pixelngraphics.com'
+EMAIL_HOST_PASSWORD = 'PixelnGraphics'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL= True
+DEFAULT_FROM_EMAIL = 'PixelNGraphics Team <no-reply@pixelngraphics.com>'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = 'ssygi0007@gmail.com'
+# EMAIL_HOST_PASSWORD = 'jgxt jtjq lmqp xlin'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+# DEFAULT_FROM_EMAIL = 'Cognedu Team <noreply@Cognedu.com>'

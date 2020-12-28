@@ -77,7 +77,11 @@
          <div class="productslider">
            
            {% for item in rec %}
-         
+
+{% if item.0.sno != pr.0.sno %}
+  
+
+  
              
             <div class="card bg-dark text-white mr-2 "  onclick="window.location.href='/productDetail/{{item.0.sno}}'" >
               {% if item.0.category|slugify == 'stream' %}
@@ -97,7 +101,7 @@
                  
                 </div>
               </div>
-                  
+              {% endif %}   
            {% endfor %}
         
           

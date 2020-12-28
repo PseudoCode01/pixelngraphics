@@ -88,7 +88,11 @@
     <div class="row row-cols-1 row-cols-md-2 g-4 logo">
       
       {% for item in product %}
-      <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      
+      {% if forloop.counter < 3 %}
+
+        
+      <div class="col lg" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
           <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
         
@@ -105,6 +109,26 @@
           </div>
         </div>
       </div>
+      {% else %}
+                
+      <div class="col lg" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+        <div class="card bg-dark text-white">
+          <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
+        
+          <div class="card-img-overlay">
+            
+            {% if item.0.title|length > 20 %}
+            
+            <p class="card-text">{{item.0.title|slice:"0:20"}}... | $ {{item.0.Price}}</p>
+            {% else %}
+            <p class="card-text">{{item.0.title}} | $ {{item.0.Price}}</p>
+            {% endif %}
+              
+           
+          </div>
+        </div>
+      </div>      
+      {% endif %}
       {% endfor %}
     
    
@@ -112,7 +136,9 @@
     <div class="row row-cols-1 row-cols-md-2 g-4 banner" style="display: none;">
       
       {% for item in banner %}
-      <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      
+      {% if forloop.counter < 3 %}
+      <div class="col bn" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
           <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
         
@@ -129,12 +155,59 @@
           </div>
         </div>
       </div>
+      {% else %}
+  
+        
+      <div class="col bn" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+        <div class="card bg-dark text-white">
+          <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
+        
+          <div class="card-img-overlay">
+            
+            {% if item.0.title|length > 20 %}
+            
+            <p class="card-text">{{item.0.title|slice:"0:20"}}... | $ {{item.0.Price}}</p>
+            {% else %}
+            <p class="card-text">{{item.0.title}} | $ {{item.0.Price}}</p>
+            {% endif %}
+              
+           
+          </div>
+        </div>
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
     <div class="row row-cols-1 row-cols-md-2 g-4 stream" style="display: none;">
       
       {% for item in stream %}
-      <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      
+      {% if forloop.counter < 3 %}
+             
+      <div class="col st" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+        <div class="card bg-dark text-white">
+
+      
+          <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
+      <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+          <div class="card-img-overlay">
+            {% if item.0.title|length > 20 %}  
+            <p class="card-text">{{item.0.title|slice:"0:20"}}... | $ {{item.0.Price}}</p>
+            {% else %}
+            <p class="card-text">{{item.0.title}} | $ {{item.0.Price}}</p>
+            {% endif %}
+              
+           
+          </div>
+        </div>
+      </div>
+{% else %}
+
+   
+        
+      <div class="col st" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
 
       
@@ -155,22 +228,23 @@
           </div>
         </div>
       </div>
+      {% endif %}
       {% endfor %}
     
    
     </div>
-    <div class="pagenav" style="visibility: hidden;">
+    <div class="pagenav" style="display: none;">
       <nav aria-label="Page navigation example ">
         <ul class="pagination ">
-          <li class="page-item navbg">
-            <a class="page-link navbg" href="#" aria-label="Previous">
+          <li class="page-item navbg" style="cursor: pointer;">
+            <a class="page-link navbg" onclick="pageback()" aria-label="Previous">
               <span aria-hidden="true">&laquo;</span>
             </a>
           </li>
-          <li class="page-item navbg"><a class="page-link navbg" href="#">1</a></li>
+          <li class="page-item navbg"><a class="page-link pageno navbg">1</a></li>
         
-          <li class="page-item navbg">
-            <a class="page-link navbg" href="#" aria-label="Next">
+          <li class="page-item navbg" style="cursor: pointer;">
+            <a class="page-link navbg" onclick="pagefor()" aria-label="Next">
               <span aria-hidden="true">&raquo;</span>
             </a>
           </li>

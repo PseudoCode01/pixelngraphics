@@ -1,3 +1,4 @@
+var el=0;
 function changecal(val,elem){
     for(item of document.querySelectorAll('.cc')){
         item.style.color='white'
@@ -7,18 +8,34 @@ function changecal(val,elem){
         document.querySelector('.logo').style.display='flex'
         document.querySelector('.banner').style.display='none'
         document.querySelector('.stream').style.display='none'
-
+        page=0;
+    document.querySelector('.pagenav').style.display='none'
+    document.querySelector('.pageno').innerHTML=1
+pagenav(0)
+el=0;
     }
     if(val==1){
         document.querySelector('.banner').style.display='flex'
         document.querySelector('.logo').style.display='none'
         document.querySelector('.stream').style.display='none'
+        page=0;
+        document.querySelector('.pagenav').style.display='none'
+        document.querySelector('.pageno').innerHTML=1
+        pagenav(1)
+        el=1;
 
     }
     if(val==2){
         document.querySelector('.banner').style.display='none'
         document.querySelector('.logo').style.display='none'
         document.querySelector('.stream').style.display='flex'
+        page=0;
+        document.querySelector('.pageno').innerHTML=1
+        document.querySelector('.pagenav').style.display='none'
+
+pagenav(2)
+el=2;
+
     }
 }
 function sort(fil,elem){
@@ -169,3 +186,87 @@ so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['s
       // start scrolling
       scroll(scrollContainer, scrollContainer.scrollTop, targetY, 0);
   }
+  var page=0;
+function pagenav(val){
+  if(val==0)
+{  
+  l= document.querySelectorAll('.lg');
+
+  if(l.length>page*8+8){
+    document.querySelector('.pagenav').style.display='flex'
+  }
+  // else{
+  //   document.querySelector('.pagenav').style.display='none'
+  // }
+  for(let i=0;i<l.length;i++){
+if(i>=page*8 && i<page*8+8){
+  l[i].style.display='block'
+}
+else{
+  l[i].style.display='none'
+
+}
+  }
+}
+  if(val==1)
+{  
+ 
+  b= document.querySelectorAll('.bn');
+  if(b.length>page*8+8){
+    document.querySelector('.pagenav').style.display='flex'
+  }
+  // else{
+  //   document.querySelector('.pagenav').style.display='none'
+  // }
+  for(let i=0;i<l.length;i++){
+if(i>=page*8 && i<page*8+8){
+  b[i].style.display='block'
+}
+else{
+  b[i].style.display='none'
+
+}
+  }
+}
+  if(val==2)
+{  
+  s= document.querySelectorAll('.st');
+  if(s.length>page*8+8){
+    document.querySelector('.pagenav').style.display='flex'
+  }
+
+  for(let i=0;i<l.length;i++){
+if(i>=page*8 && i<page*8+8){
+  s[i].style.display='block'
+}
+else{
+  s[i].style.display='none'
+
+}
+  }
+}
+}
+pagenav(0)
+
+function pagefor(){
+  if(el==0 && (page+1)*8<document.querySelectorAll('.lg').length)
+ { page=page+1;
+  document.querySelector('.pageno').innerHTML=page+1
+  pagenav(0)}
+  if(el==1 && (page+1)*8<document.querySelectorAll('.bn').length)
+ { page=page+1;
+  document.querySelector('.pageno').innerHTML=page+1
+  pagenav(0)}
+  if(el==2 && (page+1)*8<document.querySelectorAll('.st').length)
+ { page=page+1;
+  document.querySelector('.pageno').innerHTML=page+1
+  pagenav(0)}
+}
+function pageback(){
+  if(page>0)
+  {
+    page=page-1;
+  document.querySelector('.pageno').innerHTML=page+1
+  pagenav(0)
+}
+}

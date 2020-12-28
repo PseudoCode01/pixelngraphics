@@ -20,10 +20,10 @@
               <i class="fas fa-lock"></i>
               <input type="password" id="lpassword" placeholder="Password"/>
             </div>
-            <button class="btn-blue" onclick="Signin()" style="--content: 'Sign In'">
-                <div class="left"></div>
-                  Sign In
-                <div class="right"></div>
+          
+              <button class="btn btn-primary dsin" type="button" onclick="Signin(this)">
+               
+                SIGN IN
               </button>
            <h4 class="white mt-5">Or</h4>
            <div class="sociallogin mt-4">
@@ -52,12 +52,13 @@
               <input type="password" id='confirmpassword' placeholder="Password" />
             </div>
        
-            <button class="btn-blue"  onclick="Signup()" style="--content: 'Sign Up'">
-                <div class="left"></div>
-                  Sign Up
-                <div class="right"></div>
-              </button>
          
+             
+              <button class="btn btn-primary getotp" type="button" onclick="sendOtp(this)">
+            
+                SIGN UP
+                
+              </button>
             </div>
           
         </div>
@@ -110,7 +111,34 @@
         </div>
       </div>
     </div>
- 
+    <div class="modal fade"  id="myModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+     
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Email Verification</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="m3 mb-3"></div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="text" id="otp" placeholder="Enter OTP"/>
+            </div>
+          </div>
+          <div class="modal-footer">
+       
+            
+            <button class="btn btn-primary otpvar" type="button" onclick="Signup(this)">
+            
+              SIGN UP
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 <script src="{% static 'js/signup.js' %}">
 </script>
 {% endblock body %}

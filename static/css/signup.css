@@ -505,3 +505,10 @@ body {
      width: 1170px;
   }
 }
+.modal-body .input-field{
+  max-width: 100%;
+}
+.modal-footer{
+  display: flex;
+  justify-content: center;
+}

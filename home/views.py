@@ -5,8 +5,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
 from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct,MyOrder
-
-
+from django.conf import settings
+from django.core.mail import EmailMessage
+import random
+from django.template.loader import render_to_string
 
 # Create your views here.
 def home(request):
@@ -46,6 +48,38 @@ def refundpolicy(request):
 def about(request):
     return render(request,'home/about.html')
 
+
+
+def sendotp(request):
+    data=json.loads(request.body)
+    username=data['username']
+    email=data['email']
+    pass1=data['pass']
+    pass2=data['conpass']
+    r=1111
+    if(pass1!=pass2):
+        return JsonResponse({'error':'Password do not Match'},safe=False)
+    if(pass1==None or pass1==''):
+        return JsonResponse({'error':'Password is Mandatory'},safe=False)
+    elif len(username)> 20 or len(username)<5:
+        return JsonResponse({'error':"Your username can contain 5 to 20 Characters"},safe=False)
+    elif not username.isalnum():
+        return JsonResponse({'error':"Your username can contain letters and numbers only "},safe=False)
+    elif len(User.objects.filter(username=username))>0:
+        return JsonResponse({'error':"Username is already taken"},safe=False)
+    else:
+        r=random.randint(1000,9999)
+        template=render_to_string('home/otpvar.html',{'otp':r})
+        email = EmailMessage(
+            'Verification code for PixelNGraphics.com',
+            template,
+            settings.EMAIL_HOST_USER,
+            [email],
+        )
+        email.fail_silently=False
+        email.send()
+    print(r)
+    return JsonResponse({'success':r},safe=False)
 def ajaxsignup(request):
     data=json.loads(request.body)
     username=data['username']
