@@ -22,7 +22,7 @@
 {% for item in cart %}
     <div class="containerinner">
 <div class="f1">
-    {% if item.0.0.category|slugify == 'stream' %}
+    {% if item.1.0.category|slugify == 'video' %}
     <video id="vp" width="50%" height="auto" autoplay='true' width="100%" loop >
         <source id="source" src="/media/{{item.1.0.samplesfile}}" type="video/mp4">
         Your browser does not support the video tag.
@@ -38,7 +38,7 @@
 <div class="f2 ml-3">
     <h3 class="card-text green price ct ">$<strong>{{item.0.0.Price}}</strong></h3>
     {% if item.0.0.isSold == True %}    
-    <h4 class="card-text red pro " style="display:flex; justify-content:center; align-items:center; width:30%; cursor: pointer;"  onclick="Removecart('{{item.0.0.sno}}',0)">SOLD OUT
+    <h4 class="card-text red pro " style="display:flex; justify-content:center; align-items:center; width:30%; cursor: pointer;"  onclick="Removecart('{{item.0.0.sno}}',0,0)">SOLD OUT
     </h4>
     {% else %}
     <div class="quantity">
@@ -87,7 +87,7 @@
   {% for item in cart %}
       <div class="containermob">
           <div class="colmob">
-            {% if item.0.0.category|slugify == 'stream' %}
+            {% if item.1.0.category|slugify == 'video' %}
             <video id="vp"  height="auto" autoplay='true' width="auto" loop >
                 <source id="source" src="/media/{{item.1.0.samplesfile}}" type="video/mp4">
                 Your browser does not support the video tag.
@@ -95,8 +95,8 @@
                 <label for="price" class="white mt-1">Price</label>
                 <h4 class="card-text green ">$ <strong>{{item.0.0.Price}}</strong></h4>
                 {% else %}
-                <img src="/media/{{item.1.0.samplesfile}}" height="auto" width="auto" class="card-img-top imgsp" alt="...">
-                <label for="price" class="white mt-1">Price</label>
+                <img src="/media/{{item.1.0.samplesfile}}"  width="100%" class="card-img-top imgsp" alt="...">
+                <label for="price" class="white ">Price</label>
                 <h4 class="card-text green ">$ <strong>{{item.0.0.Price}}</strong></h4>
 
             {% endif %}
@@ -107,10 +107,14 @@
     <input type="hidden" class="sno2" value="{{item.0.0.sno}}">
 
             <div class="quantity mt-3">
-                <div class="minus m2 greenbg spinbutton" onclick="counter(-1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">-</div>
+ {% if item.0.0.isSold == True %} 
+                <p class="card-text red pro2 " style="display:flex; justify-content:center; align-items:center; width:100%; cursor: pointer;"  onclick="Removecart('{{item.0.0.sno}}',0,1)">SOLD OUT</p>
+                {% else %}
+                <div class="minus m2 greenbg spinbutton2" onclick="counter(-1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">-</div>
                 <span class="qn2{{item.0.0.sno}} green">1</span>
                 <div class="plus p2 greenbg " onclick="counter(1,'{{item.0.0.sno}}','{{item.0.0.Price}}')">+</div>
-            </div>
+     {% endif %}           
+ </div>
           </div>
           <div class="colmob3 mt-auto">
               <div class="icolmob3 mt-auto ml-auto mr-auto">

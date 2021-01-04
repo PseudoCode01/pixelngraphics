@@ -109,4 +109,6 @@ height: 850px;
     width: 100%;
     height: auto;
   }
+.parentcontainer{
+display:flex;
 }

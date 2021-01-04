@@ -29,7 +29,8 @@ function counter(val,elem,p){
 
      {   v= document.querySelector('.qn'+elem).innerText;
         if(Number(v)==1){
-            Removecart(elem)
+console.log(elem)
+            Removecart(elem,1,0)
             return
         }
         document.querySelector('.qn'+elem).innerText=Number(v)-1;
@@ -39,7 +40,7 @@ function counter(val,elem,p){
         else{
           v= document.querySelector('.qn2'+elem).innerText;
         if(Number(v)==1){
-            Removecart(elem)
+            Removecart(elem,1,1)
             return
         }
         document.querySelector('.qn2'+elem).innerText=Number(v)-1;
@@ -67,13 +68,16 @@ tp+=Number(item.innerText)
 counttotal();
 var xhr = new XMLHttpRequest();
 
-function Removecart(sample,val){
+function Removecart(sample,val,p){
     xhr.open('POST', '/removeCart',true);
     xhr.setRequestHeader('X-CSRFToken', csrftoken);     
-   
+var tr=JSON.stringify({'sno':Number(sample)})
+   xhr.send(tr);
+console.log(JSON.stringify({'sno':Number(sample)}))
     xhr.onload=function(){
       if(xhr.status!=200){
-          
+                alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+
     }
     else{
       window.location.reload()
@@ -85,20 +89,12 @@ function Removecart(sample,val){
     }
     xhr.upload.onprogress = function(e) {
       if (e.lengthComputable) {
-        if(val==0){
-          document.querySelector('.pro').innerHTML=`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
-     
-        }
-        else{
-    document.querySelector('.spinbutton').innerHTML=`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
-    document.querySelector('.spinbutton').style.width='50px'
-    document.querySelector('.spinbutton').style.height='50px'}
       } else {
       
       }
     
     };
-    xhr.send(JSON.stringify({'sno':Number(sample)}));
+    
     xhr.onerror = function() {
     
     };

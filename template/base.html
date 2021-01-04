@@ -23,8 +23,8 @@
       <div class="sercontainer mr-4">
         <form action="/search" method="POST" class="searchbox">{% csrf_token %}
             <input type="search" placeholder="Search......" name="stext" id="stext" class="searchbox-input" onkeyup="buttonUp();" required>
-            <!-- <input type="submit"  class="searchbox-submit"> -->
-            <span class="searchbox-submit"><img   src="/static/images/search.svg" alt="" srcset=""></span>
+             <input type="submit"  class="searchbox-submit">
+            <span class="searchbox-submit" onclick="document.querySelector('.searchbox').submit()" ><img   src="/static/images/search.svg" alt="" srcset=""></span>
             <span class="searchbox-icon"><img   src="/static/images/search.svg" alt="" srcset=""></span>
         </form>
     </div>
@@ -37,6 +37,15 @@
      <div class="navright">
        <!-- <img src="/static/images/cart.svg" style="cursor: pointer;" class='carticon' onclick="window.location.href='/cart'" alt="" srcset=""> -->
        <!-- <a href="/signin" >Sign In</a> -->
+ <div class="sercontainer mr-2">
+        <form action="/search" method="POST" class="searchbox">{% csrf_token %}
+            <input type="search" placeholder="Search......" name="stext" id="stext" class="searchbox-input" onkeyup="buttonUp();" required>
+            <input type="submit"  class="searchbox-submit"> 
+            <span class="searchbox-submit" onclick="document.querySelector('.searchbox').submit()" ><img   src="/static/images/search.svg" alt="" srcset=""></span>
+            <span class="searchbox-icon"><img   src="/static/images/search.svg" alt="" srcset=""></span>
+        </form>
+    </div>
+
        <a href="/signup" class="green mr-3" >Sign In</a>
        <a href="/contact">Contact Us</a>
       </div>   
@@ -82,7 +91,7 @@
   <h5 onclick="window.location.href='/privacypolicy'">Privacy Policy</h5>
   <h5 onclick="window.location.href='/refundpolicy'">Refund Policy</h5>
   <h5 onclick="window.location.href='/termsofservice'">Terms of Services</h5>
-  <h5>Support</h5>
+  <h5 onclick="window.location.href='/contact'">Support</h5>
 </div>
 <div class="social">
   <h3 class="green">STAY CONNECTED</h3>

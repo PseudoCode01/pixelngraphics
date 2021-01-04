@@ -42,3 +42,37 @@ xhr.onerror = function() {
 alert("Request failed");
 };
 }
+function budget(val){
+  console.log(val)
+  document.querySelector('.select2').style.display='block'
+if(val=='Logo'){
+  document.querySelector('.select2').innerHTML=`  <select name="slct2" id="slct2" >
+  <option selected disabled>Please Select</option>
+  <option value="Less than 25$">Less than 25$</option>
+  <option value="25$ to 50$">25$ to 50$</option>
+  <option value="more than 50$">more than 50$</option>
+</select>`
+}
+if(val=='Custom Emojis'){
+  document.querySelector('.select2').innerHTML=`  <select name="slct2" id="slct2" >
+  <option selected disabled>Please Select</option>
+  <option value="less than 25$">less than 25$</option>
+  <option value="more than 50$">more than 50$</option>
+</select>`
+}
+if(val=='Banner'){
+  document.querySelector('.select2').innerHTML=`  <select name="slct2" id="slct2" >
+  <option selected disabled>Please Select</option>
+  <option value="less than 20$">less than 20$</option>
+  <option value="20$ to 30$">20$ to 30$</option>
+  <option value="more than $30">more than $30</option>
+</select>`}
+if(val=='Stream Overlay'){
+  document.querySelector('.select2').innerHTML=`  <select name="slct2" id="slct2" >
+  <option selected disabled>Please Select</option>
+  <option value="50$ to 70$">50$ to 70$</option>
+  <option value="more than $70">more than $70</option>
+</select>`
+}
+
+}

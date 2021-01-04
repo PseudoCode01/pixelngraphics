@@ -21,15 +21,23 @@
       <textarea class="form-control"  rows="3" id="brief" class="brf" required></textarea>
     </div>
    <label for="name" class="white">Budget*</label>
-   
 <div class="select">
-  <select name="slct" id="slct" >
+  <select name="slct" id="slct" onchange="budget(value)">
     <option selected disabled>Please Select</option>
-    <option value="1">Pure CSS</option>
-    <option value="2">No JS</option>
-    <option value="3">Nice!</option>
+    <option value="Logo">Logo</option>
+    <option value="Custom Emojis">Custom Emojis</option>
+    <option value="Banner">Banner</option>
+    <option value="Stream Overlay">Stream Overlays</option>
   </select>
 </div>
+<div class="select2" style="display: none;">
+  <select name="slct" id="slct" >
+    <option selected disabled>Please Select</option>
+    <option value="1">Logo</option>
+    <option value="2">Banner</option>
+    <option value="3">Stream Overlays</option>
+  </select>
+</div>   
 <div class="botcon">  
   <button class="btn btn-success spinbutton m-auto" type="button" onclick="custom()" >
     Submit

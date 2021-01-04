@@ -72,7 +72,6 @@
     <ul>
       <li class="white fti4" onclick="sort(0,this)">Price-High to Low</li>
       <li class="white fti4" onclick="sort(1,this)">Price-Low to High</li>
-      <li class="white fti4" onclick="sort(2,this)">Best Selling</li>
       <li class="white fti4" onclick="sort(3,this)">Top Rating</li>
       <li class="green fti4" onclick="sort(4,this)">Newly Added</li>
       <li class="white fti4" onclick="sort(5,this)">Sale</li>
@@ -89,7 +88,7 @@
       
       {% for item in product %}
       
-      {% if forloop.counter < 3 %}
+      {% if forloop.counter < 9 %}
 
         
       <div class="col lg" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
@@ -137,7 +136,7 @@
       
       {% for item in banner %}
       
-      {% if forloop.counter < 3 %}
+      {% if forloop.counter < 9 %}
       <div class="col bn" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
           <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
@@ -182,16 +181,21 @@
       
       {% for item in stream %}
       
-      {% if forloop.counter < 3 %}
+      {% if forloop.counter > 8 %}
              
       <div class="col st" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
 
       
-          <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
-      <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
-      Your browser does not support the video tag.
-      </video>
+                {% if  item.1.filetype|slugify == 'video' %}
+        
+      <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
+  <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+  {% else %}
+  <img src="/media/{{item.1.samplesfile}}"  width="100%" height="550px" class="card-img" alt="...">
+      {% endif %}
           <div class="card-img-overlay">
             {% if item.0.title|length > 20 %}  
             <p class="card-text">{{item.0.title|slice:"0:20"}}... | $ {{item.0.Price}}</p>
@@ -211,10 +215,15 @@
         <div class="card bg-dark text-white">
 
       
+              {% if  item.1.filetype|slugify == 'video' %}
+            
           <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
       <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
       Your browser does not support the video tag.
       </video>
+      {% else %}
+      <img src="/media/{{item.1.samplesfile}}"  width="100%" height="550px" class="card-img" alt="...">
+          {% endif %}
           <div class="card-img-overlay">
             
             {% if item.0.title|length > 20 %}

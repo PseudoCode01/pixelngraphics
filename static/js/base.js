@@ -38,7 +38,14 @@ function openNav() {
         if(isOpen == false){
             if(screen.width<1000){
 
+                
                 document.querySelector('.sercontainer').style.width='90%'
+                if( document.querySelector('.usernavright')!=null)
+               { document.querySelector('.usernavright').style.width='300px'}
+                else{
+                document.querySelector('.navright').style.width='300px'
+
+                }
             }
       
             searchBox.addClass('searchbox-open');
@@ -48,8 +55,14 @@ function openNav() {
             searchBox.removeClass('searchbox-open');
             if(screen.width<1000){
 
-                document.querySelector('.sercontainer').style.width='100px'
-            }
+                 document.querySelector('.sercontainer').style.width='100px'
+                if( document.querySelector('.usernavright')!=null)
+{
+                document.querySelector('.usernavright').style.width='150px'}
+                else{
+                    document.querySelector('.navright').style.width='150px'
+                }
+}
             inputBox.focusout();
             isOpen = false;
         }

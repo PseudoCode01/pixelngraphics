@@ -1,16 +1,16 @@
 function changemainimg(val,v){
-
-   if( document.querySelector('.mainimage').src!=val && v==1){
-    document.querySelector('.mainimage').src=val;   
+   if( document.querySelector('.mainimage')!=null&& document.querySelector('.mainimage').src!=val && v==1){
+    document.querySelector('.mainimg').innerHTML=` <img class="mainimage" src="${val}" alt="" srcset="">`;   
     console.log(document.querySelector('.mainimage').src);
    }
   else if( document.querySelector('.mainimage').src!=val && v==0){ 
-    document.querySelector('.vid').innerHTML=`<video id="vp" width="100%" height="100%" autoplay='true' loop >
+    document.querySelector('.mainimg').innerHTML=`<div class="vid"><video id="vp" width="100%" height="100%" autoplay='true' loop >
     <source id="source" class="mainimage" src="${val}" type="video/mp4">
     Your browser does not support the video tag.
-    </video>`
+    </video></div>`
    }
 }
+
 var xhr = new XMLHttpRequest();
 
 function Addtocart(sample,elem){

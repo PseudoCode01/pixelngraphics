@@ -42,15 +42,15 @@
         <button type="button" class="btn btn-outline-success btn-lg pv" data-toggle="modal" data-target="#exampleModalCenteredScrollable">Edit Profile</button>
         <button type="button" class="btn btn-outline-success btn-lg pv" onclick="window.location.href='/profileview/{{request.user.id}}'">Public View</button>
       </div>
-        <input type="hidden" class="srating" value="{{profile.0.sellerRating}}">
+        <input type="hidden" class="srating2" value="{{profile.0.sellerRating}}">
         <span class="rating ">
             <h6 class="white mt-5">Total Rating</h6>
             <div class="stars">
-                <span class="s1">&#9733;</span>
-                <span class="s1">&#9733;</span>
-                <span class="s1">&#9733;</span>
-                <span class="s1">&#9733;</span>
-                <span class="s1">&#9733;</span>
+                <span class="s2">&#9733;</span>
+                <span class="s2">&#9733;</span>
+                <span class="s2">&#9733;</span>
+                <span class="s2">&#9733;</span>
+                <span class="s2">&#9733;</span>
             </div>  
             <h6 class="white mt-2">Seller Rank</h6>
             <h3 class="green">1st</h3>
@@ -58,7 +58,7 @@
             <p class="white">{{profile.0.discription}}</p>
             </span>
         <br> 
-   
+
     </div>
   </div>
 
@@ -123,16 +123,26 @@
 </div>
 <div class="workcontainer mt-5">
     <div class="row row-cols-1 row-cols-md-2">
+            {% if pr %}
         <div class="col mb-4" style="cursor: pointer;" onclick="window.location.href='/productDetail/{{pr.0.0.sno}}'">
           <div class="card navbg">
+      
+                {% if pr.0.1.filetype|slugify == 'video'  %}
+                <video id="vp" width="100%" height="auto" autoplay='true' loop >
+                  <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video>    
+                  {% else %}
             <img src="/media/{{pr.0.1.samplesfile}}"  class="card-img-top" alt="...">
-            <div class="card-body wcd white">
+{% endif %}      
+ <div class="card-body wcd white">
               <h4 class="card-text">{{pr.0.0.title|slice:"0:120"}}</h4>
               <p class="card-text"><i> {{pr.0.0.category}}</i></p>
               <h2 class="mt-4 green">&#36;  {{pr.0.0.Price}}</h2>
             </div>
           </div>
         </div>
+ {% endif %}
         <div class="col mb-4">
             <div class="card addnew navbg" >
                 <div class="card-body addnewdesign m-auto">                  
@@ -180,7 +190,7 @@
             <div class="col mb-4" style="cursor: pointer;"   onclick="window.location.href='/productDetail/{{item.0.sno}}'">
               <div class="card navbg">
                 
-                {% if item.0.category|slugify == 'stream'  %}
+                {% if item.1.filetype|slugify == 'video'  %}
                 <video id="vp" width="100%" height="auto" autoplay='true' loop >
                   <source id="source" src="/media/{{item.1.samplesfile}}" type="video/mp4">
                   Your browser does not support the video tag.
@@ -357,23 +367,77 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">
+                <div class="modal-body">
         
+        
+          <input type="hidden" value="{{profile.0.sno}}">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Profile Image</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input primg" id="inputGroupFile03" accept="images/*" aria-describedby="inputGroupFileAddon03">
+              <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+            </div>
+          </div>
           <div class="input-group mt-4 mb-5">
             <div class="input-group-prepend">
               <span class="input-group-text " id="inputGroup-sizing-default ">Tag</span>
             </div>
             <input type="text" class="form-control tag" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{profile.0.tag}} ">
           </div>
-          <input type="hidden" value="{{profile.0.sno}}">
-          <div class="input-group mb-3">
+          <div class="input-group mt-4 mb-5">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+              <span class="input-group-text " id="inputGroup-sizing-default ">Fullname</span>
             </div>
-            <div class="custom-file">
-              <input type="file" class="custom-file-input primg" id="inputGroupFile03" accept="images/*" aria-describedby="inputGroupFileAddon03">
-              <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+            <input type="text" class="form-control fullname" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{profile.0.Fullname}} ">
+          </div>
+          <div class="form-row">
+            <div class="col">
+              <label for="country" class="white mb-3">Country</label>
+              <input type="text" class="form-control country" value="{{profile.0.Country}}" placeholder="Country">
             </div>
+            <div class="col">
+              <label for="state" class="white mb-3">State</label>
+
+              <input type="text" class="form-control state" value="{{profile.0.State}}" placeholder="State">
+            </div>
+          </div>
+          <div class="form-row white mt-4">
+            <div class="col">
+              <label for="city" class="white mb-3">City</label>
+              <input type="text" class="form-control city" value="{{profile.0.City}}" placeholder="City">
+            </div>
+            <div class="col">
+              <label for="zip" class="white mb-3">Postal Code</label>
+
+              <input type="text" class="form-control zip" value="{{profile.0.PostalCode}}" placeholder="Postal Code">
+            </div>
+          </div>
+          <div class="input-group mt-4 mb-5">
+            <div class="input-group-prepend">
+              <span class="input-group-text " id="inputGroup-sizing-default ">Address</span>
+            </div>
+            <input type="text" class="form-control address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" value="{{profile.0.Address}} ">
+          </div>
+          <div class="form-check mb-4">
+            
+            {% if profile.0.SendInvoices|slugify == 'true' %}
+            <input class="form-check-input invoice" type="checkbox" checked id="defaultCheck1">
+              {% else %}
+              <input class="form-check-input invoice" type="checkbox"  id="defaultCheck1">
+
+            {% endif %}
+              
+            <label class="form-check-label white" for="defaultCheck1">
+              Send invoices by email
+            </label>
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Paypal or bank account details</span>
+            </div>
+            <textarea class="form-control ad" aria-label="With textarea">{{profile.0.accountdetails}}</textarea>
           </div>
         </div>
         <div class="modal-footer f2">

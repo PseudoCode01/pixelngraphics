@@ -97,7 +97,7 @@ function sendOtp(elem){
     xhr1.setRequestHeader('X-CSRFToken', csrftoken);       
     xhr1.setRequestHeader("Content-Type", "application/json; charset=utf-8");
     xhr1.setRequestHeader("Accept", "application/json");
-    console.log(document.querySelector('.getotp'))
+    
     document.querySelector('.getotp').innerHTML=`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
   xhr1.send(JSON.stringify({'username':un,'email':email,'pass':pass,'conpass':conpass}));
 
@@ -151,28 +151,30 @@ function Signin(elem){
   let un=document.getElementById('lusername').value
   let pass=document.getElementById('lpassword').value
   // fetching item on cart via ajax
-  var xhr2 = new XMLHttpRequest();
-  elem.innerHTML=`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
+  var xhr = new XMLHttpRequest();
+
   
-    xhr2.open('POST', '/ajaxlogin');
-    xhr2.setRequestHeader('X-CSRFToken', csrftoken);       
-    xhr2.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-    xhr2.setRequestHeader("Accept", "application/json");
-  
-  xhr2.send(JSON.stringify({'username':un,'password':pass}));
-  xhr2.onload = function() {
+    xhr.open('POST', '/ajaxsignin');
+    xhr.setRequestHeader('X-CSRFToken', csrftoken);       
+    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xhr.setRequestHeader("Accept", "application/json");
+  xhr.send(JSON.stringify({'user':un,'pass':pass}));
+  document.querySelector('.dsin').innerHTML=`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>`
+
+  xhr.onload = function() {
     
-    if (xhr2.status != 200) {
-      alert(`Error ${xhr2.status}: ${xhr2.statusText}`); 
+    if (xhr.status != 200) {
+      alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+      elem.innerHTML=`SIGN IN`
     } else { 
-      console.log(JSON.parse(xhr2.responseText)['error'])
-      console.log(JSON.parse(xhr2.responseText)['success'])
-      if(JSON.parse(xhr2.responseText)['error']===undefined){
+      console.log(JSON.parse(xhr.responseText)['error'])
+      console.log(JSON.parse(xhr.responseText)['success'])
+      if(JSON.parse(xhr.responseText)['error']===undefined){
         window.location.href='/'
       }
       else{
         document.querySelector('.message2').innerHTML=`<div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>Failed ! ${JSON.parse(xhr2.responseText)['error']}.
+        <strong>Failed ! ${JSON.parse(xhr.responseText)['error']}.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -185,17 +187,22 @@ function Signin(elem){
   }
   };
   
-  xhr2.upload.onprogress = function(event) {
+  xhr.upload.onprogress = function(event) {
     if (event.lengthComputable) {
   
     } else { 
     }
   };
   
-  xhr2.onerror = function() {
+  xhr.onerror = function() {
     alert("Request failed");
   };
   }
+
+
+  
+  
+
 
 
   

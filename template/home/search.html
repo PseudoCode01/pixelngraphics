@@ -9,7 +9,7 @@
         
 <div class="row row-cols-1 row-cols-md-2" ">
     {% for item in result %}
-    <div class="col mb-4 m-auto" style="cursor: pointer;" onclick="window.location.href='/productDetail/{{item.0.0.sno}}'">
+    <div class="col mb-4 m-auto" style="cursor: pointer;" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
       <div class="card">
         {% if item.0.category|slugify == 'stream'  %}
         <video id="vp" width="100%" height="auto" autoplay='true' loop >

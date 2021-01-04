@@ -95,12 +95,12 @@ function Signin2(){
 
   // fetching item on cart via ajax
   var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/ajaxlogin');
+    xhr.open('POST', '/ajaxsignin');
     xhr.setRequestHeader('X-CSRFToken', csrftoken);       
     xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
     xhr.setRequestHeader("Accept", "application/json");
   
-  xhr.send(JSON.stringify({'username':un,'password':pass}));
+  xhr.send(JSON.stringify({'user':un,'pass':pass}));
   xhr.onload = function() {
     
     if (xhr.status != 200) {

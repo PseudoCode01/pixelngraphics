@@ -24,10 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*eg)8qy0mcsv=gex1s5b^2t43c6%7w%v#u=d7(q)h!b5fymtuf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG=False
 
-ALLOWED_HOSTS = []
 
+#ALLOWED_HOSTS = ['103.228.113.57' , 'pixelngraphics.com', 'www.pixelngraphics.com']
 # Application definition
 
 INSTALLED_APPS = [
@@ -84,24 +84,17 @@ WSGI_APPLICATION = 'pixelendgraphics.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'pixelngraphics',
-            'USER': 'pixel',
-            'PASSWORD': 'pixel',
-            'HOST': 'localhost',
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pixelngraphics',
+        'USER': 'pixel',
+        'PASSWORD': 'pixel@n',
+        'HOST': 'localhost',
             
-        }
     }
+}
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
@@ -143,10 +136,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 STATIC_URL = '/static/'
-STATICFILES_DIRS=[
-    os.path.join(BASE_DIR,'static'),    
-]
-MEDIA_URL='/media/'
+#STATICFILES_DIRS=[
+#    os.path.join(BASE_DIR,'static'),    
+#]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
+MEDIA_URL='media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 SITE_ID = 1
  

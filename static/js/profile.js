@@ -46,7 +46,7 @@ for(item of document.querySelectorAll('.tags')){
 tags+=String(item.innerHTML).split('&nbsp;')[0]+',';
 }
 
-if(file1.length<1 || file2.length<1 || (file3.length<1 &&tags&& file3.length<1&&file6.length<1)){
+if(file1.length<1 || file2.length<1 || (file3.length<1 &&tags&& file3.length<1&&file6.length<1 || file5.files.length<1)){
 //   document.getElementById('message').innerHTML=`<div class="alert alert-error alert-dismissible" role="alert">
 //   <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
 //  Are you sure you have filled
@@ -196,6 +196,15 @@ function editprofile(sample){
   formData.append("title", s);
   formData.append("sno", sample);
   formData.append("img", document.querySelector('.primg').files[0]);
+  formData.append("fullname",document.querySelector('.fullname').value);
+  formData.append("country", document.querySelector('.country').value);
+  formData.append("state", document.querySelector('.state').value);
+  formData.append("city", document.querySelector('.city').value);
+  formData.append("postalcode", document.querySelector('.zip').value);
+  formData.append("address", document.querySelector('.address').value);
+  formData.append("invoice", document.querySelector('.invoice').checked);
+  console.log( document.querySelector('.invoice').checked)
+  formData.append("ad", document.querySelector('.ad').value);
   xhr.onload=function(){
     if(xhr.status!=200){
 

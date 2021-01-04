@@ -1,0 +1,83 @@
+/* Set the width of the side navigation to 250px */
+function openNav() {
+    document.getElementById("mySidenav").style.left = "0";
+  }
+  
+  /* Set the width of the side navigation to 0 */
+  function closeNav() {
+    document.getElementById("mySidenav").style.left = "-350px";
+  } 
+  function getToken(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getToken('csrftoken')
+  
+  console.log(document.getElementById('signorlog').value)
+  document.getElementById('signorlog').value='sign'
+  function notifysign(){
+      window.location.href='/signup'
+  }
+  $(document).ready(function(){
+    var submitIcon = $('.searchbox-icon');
+    var inputBox = $('.searchbox-input');
+    var searchBox = $('.searchbox');
+    var isOpen = false;
+    submitIcon.click(function(){
+        if(isOpen == false){
+            if(screen.width<1000){
+
+                document.querySelector('.sercontainer').style.width='90%'
+  if( document.querySelector('.usernavright')!=null)
+                document.querySelector('.usernavright').style.width='300px'
+                else{
+                document.querySelector('.navright').style.width='300px'
+            }
+      
+            searchBox.addClass('searchbox-open');
+            inputBox.focus();
+            isOpen = true;
+        } else {
+            searchBox.removeClass('searchbox-open');
+            if(screen.width<1000){
+
+                 
+}
+            inputBox.focusout();
+            isOpen = false;
+        }
+    });  
+     submitIcon.mouseup(function(){
+            return false;
+        });
+    searchBox.mouseup(function(){
+            return false;
+        });
+    $(document).mouseup(function(){
+            if(isOpen == true){
+                $('.searchbox-icon').css('display','block');
+                submitIcon.click();
+            }
+        });
+});
+    function buttonUp(){
+        var inputVal = $('.searchbox-input').val();
+        inputVal = $.trim(inputVal).length;
+        if( inputVal !== 0){
+            $('.searchbox-icon').css('display','none');
+        } else {
+            $('.searchbox-input').val('');
+            $('.searchbox-icon').css('display','block');
+        }
+    }

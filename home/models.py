@@ -25,6 +25,14 @@ class SellerProfile(models.Model):
     profileImage=models.FileField(upload_to='home/profileimg', null=True,blank=True, verbose_name="")
     sellername=models.CharField(default=0,max_length=1000)
     seller=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    Fullname=models.CharField(default='',max_length=1000)
+    Country=models.CharField(default='',max_length=1000)
+    State=models.CharField(default='',max_length=1000)
+    City=models.CharField(default='',max_length=1000)
+    PostalCode=models.CharField(default='',max_length=1000)
+    Address=models.CharField(default='',max_length=1000)
+    SendInvoices=models.BooleanField(default=False)
+    accountdetails=models.TextField(default='')
     tag=models.CharField(default='Graphic Designer',max_length=500)
     discription=models.CharField(default='',max_length=500)
     sellerRating=models.IntegerField(default=0,blank=True)
@@ -55,6 +63,7 @@ class Product(models.Model):
     def __str__(self):
         return 'No.'+str(self.sno)+'  '+self.sellername+'  Verification_Status:'+str(self.isVerified)
 class ProductSample(models.Model):
+    filetype=models.CharField(default=0,max_length=1000)
     samplesfile=models.FileField(upload_to='home/products', null=True, verbose_name="")
     product=models.ForeignKey(Product,default=None,on_delete=models.CASCADE)
 class ProductRating(models.Model):

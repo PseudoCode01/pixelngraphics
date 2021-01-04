@@ -135,6 +135,20 @@ color: black;
     .imgsp{
         width: auto;
     }
+   .colmob{
+height:208px
+}
+.colmob img{
+margin-top:auto;
+
+ 
+}
+.colmob label{
+margin-top:auto;
+}
+.imgsp{
+width:100%;
+}
 }
 @media (max-width:600px){
     .colmob2 h5{

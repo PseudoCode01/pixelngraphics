@@ -18,7 +18,7 @@ def home(request):
     b=[]
     so=[]
     for item in products:
-        ps=ProductSample.objects.filter(product_id=item['sno']).values()
+        ps=ProductSample.objects.filter(product_id=item['sno']).order_by('id').values()
         if item['category'] == 'logo':
             l.append([item,ps[0]])
         elif item['category'] == 'banner':
@@ -102,14 +102,14 @@ def ajaxsignup(request):
             login(request,user)
         return JsonResponse({'success':"Account created Successfully"},safe=False)
 
-def ajaxlogin(request):
+def ajaxsignin(request):
     data=json.loads(request.body)
-    username=data['username']
-    password=data['password']
+    usern=data['user']
+    passw=data['pass']
     try:
-        user=authenticate(username=User.objects.get(email=username),password=password)
+        user=authenticate(username=User.objects.get(email=usern),password=passw)
     except:
-        user=authenticate(username=username,password=password)
+        user=authenticate(username=usern,password=passw)
     if user is not None:
         login(request,user)
         return JsonResponse({'success':"Successfully Loged In"},safe=False)
@@ -134,7 +134,16 @@ def applyforseller(request):
     return redirect('/')
 def sellerProfile(request):
     Sp=SellerProfile.objects.filter(seller_id=request.user.id).values()
-    products=Product.objects.filter(isVerified=True).values()
+    app=SellerApplication.objects.filter(username=request.user.username).values()
+    if len(app)<1:
+        return render(request,'home/sell.html',{'check':app})
+    
+    if app[0]['isVerified']==False:
+        return render(request,'home/sell.html',{'check':app})
+    if len(Sp)<1:
+        Sp=SellerProfile(sellername=request.user.username,seller=request.user)
+        Sp.save()
+    products=Product.objects.filter(seller=request.user).values()
     l=[]
     for item in products:
         ps=ProductSample.objects.filter(product_id=item['sno']).values()
@@ -150,31 +159,63 @@ def addProduct(request):
         samples = request.FILES.get('samples')
         Price= request.POST['price']
         cat= request.POST['category']
+        v=str(samples).split('.')[-1].lower()
+        tp=''
+        if v=='mp4' or v=='m4v' or v=='aep' or v=='mov' or v=='flv' or v=='f4v' or v=='avi':
+            tp='video'
+        else:
+            tp='image'
         pr=Product(sellername=request.user.username,seller=request.user,category=cat,title=title,fileformat=filefor,discription=disc,searchTags=tags,Price=Price)
         pr.save()
-        ps=ProductSample(samplesfile=samples,product=pr)
+        ps=ProductSample(samplesfile=samples,product=pr,filetype=tp)
         ps.save()
     elif times=='last':
         samples = request.FILES.get('samples')
         title= request.POST['title']
         disc= request.POST['disc']
+        v=str(samples).split('.')[-1].lower()
+        tp=''
+        # print(v)
+        if v=='mp4' or v=='m4v' or v=='aep' or v=='mov' or v=='flv' or v=='f4v' or v=='avi':
+            tp='video'
+        else:
+            tp='image'
         pr=Product.objects.filter(title=title).filter(discription=disc).order_by('-timeStamp')[0]
-        ps=ProductSample(samplesfile=samples,product=pr)
+        ps=ProductSample(samplesfile=samples,product=pr,filetype=tp)
         ps.save()
     return JsonResponse('OK',safe=False)
 def editProfile(request):
     title= request.POST.get('title')
     sno= request.POST.get('sno')
     samples = request.FILES.get('img')
+    fullname= request.POST.get('fullname')
+    country= request.POST.get('country')
+    state= request.POST.get('state')
+    city= request.POST.get('city')
+    postalcode= request.POST.get('postalcode')
+    address= request.POST.get('address')
+    invoice= request.POST.get('invoice')
+    ad= request.POST.get('ad')
     sp=SellerProfile.objects.get(sno=sno)
     sp.tag=title
+    sp.Fullname=fullname
+    sp.Country=country
+    sp.State=state
+    sp.City=city
+    sp.PostalCode=postalcode
+    sp.Address=address
+    if invoice== 'true':
+        sp.SendInvoices=True
+    else:
+        sp.SendInvoices=False
+    sp.accountdetails=ad
     if samples != None:
         sp.profileImage=samples
     sp.save()
     return JsonResponse('OK',safe=False)
 def productDetail(request,id):
     p=Product.objects.filter(sno=id).values()
-    ps=ProductSample.objects.filter(product_id=id).values()
+    ps=ProductSample.objects.filter(product_id=id).order_by('id').values()
     s=set()
     il=0
     l=[]
@@ -196,7 +237,7 @@ def productDetail(request,id):
     return render(request,'home/productDetail.html',{'pr':p,'ps':ps,'l':len(c),'rec':l})
 def profileview(request,id):
     Sp=SellerProfile.objects.filter(seller_id=id).values()
-    products=Product.objects.filter(isVerified=True).values()
+    products=Product.objects.filter(isVerified=True).filter(seller_id=id).values()
     l=[]
     for item in products:
         ps=ProductSample.objects.filter(product_id=item['sno']).values()
@@ -222,8 +263,8 @@ def AddtoCart(request):
 def removeCart(request):
     data=json.loads(request.body)
     sno = data['sno']
-    cart=Cart.objects.get(product_id=int(sno))
-    cart.delete()
+    c=Cart.objects.filter(product_id=int(sno))
+    c.delete()
     return JsonResponse('OK',safe=False)
 def customlogo(request):
     return render(request,'home/customlogo.html')

@@ -52,3 +52,27 @@
     display: flex;
     font-size: 17px;
 }
+@media (max-width:500px){
+    .parentcontainer{
+        width: 100%;
+    }
+    .ns{
+        font-size: 24px;
+    }
+    .support h3{
+        margin: 10px;
+        font-size: 16px;
+    }
+    .faqs{
+        padding: 10px;
+        width: auto;
+        height: 490px;
+    }
+    .faqs h5{
+        font-size: 18px;
+    }
+    .faqs .ans{
+        font-size: 16px;
+    }
+
+}
