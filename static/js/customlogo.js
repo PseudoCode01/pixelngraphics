@@ -5,7 +5,7 @@ function custom(){
 var name=document.getElementById('name').value
 var email=document.getElementById('email').value
 var brief=document.getElementById('brief').value
-var slct=document.getElementById('slct').value
+var slct=document.getElementById('slct').value+' : '+document.getElementById('slct2').value
 console.log(name,email,brief,slct)
 xhr.open('POST', '/addcustom',true);
 xhr.setRequestHeader('X-CSRFToken', csrftoken);     
@@ -45,6 +45,7 @@ alert("Request failed");
 function budget(val){
   console.log(val)
   document.querySelector('.select2').style.display='block'
+  document.querySelector('.bug').style.display='block'
 if(val=='Logo'){
   document.querySelector('.select2').innerHTML=`  <select name="slct2" id="slct2" >
   <option selected disabled>Please Select</option>

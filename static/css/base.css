@@ -664,3 +664,8 @@ font-size: 15px;
 right:388px;
 }
 
+@media (min-width:950px){
+  .sc2{
+    right: 215px;
+  }
+}

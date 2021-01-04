@@ -90,3 +90,4 @@ function openNav() {
             $('.searchbox-icon').css('display','block');
         }
     }
+// document.addEventListener('contextmenu',event=>event.preventDefault());

@@ -1,0 +1,251 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="container-xl mt-7">
+
+    <h1 class="green ct">BRAND</h1>
+    <h5 class="white ct">Download our brand <b class="green">assets: logos </b>and more. So you can rep Team PnG across the interweb.</h5>
+<h2 class="green mt-5 ct">
+    LOGO
+</h2>
+<p class="white ct">Download our logo featuring <b class="green">multiple varients</b>  to fit the occasion.</p>
+<p class="white ct mb-2">Easy download - just click below</p>
+<div class="cont">
+    <div class="r1 "> <div class="card  text-white mb-2">
+        <img src="/static/images/LOGO wordmark.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+         <a href="/static/images/LOGO wordmark.png" download=""><h5 class="card-title">PNG</h5></a> 
+          
+        </div>
+      </div>
+    <div class="card  text-white">
+        <img src="/static/images/LOGO wordmark black.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <a href="/static/images/LOGO wordmark black.png" download="">
+          <h5 class="card-title">PNG</h5></a>
+   
+        </div>
+      </div></div>
+    <div class="r2 "> <div class="card bg-dark text-white mb-2">
+        <img src="/static/images/LOGO dark green.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <a href="/static/images/LOGO dark green.png" download>
+          <h5 class="card-title">PNG</h5></a>
+       
+        </div>
+      </div>
+    <div class="card bg-dark text-white">
+        <img src="/static/images/LOGO dark blue.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <a href="/static/images/LOGO dark blue.png" download="">
+          <h5 class="card-title">PNG</h5></a>
+         
+        </div>
+      </div>
+    </div>
+</div>
+<div class="cards-group ">
+    <div class="cards c1 mt-4">
+    <div class="card  text-white mr-2">
+        <img src="/static/images/LOGO TR.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <a href="/static/images/LOGO TR.png" download="">
+          <h5 class="card-title">PNG</h5></a>
+         
+        </div>
+      </div>
+   
+    <div class="card  text-white ">
+        <img src="/static/images/LOGO TR black.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <a href="/static/images/LOGO TR black.png" download="">
+          <h5 class="card-title">PNG</h5></a>
+         
+        </div>
+      </div>
+    </div>
+    <div class="cards c2 mt-4">
+    <div class="card  text-white mr-2">
+        <img src="/static/images/LOGO green 2.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <a href="/static/images/LOGO green 2.png" download="">
+          <h5 class="card-title">PNG</h5></a>
+         
+        </div>
+      </div>
+    <div class="card  text-white">
+        <img src="/static/images/LOGO blue 2.png" class="card-img" alt="...">
+        <div class="card-img-overlay">
+            <a href="/static/images/LOGO blue 2.png" download="">
+          <h5 class="card-title">PNG</h5></a>
+         
+        </div>
+      </div>
+    </div>
+</div>
+<h1 class="green mt-5 ct">COLOUR</h1>
+<p class="white ct">Download our logo featuring <b class="green">multiple varients </b>to fit the the occasion.</p>
+<p class="white ct">Easy download - just click below</p>
+<div class="color mt-3">
+    <div class="greencon">
+        <div class="con">
+
+            <h6>
+               <strong> Hex </strong> : #91d847</h6>
+            <h6><strong> RGB </strong>
+               : 145 216 71</h6>
+            <h6><strong> CYMK</strong>
+                : 47 0 93 0</h6>
+        </div>
+    </div>
+    <div class="bluecon">
+        <div class="con white">
+        <h6>
+            <strong> Hex </strong> : #227af2</h6>
+         <h6><strong> RGB </strong>
+            : 31 122 242</h6>
+         <h6><strong> CYMK</strong>
+             : 77 53 0 0</h6>
+    </div>
+    </div>
+    <div class="greycon">
+        <div class="con white">
+
+        <h6>
+            <strong> Hex </strong> : #484e59</h6>
+         <h6><strong> RGB </strong>
+            : 72 78 89</h6>
+         <h6><strong> CYMK</strong>
+             : 72 61 49 31</h6>
+    </div>
+    </div>
+</div>
+  </div>
+
+<style>
+  .r1 >div{
+background-color: white;
+  }
+  .r1 h5 , .c1 h5{
+      color: black;
+      font-family: 'nexabold';
+  }
+  .r2 h5 , .c2 h5{
+      color: var(--btn-color);
+      font-family: 'nexabold';
+
+  }
+  .c1 >div{
+      background-color: white;
+      border: none;
+  }
+  .c2 >div{
+      background-color: black;
+      border: none;
+
+  }
+    .con{
+       
+        margin-top: auto;
+        margin-left:10% ;
+    }
+    .con h6 strong{
+        font-family: 'nexabold';
+    }
+    .greencon{
+
+        background-color: #91d847;
+    }
+    .bluecon{
+        background-color: #227af2;
+    }
+    .greycon{
+        background-color: #484e59;
+    }
+    .color{
+        display: flex;
+        justify-content: space-between;
+        height: 250px;
+    }
+    .color >div{
+        width: 30%;
+        border-radius: 9px;
+        height: 100%;
+        display: flex;
+    }
+    .r1{
+        margin-right: 10px;
+    }
+    .cards-group{
+        display: flex;
+    }
+    .c2{
+        margin-left: 10px;
+    }
+    .cards{
+        display: flex;
+    }
+    .cont{
+        display: flex;
+        
+    }
+    @media (max-width:1000px){
+        .color{
+            height: 220px;
+        }
+    }
+    @media (max-width:800px){
+        .r1{
+            margin-right: 0;
+        }
+        .r2{
+            margin-top: 10px;
+        }
+        .card-title{
+            margin-bottom: 0;
+            font-size: 15px;
+        }
+        .c2{
+        margin-left: 0px;
+    }
+        .cont{
+            flex-direction: column;
+        }
+        .cards-group{
+      flex-direction: column;
+    } 
+    .color{
+            height: 170px;
+        } 
+    }
+    @media (max-width:600px){
+        .color{
+            height: 140px;
+        }
+        .color h6{
+            font-size: 12px;
+        }
+    }
+    @media (max-width:500px){
+        .color{
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            align-items: center;
+        }
+        .color >div{
+            width: 300px;
+            height: 300px;
+            margin-top: 10px;
+        }
+    }
+    .card-img-overlay{
+        top: auto;
+        left: auto;
+        padding: 0;
+        padding-right: 8px;
+        margin: 0;
+    }
+</style>
+{% endblock body %}
+    

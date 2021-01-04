@@ -32,4 +32,6 @@ urlpatterns = [
     path("additems",views.additems,name="additems"),
     path("myProfile",views.myProfile,name="myProfile"),
     path("sendotp",views.sendotp,name="sendotp"),
+    path("brand",views.brand,name="brand"),
+    path("partner",views.partner,name="partner"),
 ]

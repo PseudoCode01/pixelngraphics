@@ -20,7 +20,7 @@
       <label for="exampleFormControlTextarea1" class="white">Brief (What are you looking for? What are your ideas?)*</label>
       <textarea class="form-control"  rows="3" id="brief" class="brf" required></textarea>
     </div>
-   <label for="name" class="white">Budget*</label>
+   <label for="name" class="white">Category*</label>
 <div class="select">
   <select name="slct" id="slct" onchange="budget(value)">
     <option selected disabled>Please Select</option>
@@ -30,14 +30,16 @@
     <option value="Stream Overlay">Stream Overlays</option>
   </select>
 </div>
-<div class="select2" style="display: none;">
+<label for="name" class="white mt-4 bug" style="display: none;">Budget*</label>
+
+ <div class="select2" style="display: none;">
   <select name="slct" id="slct" >
     <option selected disabled>Please Select</option>
     <option value="1">Logo</option>
     <option value="2">Banner</option>
     <option value="3">Stream Overlays</option>
   </select>
-</div>   
+</div>  
 <div class="botcon">  
   <button class="btn btn-success spinbutton m-auto" type="button" onclick="custom()" >
     Submit

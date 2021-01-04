@@ -1,20 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
-body,
-input {
-  font-family: "Poppins", sans-serif;
-}
 :root {
     --text-color: hsla(210, 50%, 85%, 1);
     --shadow-color: hsla(210, 40%, 52%, .4);
     --btn-color: hsl(210, 80%, 42%);
     --bg-color: #141218;
   }
+
 .container {
   position: relative;
   width: 100%;
@@ -141,7 +132,7 @@ input {
 
 .btn {
   width: 150px;
-  background-color: #5995fd;
+
   border: none;
   outline: none;
   height: 49px;
@@ -154,9 +145,7 @@ input {
   transition: 0.5s;
 }
 
-.btn:hover {
-  background-color: #4d84e2;
-}
+
 .panels-container {
   position: absolute;
   height: 100%;
@@ -175,7 +164,7 @@ input {
   top: -10%;
   right: 48%;
   transform: translateY(-50%);
-  background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+  background-image: linear-gradient(-45deg, #92d945 0%, #92d945 100%);
   transition: 1.8s ease-in-out;
   border-radius: 50%;
   z-index: 6;
@@ -405,10 +394,6 @@ input {
     left: 50%;
   }
 }
-@import url('https://fonts.googleapis.com/css?family=Roboto:100');
-body {
-  background: #333;
-}
 
 /** page **/
 .cssloader {
@@ -435,7 +420,9 @@ body {
   margin: -50px auto 0;
   animation: shk2 1s ease-in-out infinite alternate;
 }
-
+.container{
+  z-index: 0;
+}
 /** animation starts here **/
 @keyframes shk1 {
   0% {

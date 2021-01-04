@@ -48,6 +48,12 @@ def refundpolicy(request):
 def about(request):
     return render(request,'home/about.html')
 
+def brand(request):
+    return render(request,'home/brand.html')
+
+def partner(request):
+    return render(request,'home/partner.html')
+
 
 
 def sendotp(request):
@@ -152,6 +158,9 @@ def sellerProfile(request):
 def addProduct(request):
     times = request.POST.get('times')
     if times=='first':
+        sp=SellerProfile.objects.get(seller_id=request.user.id)
+        sp.products+=1
+        sp.save()
         title= request.POST['title']
         disc= request.POST['disc']
         tags= request.POST['searchTags']
@@ -194,6 +203,7 @@ def editProfile(request):
     city= request.POST.get('city')
     postalcode= request.POST.get('postalcode')
     address= request.POST.get('address')
+    desc= request.POST.get('desc')
     invoice= request.POST.get('invoice')
     ad= request.POST.get('ad')
     sp=SellerProfile.objects.get(sno=sno)
@@ -204,6 +214,7 @@ def editProfile(request):
     sp.City=city
     sp.PostalCode=postalcode
     sp.Address=address
+    sp.discription=desc
     if invoice== 'true':
         sp.SendInvoices=True
     else:

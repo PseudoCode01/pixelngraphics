@@ -202,6 +202,7 @@ function editprofile(sample){
   formData.append("city", document.querySelector('.city').value);
   formData.append("postalcode", document.querySelector('.zip').value);
   formData.append("address", document.querySelector('.address').value);
+  formData.append("desc", document.querySelector('.desc').value);
   formData.append("invoice", document.querySelector('.invoice').checked);
   console.log( document.querySelector('.invoice').checked)
   formData.append("ad", document.querySelector('.ad').value);
@@ -254,3 +255,17 @@ function openFullNav() {
 function closeFullNav() {
   document.getElementById("myOverlay").style.width = "0%";
 } 
+function show(val){
+  v='';
+  for(item of val.files){
+console.log(item['name'])
+v+=item['name']+' , '
+  }
+ if(v.length>60){
+
+   document.querySelector('.sl').innerHTML=v.substring(0,60)+' .....';
+ }
+ else{
+  document.querySelector('.sl').innerHTML=v 
+ }
+}
