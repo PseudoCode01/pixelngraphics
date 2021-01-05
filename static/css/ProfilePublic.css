@@ -13,10 +13,9 @@
 }
 
 #avatar {
-	display: inline;
-	height: 230px;
-	width: auto;
-    margin-left: -34px;
+  display: block;
+  height: 150px;
+  width: 150px;
 }
 .customContainer{
    min-height: 900px;
@@ -111,4 +110,5 @@ height: 850px;
   }
 .parentcontainer{
 display:flex;
+}
 }

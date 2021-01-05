@@ -240,7 +240,6 @@ def productDetail(request,id):
                 l.append([item,ProductSample.objects.filter(product_id=item.sno)])
         
         il+=1
-    print(l)
     try:
         c=Cart.objects.filter(user=request.user).filter(product_id=id).values()
     except:
@@ -258,7 +257,6 @@ def profileview(request,id):
 def cart(request):
     c=Cart.objects.filter(user=request.user).values()
     l=[]
-    print(c)
     for item in c:
         l.append([Product.objects.filter(sno=item['product_id']).values(),ProductSample.objects.filter(product_id=item['product_id']).values()])
     return render(request,'home/cart.html',{'cart':l})
@@ -382,10 +380,8 @@ def search(request):
     r=Product.objects.all()
     l=[]
     for item in r:
-        print(item)
         if(searchfun(item.searchTags.split(','),data)):
             l.append([item,ProductSample.objects.filter(product_id=item.sno)])
-    print(l)
     return render(request,'home/search.html',{'result':l})
 
 
@@ -393,19 +389,15 @@ def getprice(request):
     data=json.loads(request.body)
     snos = data['sno'].split('+')
     qn = data['qns'].split('+')
-    print(snos,qn)
     i=0
     price=0;
     for item in snos:
         if(i==len(snos)-1):
             break
-        print(item)
         P=Product.objects.filter(sno=int(item)).values()
         if len(P)>0:
-            print(P[0])
             price+=int(P[0]['Price'])*int(qn[i])
         i+=1
-    print(price)
     return JsonResponse({'price':price},safe=False)
 def additems(request):
     data=json.loads(request.body)
@@ -437,9 +429,8 @@ def additems(request):
     return JsonResponse({'price':'ok'},safe=False)
 def myProfile(request):
     mp=MyOrder.objects.filter(user=request.user).values()
+    email=request.user.email
     l=[]
     for item in mp:
-        print(item['product_id'])
         l.append([Product.objects.filter(sno=item['product_id']),ProductSample.objects.filter(product_id=item['product_id'])])
-    return render(request,'home/myProfile.html',{'result':l})
-
+    return render(request,'home/myProfile.html',{'result':l,'email':email})

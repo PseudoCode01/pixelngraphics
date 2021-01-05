@@ -5,7 +5,7 @@
     <div class="container-xl mt-7 navbg pt-3 pb-3">
         <div class="productdisplay">
             <div class="disc">
-                <h4 class="green mb-0 ml-1">{{pr.0.sellername}}</h4>
+                <h4 onclick="window.location.href='/profileview/{{pr.0.seller_id}}'" style="cursor: pointer;"  class="green mb-0 ml-1">{{pr.0.sellername}}</h4>
                 <h1 class="white mt-0">{{pr.0.title}}</h1>
 <h1 class="green mb-0 ml-1">$ {{pr.0.Price}}</h1>
 <p class="white">{{pr.0.discription}}</p>
@@ -16,13 +16,17 @@
     <input type="text" id="changes"  placeholder="if yes, please specify..." />
   </div>
 {% if user.is_not_authenticated %}
-<button  class="btn btn-success spinbutton mt-4" onclick="window.location.href='/signin'" style="cursor: pointer;" type="button" >
-  LOG IN CONTINUE
+<button  class="btn btn-success spinbutton mt-4" onclick="window.location.href='/signup'" style="cursor: pointer;" type="button" >
+  SIGN IN CONTINUE
   </button>
   {% elif l|slugify == '1' %}
   <button  class="btn btn-success spinbutton mt-4" onclick="window.location.href='/cart'" style="cursor: pointer;" type="button" >
     GO TO CART
     </button>
+ {% elif pr.0.isSold == True %} 
+ <button  class="btn btn-danger spinbutton"  style="cursor: pointer;" type="button" >
+  SOLD OUT
+  </button>
     {% else %}
     <button  class="btn btn-success spinbutton " onclick="Addtocart('{{pr.0.sno}}',this)" style="cursor: pointer;" type="button" >
       ADD TO CART
@@ -81,10 +85,6 @@
            {% for item in rec %}
 
 {% if item.0.sno != pr.0.sno %}
-  
-
-  
-             
             <div class="card bg-dark text-white mr-2 "  onclick="window.location.href='/productDetail/{{item.0.sno}}'" >
               {% if item.1.0.filetype|slugify == 'video' %}
               <div class="card-img"">
