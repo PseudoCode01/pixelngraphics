@@ -49,10 +49,7 @@ function Signup(){
     if (xhr.status != 200) { 
       alert(`Error ${xhr.status}: ${xhr.statusText}`); 
     } else { 
-    //  closeload()
     
-    console.log(JSON.parse(xhr.responseText)['error'])
-    console.log(JSON.parse(xhr.responseText)['success'])
     if(JSON.parse(xhr.responseText)['error']===undefined){
       window.location.href='/'
     }

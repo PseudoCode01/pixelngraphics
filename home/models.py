@@ -43,6 +43,22 @@ class SellerProfile(models.Model):
     def __str__(self):
         return 'No.'+str(self.sno)+'  '+self.sellername+'  Rating:'+str(self.sellerRating)+' Sells: '+str(self.sells)+' Earned : '+str(self.earned)
 
+class UserProfile(models.Model):
+    sno=models.AutoField(primary_key=True)
+    profileImage=models.FileField(upload_to='home/profileimg', null=True,blank=True, verbose_name="")
+    username=models.CharField(default=0,max_length=1000)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    Fullname=models.CharField(default='',max_length=1000)
+    Country=models.CharField(default='',max_length=1000)
+    State=models.CharField(default='',max_length=1000)
+    City=models.CharField(default='',max_length=1000)
+    PostalCode=models.CharField(default='',max_length=1000)
+    Address=models.CharField(default='',max_length=1000)
+    SendInvoices=models.BooleanField(default=False)
+    timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
+    def __str__(self):
+        return 'No.'+str(self.sno)+'  '+self.username
+
 
 class Product(models.Model):
     sno=models.AutoField(primary_key=True)

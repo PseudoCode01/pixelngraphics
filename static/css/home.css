@@ -161,6 +161,85 @@ width: 100%;
 .imgpar{
   height: 450px;
 }
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0 !important;
+  background: #484e59;
+  background-image: none;
+}
+/* Remove IE arrow */
+select::-ms-expand {
+  display: none;
+}
+/* Custom Select */
+.select {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 3em;
+  line-height: 3;
+  background: transparent;
+  overflow: hidden;
+  border-radius: .25em;
+  border: 1px solid gray;
+}
+select {
+  flex: 1;
+  padding: 0 .5em;
+  color: #fff;
+  cursor: pointer;
+}
+/* Arrow */
+.select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+/* Transition */
+.select:hover::after {
+  color: var(--btn-color);
+}
+.select2 {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 3em;
+  line-height: 3;
+  background: #484e59;
+  overflow: hidden;
+  border-radius: .25em;
+  border: 1px solid gray;
+}
+.select2::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: .25s all ease;
+  -o-transition: .25s all ease;
+  transition: .25s all ease;
+}
+.select2:hover::after {
+  color: var(--btn-color);
+}
+
 @media only screen and (max-width:850px){
   .imgpar ,.slant2,.slant{
     height: 350px;
@@ -277,8 +356,11 @@ width: 100%;
 
   }
 }
-@media only screen and (max-width:650px){
 
+@media only screen and (max-width:650px){
+  .select2{
+    display: block;
+  }
   .cc{
     font-size: 16px;
   }
@@ -343,6 +425,17 @@ width: 100%;
 
   }
 
+}
+@media only screen and (max-width:650px){
+  .filters{
+    display: none;
+  }
+  .vSeprator{
+    display: none;
+  }
+  .products{
+    width: 100%;
+  }
 }
 @media only screen and (max-width:500px){
   .imgpar ,.slant2,.slant{
@@ -492,6 +585,7 @@ width: 100%;
     text-align: center;
   }
 }
+
 .custom{
   width: 210px;
 }
@@ -505,3 +599,5 @@ width: 100%;
   border-radius: 20px;
   margin-top: 10px;
 }
+  /* Reset Select */
+ 

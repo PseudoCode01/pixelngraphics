@@ -4,7 +4,7 @@ import json
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct,MyOrder
+from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct,MyOrder,UserProfile
 from django.conf import settings
 from django.core.mail import EmailMessage
 import random
@@ -193,6 +193,7 @@ def addProduct(request):
         ps=ProductSample(samplesfile=samples,product=pr,filetype=tp)
         ps.save()
     return JsonResponse('OK',safe=False)
+
 def editProfile(request):
     title= request.POST.get('title')
     sno= request.POST.get('sno')
@@ -224,6 +225,7 @@ def editProfile(request):
         sp.profileImage=samples
     sp.save()
     return JsonResponse('OK',safe=False)
+
 def productDetail(request,id):
     p=Product.objects.filter(sno=id).values()
     ps=ProductSample.objects.filter(product_id=id).order_by('id').values()
@@ -289,7 +291,7 @@ def addcustom(request):
 def filters(request):
     data=json.loads(request.body)
     fil = data['filter']
-    print(fil)
+    fil=int(fil)
     if fil == 0:
         products=Product.objects.filter(isVerified=True).order_by('-Price').values()
         l=[]
@@ -429,8 +431,63 @@ def additems(request):
     return JsonResponse({'price':'ok'},safe=False)
 def myProfile(request):
     mp=MyOrder.objects.filter(user=request.user).values()
+    up=UserProfile.objects.filter(user=request.user).values()
+    if len(up)<1:
+        up=UserProfile(username=request.user.username,user=request.user)
+        up.save()
+    
     email=request.user.email
     l=[]
     for item in mp:
         l.append([Product.objects.filter(sno=item['product_id']),ProductSample.objects.filter(product_id=item['product_id'])])
-    return render(request,'home/myProfile.html',{'result':l,'email':email})
+    return render(request,'home/myProfile.html',{'result':l,'email':email,'profile':up})
+
+def edituserProfile(request):
+    sno= request.POST.get('sno')
+    samples = request.FILES.get('img')
+    fullname= request.POST.get('fullname')
+    country= request.POST.get('country')
+    state= request.POST.get('state')
+    city= request.POST.get('city')
+    postalcode= request.POST.get('postalcode')
+    address= request.POST.get('address')
+    invoice= request.POST.get('invoice')
+    sp=UserProfile.objects.get(sno=sno)
+    sp.Fullname=fullname
+    sp.Country=country
+    sp.State=state
+    sp.City=city
+    sp.PostalCode=postalcode
+    sp.Address=address
+    if invoice== 'true':
+        sp.SendInvoices=True
+    else:
+        sp.SendInvoices=False
+    if samples != None:
+        sp.profileImage=samples
+    sp.save()
+    return JsonResponse('OK',safe=False)
+def changepass(request):
+    cp=request.POST.get('cp')
+    np=request.POST.get('np')
+    cnp=request.POST.get('cnp')
+    
+    print(cp,np,cnp)
+    u=request.user
+    usern=request.user.username
+    print(u.check_password(cp))
+    if cp == np:
+            return JsonResponse({'error':"New password can't be same as current password"},safe=False)
+    if u.check_password(cp):
+        if np != cnp:
+            return JsonResponse({'error':"Password do not match"},safe=False)
+        else:
+            u.set_password(np)
+            u.save()
+            user=authenticate(username=usern,password=np)
+            login(request,user)
+            return JsonResponse({'success':"Password changed"},safe=False)
+    else:
+        return JsonResponse({'error':"Wrong Password"},safe=False)
+
+    return JsonResponse('OK',safe=False)

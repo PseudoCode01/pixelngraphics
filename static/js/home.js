@@ -152,6 +152,117 @@ so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['s
     };
     
     }
+function bsort(fil){
+ 
+    var xhr = new XMLHttpRequest();
+      xhr.open('POST', '/filters');
+      xhr.setRequestHeader('X-CSRFToken', csrftoken);       
+      xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+      xhr.setRequestHeader("Accept", "application/json");
+    console.log(fil)
+    xhr.send(JSON.stringify({'filter':fil}));
+    xhr.onload = function() {
+      
+      if (xhr.status != 200) {
+        alert(`Error ${xhr.status}: ${xhr.statusText}`); 
+      } else { 
+    //    document.querySelector('logo').innerHTML=``
+    var v=``;
+    var b=``;
+    var so=``;
+    var text='';
+       console.log(JSON.parse(xhr.responseText)['product'])
+      for(var item of JSON.parse(xhr.responseText)['product']){
+          if(item[0]['title'].length>20){
+            text=String(item[0]['title']).substring(0,20)+'...'
+
+          }
+          else{
+              text=item[0]['title']
+          }
+          console.log(item[0]['sno'])
+v+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
+<div class="card bg-dark text-white">
+  <img src="/media/${item[1]['samplesfile']}"  class="card-img" alt="...">
+
+  <div class="card-img-overlay">
+    <p class="card-text">${text} | $ ${item[0]['Price']}</p>
+
+  </div>
+</div>
+</div>`
+      }
+      for(var item of JSON.parse(xhr.responseText)['banner']){
+          if(item[0]['title'].length>20){
+            text=String(item[0]['title']).substring(0,20)+'...'
+          }
+          else{
+              text=item[0]['title']
+          }
+          console.log(item[0]['sno'])
+b+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
+<div class="card bg-dark text-white">
+  <img src="/media/${item[1]['samplesfile']}"  class="card-img" alt="...">
+
+  <div class="card-img-overlay">
+    <p class="card-text">${text} | $ ${item[0]['Price']}</p>
+
+  </div>
+</div>
+</div>`
+      }
+      for(var item of JSON.parse(xhr.responseText)['stream']){
+          if(item[0]['title'].length>30){
+text=String(item[0]['title']).substring(0,20)+'...'
+          }
+          else{
+              text=item[0]['title']
+          }
+          console.log(item[0]['sno'])
+so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
+<div class="card bg-dark text-white">
+  <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
+  <source id="source" src="/media/${item[1]['samplesfile']}" type="video/mp4">
+  Your browser does not support the video tag.
+  </video>
+  <div class="card-img-overlay">
+    <p class="card-text">${text} | $ ${item[0]['Price']}</p>
+  </div>
+</div>
+</div>`
+      }
+      document.querySelector('.logo').innerHTML=v;
+      document.querySelector('.banner').innerHTML=b;
+      document.querySelector('.stream').innerHTML=so;
+    }
+    };
+    
+    xhr.onprogress = function(event) {
+      if (event.lengthComputable) {
+        document.querySelector('.logo').innerHTML=`<div class="d-flex justify-content-center">
+        <div class="spinner-border text-success" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>`
+        document.querySelector('.banner').innerHTML=`<div class="d-flex justify-content-center">
+        <div class="spinner-border text-success" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>`
+        document.querySelector('.stream').innerHTML=`<div class="d-flex justify-content-center">
+        <div class="spinner-border text-success" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>`
+      } else { 
+      }
+    };
+    
+    xhr.onerror = function() {
+      alert("Request failed");
+    };
+    
+    }
     window.smoothScroll = function(target,pn) {
       console.log(pn)
       if(pn==0){

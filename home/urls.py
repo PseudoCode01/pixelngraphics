@@ -34,4 +34,6 @@ urlpatterns = [
     path("sendotp",views.sendotp,name="sendotp"),
     path("brand",views.brand,name="brand"),
     path("partner",views.partner,name="partner"),
+    path("edituserProfile",views.edituserProfile,name="edituserProfile"),
+    path("changepass",views.changepass,name="changepass"),
 ]

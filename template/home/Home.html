@@ -66,6 +66,18 @@
       <h5 class="white cc c3" onclick="changecal(2,this)" style="cursor: pointer;">STREAM OVERLAYS</h5>
     </div>
     <hr class="greenbg mb-0">
+    <label for="name" class="white mt-4 bug" style="display: none;">Budget*</label>
+
+ <div class="select2 mt-3">
+  <select name="slct" id="slct" onchange="bsort(value)">
+    <option  disabled>Please Select</option>
+    <option value="0">Price-High to Low</option>
+    <option value="1">Price-Low to High</option>
+    <option value="3">Top Rating</option>
+    <option selected value="4">Newly Added</option>
+    <option value="5">Sale</option>
+  </select>
+</div>  
 <div class="productContainer">
   <div class="filters pt-3">
     <h4 class="fh4"><Strong class="white">Sort By:</Strong></h4>
