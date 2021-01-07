@@ -594,3 +594,9 @@ justify-content: center;
     right: 35px;
   }
 } 
+.input-group-prepend{
+  max-width: 100%;
+height: auto;
+display: flex;
+flex-wrap: wrap;
+}

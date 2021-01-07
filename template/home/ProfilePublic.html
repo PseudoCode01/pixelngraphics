@@ -7,25 +7,25 @@
 <div class="customContainer">
     <div class="left navbg">
         <div class=" mt-7 image-crop mb-1">
-  {% if profile.0.profileImage %}
-          <img id="avatar" src="https://drive.google.com/uc?1EVA3KUBLxCXF2EGmTf4LUB8F4yAvBrjl"></img>
-            {% else %}
+          {% if profile.0.profileImage %}
           <img id="avatar" src="/media/{{profile.0.profileImage}}"></img>
+          {% else %}
+          <img id="avatar" src="https://drive.google.com/uc?1EVA3KUBLxCXF2EGmTf4LUB8F4yAvBrjl"></img>
           {% endif %}
         </div>
         <h3 class="name m-auto ct white">{{profile.0.sellername}}</h3>
         <h6 class="join m-auto ct green">{{profile.0.timeStamp}}</h6>
         <input type="hidden" class="srating" value="{{profile.0.sellerRating}}">
         <span class="rating ">
-            <h6 class="white mt-5">Total Rating</h6>
+            <!-- <h6 class="white mt-5">Total Rating</h6>
             <div class="stars">
                 <span class="s1">&#9733;</span>
                 <span class="s1">&#9733;</span>
                 <span class="s1">&#9733;</span>
                 <span class="s1">&#9733;</span>
                 <span class="s1">&#9733;</span>
-            </div>  
-            <h6 class="white mt-2">Seller Rank</h6>
+            </div>   -->
+            <h6 class="white mt-5">Seller Rank</h6>
             <h3 class="green">1st</h3>
             <h2 class="green mt-5">About the seller</h2>
             <p class="white">{{profile.0.discription}}</p>
