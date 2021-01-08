@@ -8,6 +8,11 @@
         
         <div class="welcomeparent mt-4"><h1 class="green">Application to Sell</h1>
         </div>
+        
+        {% if user.is_authenticated %}
+            
+       
+            
         {% if check %}
     
         {% if check.0.isVerified == True %}
@@ -43,6 +48,35 @@
         <button type="submit" class="btn btn-outline-success  mt-4">Submit</button>
     </form>
           {% endif %}
+          {% else %}
+          <div class="twocol mt-4">
+            <h5 class="ct white">Want to join us at&nbsp;</h5>
+            <h5 class="ct green">PixelN'Graphics&nbsp;</h5>
+            <h5 class="white ct">?</h5>
+        </div>
+        <h5 class="white ct head2">Just fill out the form bellow with your&nbsp;<b class="green">Name,Email&nbsp;</b> <br>and&nbsp;<b class="green">Portfolio Link</b>&nbsp;and wait 
+        for us to respond back</h5>
+        <form action="/applyforseller" method="POST">{% csrf_token %}
+        <div class="sellerform mt-4">
+            <div class="email">
+                <label for="email" class="green ">Email</label>
+                <input type="email" id="email" name="email" class="navbg" placeholder="Enter your email">
+            </div>
+            <div class="name mt-3">
+                <label for="name" class="green">Name</label>
+                <input type="name" id="name" name="name" class="navbg" placeholder="Enter your name">
+            </div>
+            <div class="link mt-3">
+                <label for="link" class="green ">Portfolio Link</label>
+                <input type="text" id="link" name="link" class="navbg" placeholder="Link to Portfolio (Behance, Instagram etc.)">
+            </div>
+        </div>
+        <h4 class="white ct mt-4 tnc">Make sure to read the&nbsp;<b class="green">Terms</b>&nbsp;and&nbsp;<b class="green">Conditions</b>&nbsp;written below</h4>
+       
+        <button type="submit" class="btn btn-outline-success  mt-4">Submit</button>
+    </form>
+          {% endif %}
+
           <div class="welcomeparent mt-5">
               <h1 class="white"><b class="green">Terms</b>&nbsp;and&nbsp;<b class="green">Conditions</b></h1>
           </div>

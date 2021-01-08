@@ -90,10 +90,23 @@ function openNav() {
             $('.searchbox-icon').css('display','block');
         }
     }
+    // document.querySelectorAll('img').setAttribute('draggable',false)
+    // for(item of document.querySelectorAll('img')){
+    //     item.setAttribute('draggable',false)
+    //     item.addEventListener('dragstart',function(){
+    //         return false
+    //     })
+    // }
+    $('img').on('dragstart',function(event){
+event.preventDefault();
+    })
 // document.addEventListener('contextmenu',event=>event.preventDefault());
-document.querySelector('.proimg').addEventListener('mouseover',function(){
-    document.querySelector('.po').style.display='flex'
-})
+if(document.querySelector('.proimg')!=null){
+
+    document.querySelector('.proimg').addEventListener('mouseover',function(){
+        document.querySelector('.po').style.display='flex'
+    })
+}
 document.querySelector('.po').addEventListener('mouseleave',function(){
     document.querySelector('.po').style.display='none'
 })

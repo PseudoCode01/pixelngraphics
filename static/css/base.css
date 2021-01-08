@@ -724,3 +724,11 @@ right:418px;
 .footer h5:hover{
   color: greenyellow;
 }
+img{
+
+  -webkit-user-drag: none;
+-khtml-user-drag:none;
+-moz-user-drag:none;
+-o-user-drag:none;
+user-select: none;
+}
