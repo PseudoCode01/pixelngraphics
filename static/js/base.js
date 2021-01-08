@@ -91,3 +91,9 @@ function openNav() {
         }
     }
 // document.addEventListener('contextmenu',event=>event.preventDefault());
+document.querySelector('.proimg').addEventListener('mouseover',function(){
+    document.querySelector('.po').style.display='flex'
+})
+document.querySelector('.po').addEventListener('mouseleave',function(){
+    document.querySelector('.po').style.display='none'
+})

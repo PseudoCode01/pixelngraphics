@@ -80,6 +80,7 @@ width: 33px;
     width: 150px;
     padding: 0;
     margin: 0; 
+    margin-left: -120px;
 }
 nav .navright{
     display: flex;
@@ -96,7 +97,7 @@ nav .usernavright{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin-right: 50px;
+    margin-right: 35px;
 }
 nav .navright a,.usernavright a{
     color: white;
@@ -173,7 +174,9 @@ nav .navright p,.usernavright p{
     transition: margin-left .5s;
     padding: 20px;
   }
-  
+  .brandlogo{
+    margin-left: -120px;
+  }
   /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
   @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
@@ -557,6 +560,9 @@ body{
 .parentcontainer{
   padding-bottom: 300px;
 }
+.hamburger{
+display: none;
+}
 @media only screen and (min-width:1000px){
 .sercontainer{
   position: absolute;
@@ -567,9 +573,18 @@ right: 225px;
   width: 330px;
 }
 }
-@media only screen and (max-width:950px){
+@media only screen and (max-width:1000px){
+ .nav .brandlogo{
+    margin-left: 0;
+  }
   nav .usernavright a{
 display: none;
+  }
+  nav .usernavright .proimg{
+    display: none;
+  }
+  .hamburger{
+    display: block;
   }
   nav .usernavright{
     display: flex;
@@ -589,7 +604,33 @@ display: none;
     margin-right: 10px;
   }
 }
+.proimg{
+  width: 45px;
+  height: 45px;
+  margin-left: 10px;
+}
+.proimg img{
+  width: auto;
+  height: 100%;
+  padding: 5px;
+  border-radius: 50%;
+}
+.po{
+  display: none;
+  
+  position: fixed;
+top: 50px;
+right: 20px;
 
+flex-direction: column;
+z-index: 2;
+padding: 10px;
+}
+.po a{
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
 @media only screen and (max-width:925px){
 
 .innerfooter .company h3, .innerfooter .resources h3{
@@ -661,7 +702,7 @@ font-size: 15px;
 }
 }
 .sercontainer{
-right:388px;
+right:418px;
 }
 
 @media (min-width:950px){

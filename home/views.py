@@ -471,11 +471,8 @@ def changepass(request):
     cp=request.POST.get('cp')
     np=request.POST.get('np')
     cnp=request.POST.get('cnp')
-    
-    print(cp,np,cnp)
     u=request.user
     usern=request.user.username
-    print(u.check_password(cp))
     if cp == np:
             return JsonResponse({'error':"New password can't be same as current password"},safe=False)
     if u.check_password(cp):

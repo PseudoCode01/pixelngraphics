@@ -47,3 +47,48 @@ function Addtocart(sample,elem){
       alert("Request failed");
     };
   }
+ 
+//  function right(){
+//     console.log('kl')
+
+//     document.querySelector( ".rowcus" ).animate({
+//       scrollLeft: '+=156px'
+//     });
+//   }
+// function left() {
+//     console.log('kl')
+//     document.querySelector( ".rowcus" ).animate({
+//       scrollLeft: '-=156px'
+//     });
+//   }
+// $('.rightarrow').click(function () {
+//   $( ".rowcus" ).animate({
+//     scrollLeft: '+=156px'
+//   });
+// });
+// $('.leftarrow').click(function () {
+  
+//   $( ".rowcus" ).animate({
+//     scrollLeft: '-=156px'
+//   });
+// });
+// var view = $(".rowcus");
+// var move = "100px";
+// var sliderLimit = -750;
+
+// function ra(){
+
+//     var currentPosition = parseInt(view.css("left"));
+//     console.log(view,currentPosition)
+//     if (currentPosition >= sliderLimit) view.stop(false,true).animate({left:"-="+move},{ duration: 400})
+
+// }
+
+// function la(){
+
+  
+//   var currentPosition = parseInt(view.css("left"));
+//   console.log(view,currentPosition)
+//     if (currentPosition < 0) view.stop(false,true).animate({left:"+="+move},{ duration: 400});
+
+// }
