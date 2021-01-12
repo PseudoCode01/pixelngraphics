@@ -6,10 +6,12 @@
   font-family: "nexabold";
   src:url('nexa/NexaBold.otf')
 }
-
+.bold{
+  font-family: 'nexabold';
+}
 .mainNav{
     display: flex;
-    background-color:#262a35;
+    background-color:#1C1F27;
     height: 75px;
     justify-content: space-between;
     flex-direction: row;
@@ -18,7 +20,7 @@
     z-index: 1;
 }
 body{
-    background-color: #1c1f27;  
+    background-color: #101116;  
     top: 0;
     left: 0;
     margin: 0;
@@ -47,7 +49,7 @@ p{
   background-color: #262a35;
 }
 .bg{
-  background-color: #1c1f27;
+  background-color: #222D43;
 
 }
 .twocol{
@@ -352,6 +354,26 @@ margin-top: -33px;
     position: absolute;
     animation: bubbles 5s linear infinite both;
   }
+  .searchbar{
+    display: flex;
+    width: 340px;
+    margin-right: 20px;
+
+  }
+  .searchbar input{
+    width: 90%;
+    border: none;
+    border-radius: 0;
+    padding: 5px;
+  }
+  .searchbar span{
+    background-color: white;
+  }
+  .searchbar span img{
+width: 100%;
+cursor: pointer;
+height: 35px;
+  }
   @keyframes bubbles {
     from {
       transform: translate();
@@ -540,7 +562,7 @@ font-size: 15px;
 .searchbox-icon img{
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
 }
-.searchbox-submit img{
+.searchbox-submit img,.searchbox-submit2 img{
   filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
 }
 .searchbox-open{
@@ -589,7 +611,7 @@ display: none;
   nav .usernavright{
     display: flex;
     align-items: center;
-    width: 150px;
+
 
     justify-content: center;
     margin-right: 10px;
@@ -731,4 +753,55 @@ img{
 -moz-user-drag:none;
 -o-user-drag:none;
 user-select: none;
+}
+.searchbar2{
+  display: none;
+}
+@media(max-width:600px){
+.searchbar2{
+  position: absolute;
+  display: flex;
+  width: 90%;
+  margin: auto;
+  height: 40px;
+  top: 70px;
+left: 5%;
+background-color: white;
+}
+.searchbar{
+  display: none;
+}
+.searchbar2 input{
+  width: 85%;
+border: none;
+border-radius: 0;
+}
+.searchbox-submit2{
+border-radius: 0;
+border: none;
+  width: 15%;
+  background-color: white;
+  height: 40px;
+}
+.searchbox-submit2 img{
+  display: block;
+  margin: auto;
+  height: 100%;
+}
+nav .usernavright{
+  width: 60px;
+  height: 75px;
+}
+.sercontainer{
+  display: none;
+}
+  .mainNav{
+    height: 130px;
+  }
+  .navright{
+    height: 75px;
+  }
+  .usernavright{
+    height: 75px;
+  }
 }
