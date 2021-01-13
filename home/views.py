@@ -381,6 +381,9 @@ def search(request):
     data=request.POST.get('stext')
     r=Product.objects.all()
     l=[]
+    if len(data) < 1 :
+        return redirect('/')
+
     for item in r:
         if(searchfun(item.searchTags.split(','),data)):
             l.append([item,ProductSample.objects.filter(product_id=item.sno)])
