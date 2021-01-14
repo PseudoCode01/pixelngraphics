@@ -40,6 +40,8 @@
        <div class="proimg">
          {% if profile.0.profileImage %}
          <img src="/media/{{profile.0.profileImage}}" alt="" srcset="">
+         {% elif sp.0.profileImage %}
+         <img src="/media/{{sp.0.profileImage}}" alt="" srcset="">
           {% else %} 
           <div class="img white">
             {{user.username.0|capfirst}}
@@ -139,7 +141,11 @@
 
 <div class="row">    <div class="proimg">
   {% if profile.0.profileImage %}
-  <img src="/media/{{profile.0.profileImage}}" alt="" srcset="">
+  <img src="/media/{{profile.0.profileImage}}" style="  width: 50px;
+  margin-left: 0;" class="ming" alt="" srcset="">
+  {% elif sp.0.profileImage %}
+  <img src="/media/{{sp.0.profileImage}}" style="  width: 50px;
+  margin-left: 0;" class="ming" alt="" srcset="">
    {% else %} 
    <div class="img white">
      {{user.username.0|capfirst}}

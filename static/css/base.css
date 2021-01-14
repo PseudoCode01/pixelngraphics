@@ -680,6 +680,7 @@ width: 300px;
   font-size: 16px;
  
 }
+
 .conspac{
   margin-bottom: 10px;
   display: block;
@@ -828,4 +829,8 @@ nav .usernavright{
   .usernavright{
     height: 75px;
   }
+}
+.ming{
+  width: 50px;
+  margin-left: 0;
 }
