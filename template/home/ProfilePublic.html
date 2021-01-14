@@ -37,7 +37,7 @@
             <div class="row row-cols-1 row-cols-md-2 g-4">
               
               {%for item in pr %}
-              <div class="col" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+              <div class="col" onclick="window.location.href='/productDetail/{{item.0.title}}/{{item.0.sno}}'">
                 <div class="card bg-dark text-white">
                   {% if item.1.filetype|slugify == 'video'  %}
                   <video id="vp" width="100%" height="auto" autoplay='true' loop >

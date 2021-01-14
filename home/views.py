@@ -199,6 +199,7 @@ def editProfile(request):
     sno= request.POST.get('sno')
     samples = request.FILES.get('img')
     fullname= request.POST.get('fullname')
+    sellername= request.POST.get('sname')
     country= request.POST.get('country')
     state= request.POST.get('state')
     city= request.POST.get('city')
@@ -210,6 +211,7 @@ def editProfile(request):
     sp=SellerProfile.objects.get(sno=sno)
     sp.tag=title
     sp.Fullname=fullname
+    sp.sellername=fullname
     sp.Country=country
     sp.State=state
     sp.City=city
@@ -226,9 +228,10 @@ def editProfile(request):
     sp.save()
     return JsonResponse('OK',safe=False)
 
-def productDetail(request,id):
+def productDetail(request,slug,id):
     p=Product.objects.filter(sno=id).values()
     ps=ProductSample.objects.filter(product_id=id).order_by('id').values()
+    sp=SellerProfile.objects.filter(seller=p[0]['seller_id'])
     s=set()
     il=0
     l=[]
@@ -246,7 +249,7 @@ def productDetail(request,id):
         c=Cart.objects.filter(user=request.user).filter(product_id=id).values()
     except:
         c=[]
-    return render(request,'home/productDetail.html',{'pr':p,'ps':ps,'l':len(c),'rec':l})
+    return render(request,'home/productDetail.html',{'pr':p,'ps':ps,'l':len(c),'rec':l,'sp':sp})
 def profileview(request,id):
     Sp=SellerProfile.objects.filter(seller_id=id).values()
     products=Product.objects.filter(isVerified=True).filter(seller_id=id).values()

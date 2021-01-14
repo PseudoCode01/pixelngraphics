@@ -103,7 +103,7 @@
       {% if forloop.counter < 9 %}
 
         
-      <div class="col lg" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      <div class="col lg" onclick="window.location.href='/productDetail/{{item.0.title}}/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
           <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
         
@@ -122,7 +122,7 @@
       </div>
       {% else %}
                 
-      <div class="col lg" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      <div class="col lg" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.title}}/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
           <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
         
@@ -149,7 +149,7 @@
       {% for item in banner %}
       
       {% if forloop.counter < 9 %}
-      <div class="col bn" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      <div class="col bn" onclick="window.location.href='/productDetail/{{item.0.title}}/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
           <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
         
@@ -169,7 +169,7 @@
       {% else %}
   
         
-      <div class="col bn" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      <div class="col bn" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.title}}/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
           <img src="/media/{{item.1.samplesfile}}"  class="card-img" alt="...">
         
@@ -195,7 +195,7 @@
       
       {% if forloop.counter > 8 %}
              
-      <div class="col st" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      <div class="col st" style="display: none;" onclick="window.location.href='/productDetail/{{item.0.title}}/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
 
       
@@ -223,7 +223,7 @@
 
    
         
-      <div class="col st" onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+      <div class="col st" onclick="window.location.href='/productDetail/{{item.0.title}}/{{item.0.sno}}'">
         <div class="card bg-dark text-white">
 
       

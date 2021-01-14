@@ -197,6 +197,7 @@ function editprofile(sample){
   formData.append("sno", sample);
   formData.append("img", document.querySelector('.primg').files[0]);
   formData.append("fullname",document.querySelector('.fullname').value);
+  formData.append("sname",document.querySelector('.sname').value);
   formData.append("country", document.querySelector('.country').value);
   formData.append("state", document.querySelector('.state').value);
   formData.append("city", document.querySelector('.city').value);
