@@ -70,7 +70,7 @@ elem.style.color='#92d945';
               text=item[0]['title']
           }
           console.log(item[0]['sno'])
-v+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
+v+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['title']}/${item[0]['sno']}'">
 <div class="card bg-dark text-white">
   <img src="/media/${item[1]['samplesfile']}"  class="card-img" alt="...">
 
@@ -89,7 +89,7 @@ v+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sn
               text=item[0]['title']
           }
           console.log(item[0]['sno'])
-b+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
+b+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['title']}/${item[0]['sno']}'">
 <div class="card bg-dark text-white">
   <img src="/media/${item[1]['samplesfile']}"  class="card-img" alt="...">
 
@@ -108,9 +108,17 @@ text=String(item[0]['title']).substring(0,20)+'...'
               text=item[0]['title']
           }
           console.log(item[0]['sno'])
-so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
-<div class="card bg-dark text-white">
-  <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
+so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['title']}/${item[0]['sno']}'">
+<div class="card bg-dark text-white">`
+if(item[1]['filetype']!='video'){
+  so+=`<img src="/media/${item[1]['samplesfile']}"  class="card-img" alt="...">
+  <div class="card-img-overlay">
+    <p class="card-text">${text} | $ ${item[0]['Price']}</p>
+  </div>
+</div>
+</div>`
+}
+else {so+=`<video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
   <source id="source" src="/media/${item[1]['samplesfile']}" type="video/mp4">
   Your browser does not support the video tag.
   </video>
@@ -118,7 +126,7 @@ so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['s
     <p class="card-text">${text} | $ ${item[0]['Price']}</p>
   </div>
 </div>
-</div>`
+</div>`}
       }
       document.querySelector('.logo').innerHTML=v;
       document.querySelector('.banner').innerHTML=b;
@@ -181,7 +189,7 @@ function bsort(fil){
               text=item[0]['title']
           }
           console.log(item[0]['sno'])
-v+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
+v+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['title']}/${item[0]['sno']}'">
 <div class="card bg-dark text-white">
   <img src="/media/${item[1]['samplesfile']}"  class="card-img" alt="...">
 
@@ -200,7 +208,7 @@ v+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sn
               text=item[0]['title']
           }
           console.log(item[0]['sno'])
-b+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
+b+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['title']}/${item[0]['sno']}
 <div class="card bg-dark text-white">
   <img src="/media/${item[1]['samplesfile']}"  class="card-img" alt="...">
 
@@ -219,9 +227,17 @@ text=String(item[0]['title']).substring(0,20)+'...'
               text=item[0]['title']
           }
           console.log(item[0]['sno'])
-so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['sno']}'">
-<div class="card bg-dark text-white">
-  <video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
+so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['title']}/${item[0]['sno']}'">
+<div class="card bg-dark text-white">`
+if(item[1]['filetype']!='video')
+  {so+=`<img src="/media/${item[1]['samplesfile']}"  class="card-img" alt="...">
+  <div class="card-img-overlay">
+    <p class="card-text">${text} | $ ${item[0]['Price']}</p>
+  </div>
+</div>
+</div>`}
+else{
+  so+=`<video id="vp" width="100%" height="550px" autoplay='true' width="100%" loop >
   <source id="source" src="/media/${item[1]['samplesfile']}" type="video/mp4">
   Your browser does not support the video tag.
   </video>
@@ -230,6 +246,7 @@ so+=`<div class="col" onclick="window.location.href='/productDetail/${item[0]['s
   </div>
 </div>
 </div>`
+}
       }
       document.querySelector('.logo').innerHTML=v;
       document.querySelector('.banner').innerHTML=b;

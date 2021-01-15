@@ -12,12 +12,12 @@
       Your browser does not support the video tag.
       </video>
       <hr class="greenbg">
-     <div class="card even bg" style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),0)">
+     <div class="card even " style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),0)">
       <div class="row no-gutters">
           <div class="imgpar mt-auto mb-auto" style="width: 100%;">
                <img width="100%" height="100%" src="/media/{{ht.0.toppremadelogo}}" alt="" srcset=""> 
             </div>
-        <div class="col-md-6 slant navbg">
+        <div class="col-md-6 bg slant navbg">
           <h4 class="white bold">Premade Logos</h4>
           <br>
           <p class="white">Choose from hundreds of premade design, with new design added weekly. Give your channel a brand new look !</p>
@@ -28,30 +28,38 @@
   </div>
   
   <div class="container-xl">
-    <div class="card even bg mt-4" style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),1)">
+    <div class="card even  mt-4" style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),1)">
       <div class="row no-gutters">
           <div class="imgpar mt-auto mb-auto" style="width: 100%;">
                <img width="100%" height="100%" style="float:right" src="/media/{{ht.0.banner}}" alt="" srcset=""> 
             </div>
-        <div class="col-md-6 slant2 navbg">
+        <div class="col-md-6 slant2 bg navbg">
           <h4 class="white bold">Banners</h4>
           <br>
           <p class="white">Touch up your channel with one of the best banners out there. Choose from premade designs or order a custom now</p>
-        
+          <div class="rowfl">
+            <img src="/static/images/twitch.svg" alt="" srcset="">
+            <img src="/static/images/yt.svg" alt="" srcset="">
+            <img src="/static/images/fbook.svg" alt="" srcset="">
+          </div>
         </div>
       </div>
     </div>
-    <div class="card even bg mt-4" style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),2)">
+    <div class="card even  mt-4" style="cursor: pointer;" onclick="smoothScroll(document.getElementById('procont'),2)">
       <div class="row no-gutters">
           <div class="imgpar mt-auto mb-auto" style="width: 100%;">
                <img width="100%" height="100%"  src="/media/{{ht.0.streamoverlays}}" alt="" srcset=""> 
             </div>
-        <div class="col-md-6 slant navbg">
+        <div class="col-md-6 bg slant navbg">
           <h4 class="white bold">Stream Overlays</h4>
           <br>
           <p class="white">Want your stream to be an another level ? </p>
           <p class="white">Get these easy to use stream overlays and start streaming with a boom !</p>
-         
+         <div class="rowfl2">
+<h6 class="bold green">Supported Platform: </h6>
+  <img src="/static/images/slabs.svg" alt="" srcset="">
+            <img src="/static/images/obs.svg" alt="" srcset="">
+         </div>
         </div>
       </div>
     </div>
@@ -161,7 +169,7 @@
             {% else %}
             <p class="card-text">{{item.0.title}} | $ {{item.0.Price}}</p>
             {% endif %}
-              
+             
            
           </div>
         </div>

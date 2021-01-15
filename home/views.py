@@ -549,8 +549,7 @@ def changeemail(request):
             [cp],
         )
         email.fail_silently=False
-        # email.send()
-        print(r)
+        email.send()
     else:
         u.email=cp
         u.save()

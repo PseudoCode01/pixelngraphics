@@ -269,7 +269,7 @@ margin-bottom: 10px;
     padding-top: 5px;
     width: 300px;
   }
-  .row {
+ .parentcontainer .row {
     align-items: center;
     display: flex;
     flex-direction: row;
