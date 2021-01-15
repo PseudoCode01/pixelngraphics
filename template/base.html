@@ -21,14 +21,7 @@
      </div>
      {% if user.is_authenticated %}
      <div class="usernavright">
-      <!-- <div class="sercontainer mr-4">
-        <form action="/search" method="POST" class="searchbox">{% csrf_token %}
-            <input type="search" placeholder="Search......" name="stext" id="stext" class="searchbox-input" onkeyup="buttonUp();" required>
-             <input type="submit"  class="searchbox-submit">
-            <span class="searchbox-submit" onclick="document.querySelector('.searchbox').submit()" ><img   src="/static/images/search.svg" alt="" srcset=""></span>
-            <span class="searchbox-icon"><img   src="/static/images/search.svg" alt="" srcset=""></span>
-        </form>
-    </div> -->
+   
     <form action="/search" class="searchbar" method="post">{% csrf_token %}
       <input type="text" placeholder="Search ..." name="stext" id="stext">
       <span class="searchbox-submit2" onclick="document.querySelector('.searchbar').submit()" ><img   src="/static/images/search.svg" alt="" srcset=""></span>

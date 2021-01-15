@@ -416,4 +416,39 @@ else{
     };
   }
   
+  function si(val,sample){
+    xhr.open('POST', '/editProfile',true);
+    xhr.setRequestHeader('X-CSRFToken', csrftoken);     
+    var formData = new FormData();
+    formData.append("sno", sample);
+    formData.append("invoice",val.checked);
+   
+    xhr.onload=function(){
+      if(xhr.status!=200){
+  
+      }
+      else{
+        document.querySelector('.add').innerHTML=` SAVE
+        `
+      }
+    }
+    xhr.upload.onloadstart=function(e){
+        document.querySelector('.add').innerHTML=` <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        `
+    }
+    xhr.upload.onprogress = function(e) {
+      if (e.lengthComputable) {
+        var done = e.position || e.loaded
+        var total = e.totalSize || e.total;
+       
+      } else {
+      
+      }
+    
+    };
+    xhr.send(formData);
+    xhr.onerror = function() {
+      alert("Request failed");
+    };
+  }
   

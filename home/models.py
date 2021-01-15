@@ -115,6 +115,7 @@ class MyOrder(models.Model):
     user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
     product=models.ForeignKey(Product,default=None,on_delete=models.CASCADE)
     quantity=models.IntegerField(default=0)
+    isProcessed=models.BooleanField(default=False)
     changes=models.CharField(default='No',max_length=1000)
     order_id=models.CharField(default='000',max_length=1000)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)

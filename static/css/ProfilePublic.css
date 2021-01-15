@@ -11,7 +11,9 @@
 	border-radius: 50%;
 	box-shadow: 1px 1px 5px #4069E2;
 }
-
+body{
+  background-color: #242424;
+}
 #avatar {
   display: block;
   height: 150px;
@@ -20,6 +22,7 @@
 .customContainer{
    min-height: 900px;
     max-height:  1415px;
+    
 }
 .left{
    height: 1000px;

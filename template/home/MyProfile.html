@@ -8,26 +8,41 @@
         
 <hr class="greenbg">    
 <div class="select select2 mb-3" style="width: 100%;">
-  <select name="slct2" class="slct2" id="slct" onchange="changepm(this)">
+  <select name="slct2" class="slct2 " id="slct" onchange="changepm(this)">
     <option  disabled>Please Select</option>
     
     <option class="cate green  " selected  value="5">Purchases</option>
+    {% if sp %}
+              
     <option class="cate white" value="4">My Orders</option>
+    {% endif %}
     <!-- <li class="cate white" onclick="changep(this)">My Products</li> -->
     <option class="cate white" value="2">Login & Security</option>
+    {% if sp %}
     <option class="cate white" value="1">Account Details</option>
     <option class="cate white" value="3">Payments</option>
+    {% endif %}
   </select>
 </div>      
 <div class="rowflex">
     <div class="left">
         <ul class="filt">
             <li class="cate green " onclick="changep(this,5)">Purchases</li>
+            
+            {% if sp %}
+              
             <li class="cate white" onclick="changep(this,4)">My Orders</li>
+            {% endif %}
+              
             <!-- <li class="cate white" onclick="changep(this)">My Products</li> -->
             <li class="cate white" onclick="changep(this,2)">Login & Security</li>
+            
+            {% if sp %}
             <li class="cate white" onclick="changep(this,1)">Account Details</li>
+              
             <li class="cate white" onclick="changep(this,3)">Payments</li>
+            {% endif %}
+              
         </ul>
     </div>
    
@@ -48,7 +63,7 @@
           </div>
           <div class="form-group mt-3">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" value="{{user.email}}" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="exampleInputEmail1" value="{{user.email}}" aria-describedby="emailHelp" readonly>
             <small id="emailHelp" class="form-text text-muted">In order to edit go to <b onclick="changepmm(this,2)" style="cursor: pointer;"  class="green
                 ">Login & Security </b>section.</small>
           </div>
@@ -56,9 +71,9 @@
             
             {% if sp.0.SendInvoices|slugify == 'true'  %}
               
-            <input class="form-check-input" type="checkbox" checked value="{{sp.0.SendInvoices}}" id="defaultCheck1" disabled >
+            <input class="form-check-input" type="checkbox" checked value="{{sp.0.SendInvoices}}" id="defaultCheck1" onchange="si(this,'{{sp.0.sno}}')" >
             {% else %}
-            <input class="form-check-input" type="checkbox" checked value="{{sp.0.SendInvoices}}" id="defaultCheck1" disabled >
+            <input class="form-check-input" type="checkbox"  value="{{sp.0.SendInvoices}}" id="defaultCheck1" onchange="si(this,'{{sp.0.sno}}')" >
             {% endif %}
           
               
@@ -141,23 +156,23 @@
         <div class="top nbg">
         <div class="rowflex2">
             <div class="white">Balance*</div>
-            <div class="green">$175</div>
+            <div class="green bl">$ {{bal}}</div>
     </div>
 
     <hr class="greenbg">
     <div class="rowflex2">
         <div class="white">Total Earned*</div>
-        <div class="green">$450</div>
+        <div class="green ear">$ {{sp.0.earned}}</div>
 </div>
 <hr class="grey">
     <div class="rowflex2">
         <div class="white">Total Amount Tranferred*</div>
-        <div class="green">$275</div>
+        <div class="green trans">$ {{sp.0.transferred}}</div>
 </div>
 <hr class="grey">
     <div class="rowflex2">
         <div class="white">Amount Pending to be Transferred*</div>
-        <div class="green">$175</div>
+        <div class="green bl">$ {{bal}}</div>
 </div>
 </div>
 <small class="white">* All amounts shown are exclusive of any data charges. Final payments will be done after deduction of transferred charges if any.</small>
@@ -168,9 +183,11 @@
     <div class="rowflex3">
     <label for="select" class="white">Payment Method</label>
     <div class="select">
-        <select name="slct" id="slct" ">
+        <select name="slct" class="navbg" id="slct" ">
           <option  disabled>Please Select</option>
           <option value="0">Paypal</option>
+          <option value="0">Google Pay </option>
+          <option value="0">Payment</option>
           <option value="1">Account Number</option>
         </select>
       </div>  
@@ -210,7 +227,7 @@
            
                
            <div class="prds nbg mb-3">
-<div class="i1">
+<div class="i1 ">
     <h5 class="white ct">    {{item.2.0.order_id}}</h5>
 </div>
 <div class="i2">
@@ -251,9 +268,9 @@
            {% for item in result %}
            
                
-           <div class="prds nbg mb-3">
+           <div class="prds t{{item.2.isProcessed}} nbg mb-3">
 <div class="i1">
-    <h5 class="white ct">{{item.2.order_id}}</h5>
+    <h5 class="white ct">{{item.2.order_id}} </h5>
 </div>
 <div class="i2">
   <h5 class="white ct">{{item.2.timeStamp|date:"M d, Y"}}</h5>
@@ -299,6 +316,7 @@
         </div>
       </div>
     </div> 
+
 <script src="{% static 'js/MyProfile.js' %}"></script>  
 
 {% endblock body %}

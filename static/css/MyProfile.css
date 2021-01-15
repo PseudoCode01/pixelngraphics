@@ -135,7 +135,16 @@ padding: 10px;
   .select2{
     display: none;
   }
+  .tFalse{
+    border-right: 5px solid blue;
+  }
+  .tTrue{
+    border-right: 5px solid var(--btn-color);
+  }
   @media (max-width:800px){
+    .rowflex{
+      height: auto;
+    }
     .select2{
       display: block;
     }
@@ -166,7 +175,11 @@ padding: 10px;
       font-size: 12px;
     }
   }
-  .bottom{
+ .r4 .bottom,.r5 .bottom{
     overflow: auto;
     height: 90%;
   }
+  .form-control:disabled, .form-control[readonly] {
+    background-color: #ffffff00;
+    opacity: 1;
+}

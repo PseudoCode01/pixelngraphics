@@ -39,7 +39,7 @@
         </div>
         <div class="card-group">
         <button type="button" class="btn btn-outline-success btn-lg pv" data-toggle="modal" data-target="#exampleModalCenteredScrollable">Edit Profile</button>
-        <button type="button" class="btn btn-outline-success btn-lg pv" onclick="window.location.href='/profileview/{{request.user.id}}'">Public View</button>
+        <button type="button" class="btn btn-outline-success btn-lg pv" onclick="window.location.href='/profileview/{{profile.0.sellername}}/{{request.user.id}}'">Public View</button>
       </div>
         <input type="hidden" class="srating2" value="{{profile.0.sellerRating}}">
         <span class="rating ">
@@ -51,8 +51,8 @@
                 <span class="s2">&#9733;</span>
                 <span class="s2">&#9733;</span>
             </div>   -->
-            <h6 class="white mt-5">Seller Rank</h6>
-            <h3 class="green">1st</h3>
+            <!-- <h6 class="white mt-5">Seller Rank</h6>
+            <h3 class="green">1st</h3> -->
             <h2 class="green mt-5">About the seller</h2>
             <p class="white">{{profile.0.discription}}</p>
             </span>
@@ -95,13 +95,13 @@
         </div>
         <div class="card-group">
         <button type="button" class="btn btn-outline-success btn-lg pv" data-toggle="modal" data-target="#exampleModalCenteredScrollable">Edit Profile</button>
-        <button type="button" class="btn btn-outline-success btn-lg pv" onclick="window.location.href='/profileview/{{request.user.id}}'">Public View</button>
+        <button type="button" class="btn btn-outline-success btn-lg pv" onclick="window.location.href='/profileview/{{profile.0.sellername}}/{{request.user.id}}'">Public View</button>
       </div>
         <input type="hidden" class="srating" value="{{profile.0.sellerRating}}">
         <span class="rating ">
            
-            <h6 class="white mt-5">Seller Rank</h6>
-            <h3 class="green">1st</h3>
+            <!-- <h6 class="white mt-5">Seller Rank</h6>
+            <h3 class="green">1st</h3> -->
             <h2 class="green mt-5">About the seller</h2>
             <p class="white">{{profile.0.discription}}</p>
             </span>

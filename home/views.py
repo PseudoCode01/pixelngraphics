@@ -263,7 +263,7 @@ def productDetail(request,slug,id):
     except:
         c=[]
     return render(request,'home/productDetail.html',{'pr':p,'ps':ps,'l':len(c),'rec':l,'sp':sp})
-def profileview(request,id):
+def profileview(request,slug,id):
     Sp=SellerProfile.objects.filter(seller_id=id).values()
     products=Product.objects.filter(isVerified=True).filter(seller_id=id).values()
     l=[]
@@ -388,7 +388,7 @@ def filters(request):
                 so.append([item,ps[0]])
     return JsonResponse({'product':l,'banner':b,'stream':so})
 def searchfun(list, platform):
-    for i in range(len(list)):
+    for i in range(len(list)-1):
         # print(list[i],platform)
         if list[i].lower().strip() == platform.lower().strip():
             return True
@@ -425,7 +425,8 @@ def additems(request):
     snos = data['sno'].split('+')
     qn = data['qns'].split('+')
     i=0
-    
+    oid=str(len(MyOrder.objects.all())+1)
+    oid='#PNG-'+oid
     for item in snos:
         if(i==len(snos)-1):
             break
@@ -435,7 +436,7 @@ def additems(request):
         
         c.delete()
         if len(P)>0:
-            q=MyOrder(product=Product.objects.get(sno=int(item)),quantity=qn[i],changes=changes,user=request.user)
+            q=MyOrder(product=Product.objects.get(sno=int(item)),quantity=qn[i],changes=changes,user=request.user,order_id=oid)
             q.save()
             po=Product.objects.get(sno=int(item))
             if(po.category=='logo'):
@@ -452,6 +453,9 @@ def myProfile(request):
     mp=MyOrder.objects.filter(user=request.user).values()
     up=UserProfile.objects.filter(user=request.user).values()
     sp=SellerProfile.objects.filter(seller=request.user).values()
+    bal=0
+    if len(sp)>0:
+        bal=sp[0]['earned']-sp[0]['transferred']
     if len(up)<1:
         up=UserProfile(username=request.user.username,user=request.user)
         up.save()
@@ -470,7 +474,7 @@ def myProfile(request):
 
     for item in mp:
         l.append([Product.objects.filter(sno=item['product_id']),ProductSample.objects.filter(product_id=item['product_id']),item])
-    return render(request,'home/MyProfile.html',{'result':l,'email':email,'profile':up,'product':prd,'sp':sp})
+    return render(request,'home/MyProfile.html',{'result':l,'email':email,'profile':up,'product':prd,'sp':sp,'bal':bal})
 
 def edituserProfile(request):
     sno= request.POST.get('sno')
@@ -551,3 +555,18 @@ def changeemail(request):
         u.email=cp
         u.save()
     return JsonResponse({'success':r},safe=False)
+def random(request,slug):
+    h=HomePage.objects.all().order_by('-timeStamp').values()
+    products=Product.objects.filter(isVerified=True).order_by('-timeStamp').values()
+    l=[]
+    b=[]
+    so=[]
+    for item in products:
+        ps=ProductSample.objects.filter(product_id=item['sno']).order_by('id').values()
+        if item['category'] == 'logo':
+            l.append([item,ps[0]])
+        elif item['category'] == 'banner':
+            b.append([item,ps[0]])
+        else :
+            so.append([item,ps[0]])
+    return render(request,'home/Home.html',{'product':l,'banner':b,'stream':so,'ht':h})

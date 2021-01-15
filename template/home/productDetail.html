@@ -7,9 +7,9 @@
             <div class="disc">
               
               {% if sp.0.sellername %}
-                <h4 onclick="window.location.href='/profileview/{{pr.0.seller_id}}'" style="cursor: pointer;"  class="green mb-0 ml-1">{{sp.0.sellername}}</h4>
+                <h4 onclick="window.location.href='/profileview/{{pr.0.sellername}}/{{sp.0.seller_id}}'" style="cursor: pointer;"  class="green mb-0 ml-1">{{sp.0.sellername}}</h4>
               {% else %}
-              <h4 onclick="window.location.href='/profileview/{{pr.0.seller_id}}'" style="cursor: pointer;"  class="green mb-0 ml-1">{{pr.0.sellername}}</h4>
+              <h4 onclick="window.location.href='/profileview/{{pr.0.sellername}}/{{pr.0.seller_id}}'" style="cursor: pointer;"  class="green mb-0 ml-1">{{pr.0.sellername}}</h4>
                 {% endif %}
                 <h1 class="white mt-0">{{pr.0.title}}</h1>
 <h1 class="green mb-0 ml-1 bold">$ {{pr.0.Price}} USD</h1>

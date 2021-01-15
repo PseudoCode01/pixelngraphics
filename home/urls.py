@@ -19,7 +19,7 @@ urlpatterns = [
     path("sellerProfile",views.sellerProfile,name="sellerProfile"),
     path("addProduct",views.addProduct,name="addProduct"),
     path("productDetail/<str:slug>/<int:id>",views.productDetail,name="productDetail"),
-    path("profileview/<int:id>",views.profileview,name="profileview"),
+    path("profileview/<str:slug>/<int:id>",views.profileview,name="profileview"),
     path("cart",views.cart,name="cart"),
     path("addtoCart",views.AddtoCart,name="addtoCart"),
     path("removeCart",views.removeCart,name="removeCart"),
@@ -37,4 +37,5 @@ urlpatterns = [
     path("edituserProfile",views.edituserProfile,name="edituserProfile"),
     path("changepass",views.changepass,name="changepass"),
     path("changeemail",views.changeemail,name="changeemail"),
+    path("<str:slug>",views.random,name="random"),
 ]
