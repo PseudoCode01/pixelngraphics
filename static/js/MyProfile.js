@@ -32,6 +32,30 @@ function changep(val,r){
     document.querySelector('.lname').value=document.querySelector('.fn').value.split(' ')[1]
   }
 }
+function changepmm(val,r){
+ document.querySelector('.slct2').value='2'
+  for (const item of document.querySelectorAll('.right')) {
+    item.style.display='none'
+  }
+  document.querySelector('.r'+r).style.display='block'
+  if(r==1){
+    document.querySelector('.fname').value=document.querySelector('.fn').value.split(' ')[0]
+    if(document.querySelector('.fn').value.split(' ')[1]!=null)
+    document.querySelector('.lname').value=document.querySelector('.fn').value.split(' ')[1]
+  }
+}
+function changepm(val){
+  r=val.value
+  for (const item of document.querySelectorAll('.right')) {
+    item.style.display='none'
+  }
+  document.querySelector('.r'+r).style.display='block'
+  if(r==1){
+    document.querySelector('.fname').value=document.querySelector('.fn').value.split(' ')[0]
+    if(document.querySelector('.fn').value.split(' ')[1]!=null)
+    document.querySelector('.lname').value=document.querySelector('.fn').value.split(' ')[1]
+  }
+}
 function openFullNav() {
     document.getElementById("myOverlay").style.width = "100%";
   }

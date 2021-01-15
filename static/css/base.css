@@ -793,6 +793,9 @@ user-select: none;
 left: 5%;
 background-color: white;
 }
+.mt-7{
+  margin-top: 200px;
+}
 .searchbar{
   display: none;
 }
