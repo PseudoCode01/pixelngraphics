@@ -36,4 +36,5 @@ urlpatterns = [
     path("partner",views.partner,name="partner"),
     path("edituserProfile",views.edituserProfile,name="edituserProfile"),
     path("changepass",views.changepass,name="changepass"),
+    path("changeemail",views.changeemail,name="changeemail"),
 ]

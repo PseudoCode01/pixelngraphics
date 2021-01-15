@@ -31,6 +31,7 @@ class SellerProfile(models.Model):
     City=models.CharField(default='',max_length=1000)
     PostalCode=models.CharField(default='',max_length=1000)
     Address=models.CharField(default='',max_length=1000)
+    Address2=models.CharField(default='',max_length=1000)
     SendInvoices=models.BooleanField(default=False)
     accountdetails=models.TextField(default='')
     tag=models.CharField(default='Graphic Designer',max_length=500)
@@ -39,6 +40,7 @@ class SellerProfile(models.Model):
     products=models.IntegerField(default=0)
     sells=models.IntegerField(default=0)
     earned=models.IntegerField(default=0)
+    transferred=models.IntegerField(default=0)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
     def __str__(self):
         return 'No.'+str(self.sno)+'  '+self.sellername+'  Rating:'+str(self.sellerRating)+' Sells: '+str(self.sells)+' Earned : '+str(self.earned)
@@ -114,6 +116,7 @@ class MyOrder(models.Model):
     product=models.ForeignKey(Product,default=None,on_delete=models.CASCADE)
     quantity=models.IntegerField(default=0)
     changes=models.CharField(default='No',max_length=1000)
+    order_id=models.CharField(default='000',max_length=1000)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
 

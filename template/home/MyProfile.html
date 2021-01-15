@@ -1,0 +1,297 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/MyProfile.css' %}">
+    <div class="container-xl mt-7 navbg">
+        <h1 class="white pt-3">My Profile</h1>
+        
+<hr class="greenbg">    
+<div class="select select2 mb-3" style="width: 100%;">
+  <select name="slct2" id="slct" ">
+    <option  disabled>Please Select</option>
+    
+    <option class="cate green "  onclick="changep(this,5)">Purchases</option>
+    <option class="cate white" onclick="changep(this,4)">My Orders</option>
+    <!-- <li class="cate white" onclick="changep(this)">My Products</li> -->
+    <option class="cate white" onclick="changep(this,2)">Login & Security</option>
+    <option class="cate white" onclick="changep(this,1)">Account Details</option>
+    <option class="cate white" onclick="changep(this,3)">Payments</option>
+  </select>
+</div>      
+<div class="rowflex">
+    <div class="left">
+        <ul class="filt">
+            <li class="cate green " onclick="changep(this,5)">Purchases</li>
+            <li class="cate white" onclick="changep(this,4)">My Orders</li>
+            <!-- <li class="cate white" onclick="changep(this)">My Products</li> -->
+            <li class="cate white" onclick="changep(this,2)">Login & Security</li>
+            <li class="cate white" onclick="changep(this,1)">Account Details</li>
+            <li class="cate white" onclick="changep(this,3)">Payments</li>
+        </ul>
+    </div>
+   
+    <div class="right r1 " style="display: none;">
+        <div class="top nbg">
+        <h3 class="white">Details</h3>
+        <hr class="greenbg">
+        <label for="fname" >FULL NAME</label>
+        <input type="hidden" value="{{sp.0.Fullname}}" class="fn">
+        <div class="form-row">
+            <div class="col">
+              <input type="text" onchange="editprofile('{{sp.0.sno}}')" class="form-control fname" value="{{sp.0.Fullname}}" placeholder="First name">
+            </div>
+            <div class="col">
+            
+              <input type="text" class="form-control lname" onchange="editprofile('{{sp.0.sno}}')" placeholder="Last name">
+            </div>
+          </div>
+          <div class="form-group mt-3">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">In order to edit go to <b class="green
+                ">Login & Security </b>section.</small>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+            <label class="form-check-label white" for="defaultCheck1" >
+              Send Original Invoices by Email
+            </label>
+          </div>
+          </div>
+          <div class="bottom mt-5 nbg">
+            <h3 class="white">Billing Address</h3>
+            <hr class="greenbg">
+            <div class="form-group mt-3">
+                <label for="exampleInputEmail1">ADDRESS LINE 1</label>
+                <input type="email" class="form-control add1" id="exampleInputEmail1" value="{{sp.0.Address}}" aria-describedby="emailHelp">
+              
+              </div>
+            <div class="form-group mt-3">
+                <label for="exampleInputEmail1">ADDRESS LINE 2</label>
+                <input type="email" class="form-control add2" id="exampleInputEmail1" aria-describedby="emailHelp">
+          
+              </div>
+              <div class="form-row">
+                <div class="col">
+                    <label for="COUNTRY">COUNTRY</label>
+                  <input type="text" class="form-control country" value="{{sp.0.Country}}" >
+                </div>
+                <div class="col">
+                    <label for="state">STATE</label>
+                  <input type="text" class="form-control state" value="{{sp.0.State}}" >
+                </div>
+              </div>
+              <div class="form-row mt-3">
+                <div class="col">
+                    <label for="CITY">CITY</label>
+                  <input type="text" class="form-control city" value="{{sp.0.City}}">
+                </div>
+                <div class="col">
+                    <label for="postal">POSTAL CODE</label>
+                  <input type="text" class="form-control postal" value="{{sp.0.PostalCode}}">
+                </div>
+              </div>
+        </div>
+        <button type="button" class="btn btn-success greenbg bill" onclick="billing('{{sp.0.sno}}')">SAVE</button>
+    </div>
+    <div class="right r2" style="display: none;">
+       <div class="top nbg">
+     
+            <div class="messagep0"></div>
+            
+              <div class="form-group mt-3">
+                <label for="exampleInputEmail1" class="white">EMAIL ADDRESS</label>
+                <input type="email" class="form-control cemail"  id="exampleInputEmail1" aria-describedby="emailHelp">
+               
+              </div>
+       </div> 
+       <button type="button" class="btn btn-success greenbg cpass" onclick="changeemail()">SAVE</button>
+       <div class="bottom mt-5 nbg">
+        <h3 class="white">Change Password</h3>
+        <hr class="greenbg">
+        <div class="messagep"></div>
+              <div class="form-group mt-3">
+                <label for="exampleInputEmail1" class="white ">OLD PASSWORD</label>
+                <input type="password" class="form-control cp"  id="exampleInputEmail1" aria-describedby="emailHelp">
+               
+              </div>
+              <div class="form-group mt-3">
+                <label for="exampleInputEmail1" class="white ">ENTER NEW PASSWORD</label>
+                <input type="password" class="form-control np"  id="exampleInputEmail1" aria-describedby="emailHelp">
+               
+              </div>
+              <div class="form-group mt-3">
+                <label for="exampleInputEmail1" class="white">CONFIRM NEW PASSWORD</label>
+                <input type="password" class="form-control cnp"  id="exampleInputEmail1" aria-describedby="emailHelp">
+               
+              </div>
+       </div> 
+       <button type="button" class="btn btn-success greenbg cpass" onclick="changepass()">SAVE</button>
+    </div>
+    <div class="right r3 " style="display: none;" >
+        <div class="top nbg">
+        <div class="rowflex2">
+            <div class="white">Balance*</div>
+            <div class="green">$175</div>
+    </div>
+
+    <hr class="greenbg">
+    <div class="rowflex2">
+        <div class="white">Total Earned*</div>
+        <div class="green">$450</div>
+</div>
+<hr class="grey">
+    <div class="rowflex2">
+        <div class="white">Total Amount Tranferred*</div>
+        <div class="green">$275</div>
+</div>
+<hr class="grey">
+    <div class="rowflex2">
+        <div class="white">Amount Pending to be Transferred*</div>
+        <div class="green">$175</div>
+</div>
+</div>
+<small class="white">* All amounts shown are exclusive of any data charges. Final payments will be done after deduction of transferred charges if any.</small>
+
+<div class="bottom mt-4 nbg">
+    <h3 class="white">Payment Details</h3>
+    <hr class="greenbg">
+    <div class="rowflex3">
+    <label for="select" class="white">Payment Method</label>
+    <div class="select">
+        <select name="slct" id="slct" ">
+          <option  disabled>Please Select</option>
+          <option value="0">Paypal</option>
+          <option value="1">Account Number</option>
+        </select>
+      </div>  
+      </div>  
+    <div class="rowflex3 mt-4">
+    <label for="select" class="white">Payment Details</label>
+    <textarea class="form-control " id="pd" rows="3"></textarea>
+      </div>  
+      <button type="button" class="btn btn-success greenbg add mt-3" onclick="ad('{{sp.0.sno}}')">SAVE</button>
+      <hr class="grey">
+      <small class="white">NOTE : If you are not from india, payments can only be transferred through paypal. We are working to make more payments methods available soon.</small>
+</div>
+    </div>
+    <div class="r4 right" style="display: none;">
+       <div class="top">
+           <div class="rowflex4">
+               <div class="on">
+                   <h5 class="green ct">Order Number</h5>
+               </div>
+               <div class="od">
+                   <h5 class="green ct">Order Date</h5>
+               </div>
+               <div class="product">
+                   <h5 class="green ct">Product</h5>
+               </div>
+               <div class="amt">
+                   <h5 class="green ct">Amount*</h5>
+               </div>
+               <div class="amt">
+                   <h5 class="green ct">Due Date</h5>
+               </div>
+           </div>
+       </div> 
+       <div class="bottom mt-3">
+           
+           {% for item in product %}
+           
+               
+           <div class="prds nbg mb-3">
+<div class="i1">
+    <h5 class="white ct">    {{item.2.0.order_id}}</h5>
+</div>
+<div class="i2">
+  <h5 class="white ct">    {{item.2.0.timeStamp|date:"M d, Y"}}</h5>
+</div>
+<div class="i3" style="display: block;">
+  <img src="/media/{{item.1.samplesfile}}" height="auto" width="100%" alt="" srcset="">
+  <p class="white ct">{{item.0.title}}</p>
+</div>
+<div class="i4" ><h5 class="white ct">$ {{item.0.Price}}</h5>
+</div>
+<div class="i5"><h5 class="white ct i5in" data-m="{{item.2.0.timeStamp|date:"M d, Y"}}" data-d="{{item.2.0.timeStamp|date:"d"}}" data-y="{{item.2.0.timeStamp|date:"Y"}}"></h5></div>
+           </div>
+               
+           {% endfor %}
+       </div>
+    </div>
+    <div class="r5 right">
+       <div class="top">
+           <div class="rowflex4">
+               <div class="on">
+                   <h5 class="green ct">Order Number</h5>
+               </div>
+               <div class="od">
+                   <h5 class="green ct">Order Date</h5>
+               </div>
+               <div class="product">
+                   <h5 class="green ct">Product</h5>
+               </div>
+               <div class="amt">
+                   <h5 class="green ct">Amount*</h5>
+               </div>
+            
+           </div>
+       </div> 
+       <div class="bottom mt-3">
+           
+           {% for item in result %}
+           
+               
+           <div class="prds nbg mb-3">
+<div class="i1">
+    <h5 class="white ct">{{item.2.order_id}}</h5>
+</div>
+<div class="i2">
+  <h5 class="white ct">{{item.2.timeStamp|date:"M d, Y"}}</h5>
+</div>
+<div class="i3" style="display: block;">
+  <img src="/media/{{item.1.0.samplesfile}}" height="auto" width="100%" alt="" srcset="">
+  <p class="white ct">{{item.0.0.title}}</p>
+</div>
+<div class="i4" ><h5 class="white ct">$ {{item.0.0.Price}}</h5>
+</div>
+           </div>
+               
+           {% endfor %}
+       </div>
+    </div>
+</div>
+
+    </div>
+     
+    <div class="modal fade"  id="myModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+     
+      <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content navbg">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Email Verification</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="msg"></div>
+          <div class="modal-body">
+            <div class="m3 mb-3"></div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="text" id="otp" placeholder="Enter OTP"/>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-success otpvar" type="button" onclick="verifyemail(this)">
+              Verify
+            </button>
+          </div>
+        </div>
+      </div>
+    </div> 
+<script src="{% static 'js/MyProfile.js' %}"></script>  
+
+{% endblock body %}
+    

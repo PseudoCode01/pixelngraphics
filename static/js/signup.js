@@ -18,7 +18,6 @@ function closeload() {
   $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
 }
 function Signup(){
-  
   let un=document.getElementById('username').value
   let email=document.getElementById('email').value
   let pass=document.getElementById('password').value
@@ -108,7 +107,7 @@ function sendOtp(elem){
       document.querySelector('.getotp').innerHTML='SIGN UP'
       $('#myModal').modal('show')
       otprec=JSON.parse(xhr1.responseText)['success']
-    //  print(otprec)
+    
     }
     else{
     

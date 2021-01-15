@@ -203,26 +203,39 @@ def editProfile(request):
     country= request.POST.get('country')
     state= request.POST.get('state')
     city= request.POST.get('city')
-    postalcode= request.POST.get('postalcode')
-    address= request.POST.get('address')
+    postalcode= request.POST.get('postal')
+    address1= request.POST.get('add1')
+    address2= request.POST.get('add2')
     desc= request.POST.get('desc')
     invoice= request.POST.get('invoice')
     ad= request.POST.get('ad')
     sp=SellerProfile.objects.get(sno=sno)
-    sp.tag=title
-    sp.Fullname=fullname
-    sp.sellername=fullname
-    sp.Country=country
-    sp.State=state
-    sp.City=city
-    sp.PostalCode=postalcode
-    sp.Address=address
-    sp.discription=desc
+    if title != None:
+        sp.tag=title
+    if fullname != None:
+        sp.Fullname=fullname
+    if sellername != None:
+        sp.sellername=sellername
+    if country != None:
+        sp.Country=country
+    if state != None:
+        sp.State=state
+    if city != None:
+        sp.City=city
+    if postalcode != None:
+        sp.PostalCode=postalcode
+    if address1 != None:
+       sp.Address=address1
+    if address2 != None:
+       sp.Address2=address2
+    if desc != None:
+        sp.discription=desc
     if invoice== 'true':
         sp.SendInvoices=True
     else:
         sp.SendInvoices=False
-    sp.accountdetails=ad
+    if ad != None:
+        sp.accountdetails=ad
     if samples != None:
         sp.profileImage=samples
     sp.save()
@@ -438,15 +451,26 @@ def additems(request):
 def myProfile(request):
     mp=MyOrder.objects.filter(user=request.user).values()
     up=UserProfile.objects.filter(user=request.user).values()
+    sp=SellerProfile.objects.filter(seller=request.user).values()
     if len(up)<1:
         up=UserProfile(username=request.user.username,user=request.user)
         up.save()
     
     email=request.user.email
     l=[]
+    
+    sproducts=Product.objects.filter(seller=request.user).values()
+    product=[]
+    prd=[]
+    for item in sproducts:
+        order=MyOrder.objects.filter(product_id=item['sno']).values()
+        if len(order)>0:
+            ps=ProductSample.objects.filter(product_id=item['sno']).values()
+            prd.append([item,ps[0],order])
+
     for item in mp:
-        l.append([Product.objects.filter(sno=item['product_id']),ProductSample.objects.filter(product_id=item['product_id'])])
-    return render(request,'home/myProfile.html',{'result':l,'email':email,'profile':up})
+        l.append([Product.objects.filter(sno=item['product_id']),ProductSample.objects.filter(product_id=item['product_id']),item])
+    return render(request,'home/MyProfile.html',{'result':l,'email':email,'profile':up,'product':prd,'sp':sp})
 
 def edituserProfile(request):
     sno= request.POST.get('sno')
@@ -459,12 +483,18 @@ def edituserProfile(request):
     address= request.POST.get('address')
     invoice= request.POST.get('invoice')
     sp=UserProfile.objects.get(sno=sno)
-    sp.Fullname=fullname
-    sp.Country=country
-    sp.State=state
-    sp.City=city
-    sp.PostalCode=postalcode
-    sp.Address=address
+    if fullname!= None:
+        sp.Fullname=fullname
+    if country!= None:
+        sp.Country=country
+    if state != None:
+       sp.State=state
+    if city != None:
+       sp.City=city
+    if postalcode != None:
+       sp.PostalCode=postalcode
+    if address != None:
+       sp.Address=address
     if invoice== 'true':
         sp.SendInvoices=True
     else:
@@ -473,6 +503,7 @@ def edituserProfile(request):
         sp.profileImage=samples
     sp.save()
     return JsonResponse('OK',safe=False)
+    
 def changepass(request):
     cp=request.POST.get('cp')
     np=request.POST.get('np')
@@ -494,3 +525,29 @@ def changepass(request):
         return JsonResponse({'error':"Wrong Password"},safe=False)
 
     return JsonResponse('OK',safe=False)
+
+def changeemail(request):
+    cp=request.POST.get('email')
+    cnf=request.POST.get('confirm')
+    print(cnf)
+    u=request.user
+    usern=request.user.username
+    if cp==u.email:
+        return JsonResponse({'error':"New email can't be same as email password"},safe=False)
+    r=1111 
+    if int(cnf) == 0:
+        r=random.randint(1000,9999)
+        template=render_to_string('home/otpvar.html',{'otp':r})
+        email = EmailMessage(
+            'Verification code for PixelNGraphics.com',
+            template,
+            settings.EMAIL_HOST_USER,
+            [cp],
+        )
+        email.fail_silently=False
+        # email.send()
+        print(r)
+    else:
+        u.email=cp
+        u.save()
+    return JsonResponse({'success':r},safe=False)
