@@ -37,5 +37,5 @@ urlpatterns = [
     path("edituserProfile",views.edituserProfile,name="edituserProfile"),
     path("changepass",views.changepass,name="changepass"),
     path("changeemail",views.changeemail,name="changeemail"),
-    path("<str:slug>",views.random,name="random"),
+    # path("<str:slug>",views.random,name="random"),
 ]

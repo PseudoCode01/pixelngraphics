@@ -554,18 +554,19 @@ def changeemail(request):
         u.email=cp
         u.save()
     return JsonResponse({'success':r},safe=False)
-def random(request,slug):
-    h=HomePage.objects.all().order_by('-timeStamp').values()
-    products=Product.objects.filter(isVerified=True).order_by('-timeStamp').values()
-    l=[]
-    b=[]
-    so=[]
-    for item in products:
-        ps=ProductSample.objects.filter(product_id=item['sno']).order_by('id').values()
-        if item['category'] == 'logo':
-            l.append([item,ps[0]])
-        elif item['category'] == 'banner':
-            b.append([item,ps[0]])
-        else :
-            so.append([item,ps[0]])
-    return render(request,'home/Home.html',{'product':l,'banner':b,'stream':so,'ht':h})
+# def random(request,slug):
+#     if slug != 'admin':
+#         h=HomePage.objects.all().order_by('-timeStamp').values()
+#         products=Product.objects.filter(isVerified=True).order_by('-timeStamp').values()
+#         l=[]
+#         b=[]
+#         so=[]
+#         for item in products:
+#             ps=ProductSample.objects.filter(product_id=item['sno']).order_by('id').values()
+#             if item['category'] == 'logo':
+#                 l.append([item,ps[0]])
+#             elif item['category'] == 'banner':
+#                 b.append([item,ps[0]])
+#             else :
+#                 so.append([item,ps[0]])
+#         return render(request,'home/Home.html',{'product':l,'banner':b,'stream':so,'ht':h})

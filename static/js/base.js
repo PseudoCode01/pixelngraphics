@@ -3,7 +3,61 @@
 function openNav() {
     document.getElementById("mySidenav").style.left = "0";
   }
-  
+  var opacity = 0; 
+  var intervalID = 0; 
+
+function show() { 
+    // console.log(opacity)
+    var body = document.querySelector(".body"); 
+    opacity = Number(window.getComputedStyle(body) 
+                     .getPropertyValue("opacity")); 
+    if (opacity < 1) { 
+        opacity = opacity + 0.25; 
+        body.style.opacity = opacity 
+    } else { 
+        clearInterval(intervalID); 
+    } 
+}  function fadeIn() { 
+    document.querySelector('.body').style.display='block'
+
+    setInterval(show, 4); 
+}
+function show2() { 
+
+    var body2 = document.querySelector("#animation"); 
+    opacity = Number(window.getComputedStyle(body2) 
+                     .getPropertyValue("opacity")); 
+    if (opacity > 0) { 
+        opacity = opacity - 0.1; 
+        body2.style.opacity = opacity 
+    } else { 
+        clearInterval(intervalID); 
+        document.querySelector('#animation').style.display='none'
+
+    } 
+} 
+ function fadeOut() { 
+    setInterval(show2, 20); 
+}
+if(sessionStorage.getItem('animate')!='no') {
+        document.querySelector('#animation').style.display='block'
+        document.getElementById('animation').play();
+    window.setTimeout(animate, 2100)
+    sessionStorage.setItem('animate','no')
+    document.querySelector('.animate').value='no'
+    function animate(){
+    
+        fadeIn()
+        // document.querySelector('#animation').style.display='none'
+        fadeOut()
+    }
+}
+ else {
+    document.querySelector('.body').style.display='block'
+    document.querySelector('#animation').style.display='none'
+    document.querySelector('.body').style.opacity='1'
+ }
+
   /* Set the width of the side navigation to 0 */
   function closeNav() {
     document.getElementById("mySidenav").style.left = "-350px";

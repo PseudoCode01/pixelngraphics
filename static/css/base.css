@@ -841,3 +841,11 @@ nav .usernavright{
 .searchbox-submit2{
   width: 40px;
 }
+#animation{
+  position: absolute;
+  margin: auto;
+  opacity: 1;
+}
+.body{
+  opacity: 0;
+}

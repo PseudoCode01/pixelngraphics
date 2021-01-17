@@ -6,3 +6,4 @@ def add_variable_to_context(request):
         up=UserProfile.objects.filter(user=request.user).values()
         spr=SellerProfile.objects.filter(seller=request.user).values()
     return {'profile':up,'spr':spr}
+    

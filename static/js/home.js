@@ -1,6 +1,6 @@
 var opacity = 0; 
 var intervalID = 0; 
-window.onload = fadeIn(); 
+// window.onload = fadeIn(); 
 
 function fadeIn() { 
     setInterval(show, 100); 

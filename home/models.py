@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class HomePage(models.Model):
     sno=models.AutoField(primary_key=True)
-    topvideo=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")
+    top=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")
     toppremadelogo=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")
     banner=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")
     streamoverlays=models.FileField(upload_to='home/homescreenDesign',null=True,blank=True, verbose_name="")

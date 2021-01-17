@@ -18,8 +18,9 @@ video{
     align-items: flex-end;
     position: absolute;
     right: 0;
-    height: 430px;
+    height: 279px;
     width: 45%;
+    margin-top: -2px;
   }
   .slant2 {
     clip-path:polygon(0% 0, 82% 0%, 100% 100%, 0% 100%);;
@@ -29,26 +30,28 @@ video{
     align-items: flex-start;
     position: absolute;
     left: 0;
-    height: 430px;
+    height: 279px;
     width: 45%;
+    width: 45%;
+    margin-top: -2px;
 
   }
   .slant p{
-    margin-left: 60px;
-    margin-right: 10px;
+    margin-left: 54px;
+    margin-right: 20px;
     text-align: end;
     
   }
   .slant h4{
     font-size: 45px;
     font-weight: bolder;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 10px;
     
     
   }
   .slant2 p{
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 50px;
     text-align: start;
     
@@ -56,7 +59,7 @@ video{
   .slant2 h4{
     font-size: 45px;
     font-weight: bolder;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 10px;
     
     
@@ -116,7 +119,7 @@ justify-content: center;
   width: 100%;
 }
 .imgpar img{
-  width: 61%;
+  width: 64%;
 }
 .products .card .card-img-overlay{
   background-image: linear-gradient(#1100000f, #0d0d0d);
@@ -165,7 +168,7 @@ width: 100%;
 }
 
 .imgpar{
-  height: 430px;
+  height: 275px;
 }
 select {
   -webkit-appearance: none;
@@ -651,6 +654,3 @@ color:greenyellow;
  .card{
    border: none;
  }
- body{
-  opacity: 0;
-}
