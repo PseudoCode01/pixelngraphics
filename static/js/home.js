@@ -1,3 +1,23 @@
+var opacity = 0; 
+var intervalID = 0; 
+window.onload = fadeIn(); 
+
+function fadeIn() { 
+    setInterval(show, 100); 
+} 
+
+function show() { 
+    console.log(opacity)
+    var body = document.querySelector("body"); 
+    opacity = Number(window.getComputedStyle(body) 
+                     .getPropertyValue("opacity")); 
+    if (opacity < 1) { 
+        opacity = opacity + 0.1; 
+        body.style.opacity = opacity 
+    } else { 
+        clearInterval(intervalID); 
+    } 
+} 
 var el=0;
 function changecal(val,elem){
     for(item of document.querySelectorAll('.cc')){

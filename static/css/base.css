@@ -241,6 +241,7 @@ height: 120px;
 width: 120px;
 
 margin-top: -33px;
+margin-left: -120px;
   }
   .innerfooter .company,.innerfooter .resources{
       display: flex;
@@ -597,14 +598,14 @@ right: 225px;
 }
 @media only screen and (max-width:1000px){
  .nav .brandlogo{
-    margin-left: 0;
+    margin-left: -120px;
   }
   nav .usernavright a{
 display: none;
   }
-  nav .usernavright .proimg{
+  /* nav .usernavright .proimg{
     display: none;
-  }
+  } */
   .hamburger{
     display: block;
   }
@@ -794,7 +795,7 @@ left: 5%;
 background-color: white;
 }
 .mt-7{
-  margin-top: 200px;
+  margin-top: 150px;
 }
 .searchbar{
   display: none;
@@ -817,7 +818,7 @@ border: none;
   height: 100%;
 }
 nav .usernavright{
-  width: 60px;
+  width: 100px;
   height: 75px;
 }
 .sercontainer{
@@ -836,4 +837,7 @@ nav .usernavright{
 .ming{
   width: 50px;
   margin-left: 0;
+}
+.searchbox-submit2{
+  width: 40px;
 }

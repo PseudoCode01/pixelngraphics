@@ -1,3 +1,4 @@
+
 /* Set the width of the side navigation to 250px */
 function openNav() {
     document.getElementById("mySidenav").style.left = "0";
@@ -105,6 +106,13 @@ if(document.querySelector('.proimg')!=null){
 
     document.querySelector('.proimg').addEventListener('mouseover',function(){
         document.querySelector('.po').style.display='flex'
+    })
+}
+if( screen.width<700){
+
+    document.querySelector('.proimg').addEventListener('mouseleave',function(){
+        console.log(screen.width)
+        document.querySelector('.po').style.display='none'
     })
 }
 document.querySelector('.po').addEventListener('mouseleave',function(){

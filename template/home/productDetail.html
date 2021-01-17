@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}
+PixelN'Graphics | Product 
+{% endblock title %}
 {% block body %}
 <link rel="stylesheet" href="{% static 'css/productDetail.css' %}">
     <div class="container-xl mt-7 navbg pt-3 pb-3">
@@ -13,7 +16,7 @@
                 {% endif %}
                 <h1 class="white mt-0">{{pr.0.title}}</h1>
 <h1 class="green mb-0 ml-1 bold">$ {{pr.0.Price}} USD</h1>
-<p class="white">{{pr.0.discription}}</p>
+<p class="ww white" class="white">{{pr.0.discription}}</p>
  
 <h4 class="white cn">Need Change in Text and Colour?</h4>
 <div class="input-field mb-4">

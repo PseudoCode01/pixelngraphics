@@ -327,12 +327,12 @@ select {
 }
 @media only screen and (max-width:750px){
   .welcome{
-    font-size: 18px;
+    font-size: 24px;
     font-family: 'nexabold';
 
   }
   .welcome2{
-    font-size: 18px;
+    font-size: 24px;
   }
   .imgpar ,.slant2,.slant{
     height: 350px;
@@ -651,3 +651,6 @@ color:greenyellow;
  .card{
    border: none;
  }
+ body{
+  opacity: 0;
+}

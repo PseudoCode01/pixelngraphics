@@ -5,4 +5,4 @@ def add_variable_to_context(request):
     if request.user.is_authenticated:
         up=UserProfile.objects.filter(user=request.user).values()
         sp=SellerProfile.objects.filter(seller=request.user).values()
-    return {'profile':up,'sp':sp}
+    return {'profile':up,'spr':sp}

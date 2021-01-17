@@ -69,7 +69,7 @@ class Product(models.Model):
     category=models.CharField(default=0,max_length=1000)
     title=models.CharField(default=0,max_length=1000)
     fileformat=models.CharField(default=0,max_length=1000)
-    discription=models.CharField(default=0,max_length=1000)
+    discription=models.TextField(default='')
     searchTags=models.CharField(default=0,max_length=1000)
     Price=models.CharField(default=0,max_length=1000)
     isVerified=models.BooleanField(default=False)

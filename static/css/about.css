@@ -259,7 +259,7 @@ text-align: center;
 @media only screen and (max-width:500px)
 {
     .welcomeparent h1{
-        font-size: 23px;
+        font-size: 21px;
     }
     .welcomechild{
         width: 80%;
