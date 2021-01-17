@@ -39,7 +39,7 @@ function show2() {
  function fadeOut() { 
     setInterval(show2, 20); 
 }
-if(sessionStorage.getItem('animate')!='no') {
+if(sessionStorage.getItem('animate')!='no' && screen.display>800) {
         document.querySelector('#animation').style.display='block'
         document.getElementById('animation').play();
     window.setTimeout(animate, 2100)

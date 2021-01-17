@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    # 'google_analytics'
     
 ]
 
@@ -79,7 +78,7 @@ TEMPLATES = [
 ]
  
 
-# GOOGLE_ANALYTICS_MODEL = True
+
 WSGI_APPLICATION = 'pixelendgraphics.wsgi.application'
 
 

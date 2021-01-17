@@ -18,7 +18,7 @@ video{
     align-items: flex-end;
     position: absolute;
     right: 0;
-    height: 279px;
+    height: 396px;
     width: 45%;
     margin-top: -2px;
   }
@@ -30,7 +30,7 @@ video{
     align-items: flex-start;
     position: absolute;
     left: 0;
-    height: 279px;
+    height: 396px;
     width: 45%;
     width: 45%;
     margin-top: -2px;
@@ -168,7 +168,7 @@ width: 100%;
 }
 
 .imgpar{
-  height: 275px;
+  height: 394px;
 }
 select {
   -webkit-appearance: none;
