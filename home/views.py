@@ -251,7 +251,7 @@ def productDetail(request,slug,id):
     for it in p[0]['searchTags'].split(','):
         if(il==len(p[0]['searchTags'].split(','))-1):
             break
-        r=Product.objects.all()
+        r=Product.objects.filter(isVerified=True)
         for item in r:
             print(item)
             if(searchfun(item.searchTags.split(','),it)):
@@ -395,7 +395,7 @@ def searchfun(list, platform):
     return False   
 def search(request):
     data=request.POST.get('stext')
-    r=Product.objects.all()
+    r=Product.objects.filter(isVerified=True)
     l=[]
     if len(data) < 1 :
         return redirect('/')
