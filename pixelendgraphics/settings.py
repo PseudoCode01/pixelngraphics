@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*eg)8qy0mcsv=gex1s5b^2t43c6%7w%v#u=d7(q)h!b5fymtuf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=False
+DEBUG=True
 
 # ALLOWED_HOSTS=[]
 ALLOWED_HOSTS = ['103.228.113.57' , 'pixelngraphics.com', 'www.pixelngraphics.com']
@@ -130,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Kolkata'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -141,7 +141,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
-# STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 # STATICFILES_DIRS=[
 #    os.path.join(BASE_DIR,'static'),    
 # ]

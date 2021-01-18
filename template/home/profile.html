@@ -181,7 +181,7 @@ PixelN'Graphics | Profile
             </div>
             {% for item in pr %}
             {% if forloop.counter > 1 %}
-            <div class="col mb-4" style="cursor: pointer;"   onclick="window.location.href='/productDetail/{{item.0.sno}}'">
+            <div class="col mb-4" style="cursor: pointer;"   onclick="window.location.href='/productDetail/{{pr.0.0.title}}/{{item.0.sno}}'">
               <div class="card navbg">
                 
                 {% if item.1.filetype|slugify == 'video'  %}
