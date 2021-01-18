@@ -13,7 +13,7 @@ PixelN'Graphics | Product
     {% for item in result %}
     <div class="col mb-4 m-auto" style="cursor: pointer;" onclick="window.location.href='/productDetail/{{item.0.title}}/{{item.0.sno}}'">
       <div class="card">
-        {% if item.0.category|slugify == 'stream'  %}
+        {% if item.1.0.filetype|slugify == 'video'  %}
         <video id="vp" width="100%" height="auto" autoplay='true' loop >
           <source id="source" src="/media/{{item.1.0.samplesfile}}" type="video/mp4">
           Your browser does not support the video tag.
@@ -32,9 +32,6 @@ PixelN'Graphics | Product
     {% else %}  
     <div class="col " style="margin-bottom:60vh ;">
         <div class="card">
-
-         
-         
           <div class="card-body navbg">
            
             <h1 class="mt-4 green ct" >NO ITEM FOUND</h1>

@@ -121,9 +121,11 @@ font-size: 20px;
 }
 .ww{
     white-space:pre-line;
+    color: #a4adc3;
 }
 @media only screen and (min-width:800px){
     .ww{
+        padding-right: 10px;
         color: #a4adc3;
         font-size: 14px;
         min-height: 240px;

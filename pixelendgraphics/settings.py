@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '*eg)8qy0mcsv=gex1s5b^2t43c6%7w%v#u=d7(q)h!b5fymtuf'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG=True
+DEBUG=False
 
 # ALLOWED_HOSTS=[]
 ALLOWED_HOSTS = ['103.228.113.57' , 'pixelngraphics.com', 'www.pixelngraphics.com']
