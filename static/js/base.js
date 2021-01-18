@@ -162,13 +162,13 @@ if(document.querySelector('.proimg')!=null){
         document.querySelector('.po').style.display='flex'
     })
 }
-if( screen.width<700){
+// if( screen.width<700){
 
-    document.querySelector('.proimg').addEventListener('mouseleave',function(){
-        console.log(screen.width)
-        document.querySelector('.po').style.display='none'
-    })
-}
+//     document.querySelector('.proimg').addEventListener('mouseleave',function(){
+//         console.log(screen.width)
+//         document.querySelector('.po').style.display='none'
+//     })
+// }
 document.querySelector('.po').addEventListener('mouseleave',function(){
     document.querySelector('.po').style.display='none'
 })
