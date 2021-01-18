@@ -39,7 +39,7 @@
    
     <form action="/search" class="searchbar" method="post">{% csrf_token %}
       <input type="text" placeholder="Search ..." name="stext" id="stext">
-      <span class="searchbox-submit2" onclick="document.querySelector('.searchbar').submit()" ><img   src="/static/images/search.svg" alt="" srcset=""></span>
+      <span class="searchbox-submit2" onclick="document.querySelector('.searchbar').submit()" ><img   src="/static/images/Search.png" alt="" srcset=""></span>
             </form>
        <img src="/static/images/Cart1.png" height="30px" style="cursor: pointer;" class='carticon mr-3' onclick="window.location.href='/cart'" alt="" srcset="">
        <a class="mr-3" href="/" >Home</a>
@@ -63,7 +63,7 @@
    
     <form action="/search" class="searchbar" method="post">{% csrf_token %}
       <input type="text" placeholder="Search ..." name="stext" id="stext">
-      <span class="searchbox-submit2"  ><img  onclick="document.querySelector('.searchbar').submit()" src="/static/images/search.svg" alt="" srcset=""></span>
+      <span class="searchbox-submit2"  ><img  onclick="document.querySelector('.searchbar').submit()" src="/static/images/Search.png" alt="" srcset=""></span>
             </form>
        <a href="/signup" class="green mr-3" >Sign In</a>
        <a href="/contact">Contact Us</a>
@@ -72,7 +72,7 @@
       {% endif %}
       <form action="/search" class="searchbar2" method="post">{% csrf_token %}
 <input type="text" placeholder="Search ..." name="stext" id="stext">
-<span class="searchbox-submit2" ><img onclick="document.querySelector('.searchbar2').submit()"   src="/static/images/search.svg" alt="" srcset=""></span>
+<span class="searchbox-submit2" ><img onclick="document.querySelector('.searchbar2').submit()"   src="/static/images/Search.png" alt="" srcset=""></span>
       </form>
     </nav>
     <div id="mySidenav" class="sidenav">
@@ -185,6 +185,7 @@
 <video id="animation" width="100%" autoplay='true' muted width="100%" loop style="display: none;" >
   <source id="source" src="/static/images/Animation_Logo_MP4.mp4" type="video/mp4">
   Your browser does not support the video tag.
+  </video>
   </video>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

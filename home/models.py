@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from datetime import datetime
 # Create your models here.
 class HomePage(models.Model):
     sno=models.AutoField(primary_key=True)
@@ -120,4 +120,11 @@ class MyOrder(models.Model):
     order_id=models.CharField(default='000',max_length=1000)
     timeStamp=models.DateTimeField(auto_now_add=True,blank=True)
 
-
+class Payments(models.Model):
+    sno=models.AutoField(primary_key=True)
+    user=models.ForeignKey(User,default=None,on_delete=models.CASCADE)
+    seller=models.ForeignKey(SellerProfile,default=None,on_delete=models.CASCADE)
+    product=models.ForeignKey(Product,default=None,on_delete=models.CASCADE)
+    quantity=models.CharField(default=0,max_length=1000) 
+    amount=models.CharField(default=0,max_length=1000)   
+    timeStamp=models.DateTimeField(default=datetime.now,blank=True)    

@@ -4,7 +4,7 @@ import json
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login,logout
-from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct,MyOrder,UserProfile
+from home.models import SellerApplication,Product,ProductSample,SellerProfile,Cart,HomePage,CustomProduct,MyOrder,UserProfile,Payments
 from django.conf import settings
 from django.core.mail import EmailMessage
 import random
@@ -444,10 +444,13 @@ def additems(request):
             sn=po.seller_id
             po.save()
             s=SellerProfile.objects.get(seller_id=sn)
+            py=Payments(user=request.user,seller=s,amount=int(Product.objects.get(sno=int(item)).Price)*int(qn[i]),product=Product.objects.get(sno=int(item)),quantity=qn[i])
+            py.save()
             s.sells+=1
             s.earned+=int(P[0]['Price'])*int(qn[i])   
             s.save()
         i+=1
+    # py=Payments(user=request.user,p)
     return JsonResponse({'price':'ok'},safe=False)
 def myProfile(request):
     mp=MyOrder.objects.filter(user=request.user).values()

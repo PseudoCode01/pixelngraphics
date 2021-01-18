@@ -124,7 +124,9 @@ font-size: 20px;
 }
 @media only screen and (min-width:800px){
     .ww{
-        height: 240px;
+        color: #a4adc3;
+        font-size: 14px;
+        min-height: 240px;
     }
 }
 @media only screen and (max-width:1000px){

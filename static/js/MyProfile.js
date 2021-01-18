@@ -6,12 +6,48 @@ function Tomorrow(date=false) {
     var year = givendate.getUTCFullYear()
     result ="<b>" + day + "/" + month + "/" + year + "</b>";
     return result;
-} 
+}
+function nextday(date){
+  givendate=new Date(date)
+  var day =Number(givendate.getDate())
+    var month = Number(givendate.getUTCMonth())+1
+    var year = Number(givendate.getUTCFullYear())
+    console.log(month)
+  if(day===31 && month===12){
+   return "<b>" + 01 + "/" + 01 + "/" + `${year+1}` + "</b>";
+  }
+   else if(month===1||month===3||month===5||month===7||month===8||month===10||month===12){
+      if(day===31){
+        return "<b>" + 01 + "/" + `${month+1}` + "/" + year + "</b>";
+      }
+      else{
+        return "<b>" + `${day+1}` + "/" + month + "/" + year + "</b>";
+      }
+    }
+   else if(month==4||month==6||month==5||month==9||month==11){
+    if(day==30){
+      return "<b>" + 01 + "/" + `${month+1}` + "/" + year + "</b>";
+    }
+    else{
+      return "<b>" + `${day+1}` + "/" + month + "/" + year + "</b>";
+    }
+    }
+   else if(month==2){
+    if(day==28){
+      return "<b>" + 01 + "/" +`${month+1}` + "/" + year + "</b>";
+    }
+    else{
+      return "<b>" + `${day+1}`+ "/" + month + "/" + year + "</b>";
+    }
+    }
+    console.log('jjj',day,month,year)
+}
 for(item of document.querySelectorAll('.i5in')){
   console.log(item.getAttribute("data-m"))
   p=Date.parse(item.getAttribute("data-m"))
   d=new Date(item.getAttribute("data-m"))
-  item.innerHTML=`${Tomorrow(item.getAttribute("data-m"))}`
+  // nextday(item.getAttribute("data-m"))
+  item.innerHTML=`${nextday(item.getAttribute("data-m"))}`
 }
 function changep(val,r){
   for (const item of document.querySelectorAll('.cate')) {

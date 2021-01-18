@@ -184,9 +184,7 @@ nav .navright p,.usernavright p{
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
   }
-.navright .carticon,.usernavright .carticon{
-        filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
-}
+
 .green{
     color:#92d945; ;
 }
@@ -373,7 +371,7 @@ margin-left: -120px;
   .searchbar span img{
 width: 100%;
 cursor: pointer;
-height: 35px;
+height: 40px;
   }
   @keyframes bubbles {
     from {
@@ -560,12 +558,7 @@ font-size: 15px;
   color:#FFFFFF;
   background:#262a35;
 }
-.searchbox-icon img{
-  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
-}
-.searchbox-submit img,.searchbox-submit2 img{
-  filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
-}
+
 .searchbox-open{
   width:100%;
 }
